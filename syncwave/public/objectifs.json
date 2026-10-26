@@ -1,0 +1,1501 @@
+[
+  {
+    "g": 0,
+    "id": "P1",
+    "title": "Alimenter le Pi et la LED sans coupure",
+    "date": "2026-10-30",
+    "owner": "Maia",
+    "criterion": "Montage Pi + LED alimenté sans coupure pendant l’essai LED. Preuve : relevé de l’essai.",
+    "deps": "—",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+    "start": "2026-10-26",
+    "assignees": [
+      "Maia"
+    ],
+    "focus": true,
+    "status": "En cours",
+    "proof": "",
+    "actualStart": "2026-10-05",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Faire fonctionner l'alimentation et la recharge",
+          "status": "En cours",
+          "completedDate": null
+        },
+        {
+          "title": "Faire fonctionner le bracelet sur batterie",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 0,
+    "id": "P2",
+    "title": "Câbler le prototype d’essai pour l’alimentation et le NFC",
+    "date": "2026-10-30",
+    "owner": "Maia avec Basile avec Nazim",
+    "criterion": "Alimentation Pi + LED et lecteur NFC câblés et repérés. Continuité et tensions contrôlées. Les modules restent accessibles pour les essais.",
+    "deps": "P1",
+    "note": "La cible du 30/10 concerne le montage d’essai pour l’alimentation et le NFC. SOS, modem et boîtier définitif ne font pas partie de cette validation.",
+    "assignees": [
+      "Maia",
+      "Basile",
+      "Nazim"
+    ],
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 3,
+      "items": [
+        {
+          "title": "Faire fonctionner le bracelet sur batterie",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Monter le prototype sur un support d'essai",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Valider les fonctions locales du prototype",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 0,
+    "id": "P3",
+    "title": "Implantation interne et encombrement mesurés",
+    "date": "2026-11-08",
+    "owner": "Maia avec Basile",
+    "criterion": "Composants, câbles, antennes et accès recharge positionnés sur un plan coté.",
+    "deps": "P2",
+    "note": "",
+    "status": "En cours",
+    "proof": "",
+    "actualStart": "2026-10-19",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Définir l'enveloppe maximale et les points de fixation",
+          "status": "En cours",
+          "completedDate": null
+        },
+        {
+          "title": "Figer l'implantation interne et mesurer l'encombrement",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia",
+      "Basile"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P4",
+    "title": "Stabiliser le premier prototype complet",
+    "date": "2026-11-22",
+    "owner": "Maia avec Basile",
+    "criterion": "Aucun faux contact ni reset pendant les essais. Mesures autonomie et température consignées, seuils de sécurité respectés.",
+    "deps": "P3,E5,E9",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. Valider d’abord ce même bracelet. Aucun autre bracelet à fabriquer avant validation fonctionnelle.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 4,
+      "items": [
+        {
+          "title": "Stabiliser l'électronique du P2",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Stabiliser le montage P2 pour les essais",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Valider autonomie, température et stabilité",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Figer l'assemblage P2 et ses dimensions exactes",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia",
+      "Basile"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P5",
+    "title": "Quatre électroniques assemblées et testées",
+    "date": "2026-11-25",
+    "owner": "Maia",
+    "criterion": "4 kits complets, numérotés. Continuité, charge et démarrage vérifiés sur chaque unité.",
+    "deps": "P9,P4",
+    "note": "La duplication suit la stabilisation complète du 22/11. Nouvelle cible proposée au 25/11, avant l’adaptation des boîtiers.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Préparer quatre kits électroniques complets",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Assembler les quatre électroniques",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P6",
+    "title": "Boîtiers définitifs adaptés aux montages réels",
+    "date": "2026-11-27",
+    "owner": "Basile",
+    "criterion": "Mesures prises sur les assemblages réels puis CAO et impression. Les 4 boîtiers acceptent les montages et la recharge reste accessible.",
+    "deps": "P4,P5",
+    "note": "Cible intermédiaire proposée : 27/11 selon la semaine S11. Aucun boîtier définitif avant mesure du montage.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Mesurer l'assemblage complet et concevoir le boîtier final",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Imprimer les quatre boîtiers définitifs",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Basile"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P7",
+    "title": "Quatre bracelets complets validés",
+    "date": "2026-12-06",
+    "owner": "Maia avec Nazim avec Basile",
+    "criterion": "4 checklists signées après mise en boîtier : charge, NFC, SOS, LED, localisation et stabilité.",
+    "deps": "P6,E7",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Préparer la recette des bracelets après mise en boîtier",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Intégrer et valider les quatre bracelets dans leurs boîtiers",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia",
+      "Nazim",
+      "Basile"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P8",
+    "title": "Configuration physique finale reproductible",
+    "date": "2026-12-11",
+    "owner": "Maia avec Basile",
+    "criterion": "BOM, CAO, schéma de câblage et procédure d’assemblage versionnés. Un tiers peut reproduire le montage.",
+    "deps": "P7,L13",
+    "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Geler la configuration bracelet finale",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Finaliser le dossier de conception",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia",
+      "Basile"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L1",
+    "title": "Première version plateforme utilisable sans bracelet",
+    "date": "2026-09-18",
+    "owner": "Tiéoulé",
+    "criterion": "20 événements simulés sans perte. La démonstration fonctionne sans IA.",
+    "deps": "—",
+    "note": "",
+    "status": "Terminé",
+    "proof": "Historique de suivi repris le 26/10/2026 : Livrer le logiciel v0 sans IA. Clôture déclarée le 2026-09-24.",
+    "completedDate": "2026-09-24",
+    "actualStart": "2026-09-23",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 1,
+      "total": 1,
+      "items": [
+        {
+          "title": "Livrer le logiciel v0 sans IA",
+          "status": "Terminé",
+          "completedDate": "2026-09-24"
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L2",
+    "title": "API et écrans principaux fonctionnels",
+    "date": "2026-10-16",
+    "owner": "Tiéoulé",
+    "criterion": "100 événements ingérés sans doublon. Liste, carte, SOS et batterie accessibles sur trois parcours simulés. Bracelet inconnu rejeté.",
+    "deps": "L1",
+    "note": "",
+    "status": "Terminé",
+    "proof": "Historique de suivi repris le 26/10/2026 : Stabiliser l'API simulée, Créer le squelette applicatif, Fiabiliser le backend d'ingestion simulée, Développer l'alpha front avec simulateur, Finaliser le front des parcours principaux, Développer le registre et l'authentification des bracelets. Clôture déclarée le 2026-10-09.",
+    "completedDate": "2026-10-09",
+    "actualStart": "2026-09-25",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 6,
+      "total": 6,
+      "items": [
+        {
+          "title": "Stabiliser l'API simulée",
+          "status": "Terminé",
+          "completedDate": "2026-09-25"
+        },
+        {
+          "title": "Créer le squelette applicatif",
+          "status": "Terminé",
+          "completedDate": "2026-10-02"
+        },
+        {
+          "title": "Fiabiliser le backend d'ingestion simulée",
+          "status": "Terminé",
+          "completedDate": "2026-10-02"
+        },
+        {
+          "title": "Développer l'alpha front avec simulateur",
+          "status": "Terminé",
+          "completedDate": "2026-10-09"
+        },
+        {
+          "title": "Finaliser le front des parcours principaux",
+          "status": "Terminé",
+          "completedDate": "2026-10-09"
+        },
+        {
+          "title": "Développer le registre et l'authentification des bracelets",
+          "status": "Terminé",
+          "completedDate": "2026-10-09"
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 4,
+    "id": "L3",
+    "title": "Déployer le logiciel sur notre infrastructure",
+    "date": "2026-11-06",
+    "owner": "Gabriel",
+    "criterion": "Le logiciel est accessible sur l’infrastructure cible. Preuve : URL testée.",
+    "deps": "L2,N1,N2,N3",
+    "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle.",
+    "start": "2026-10-26",
+    "assignees": [
+      "Gabriel"
+    ],
+    "focus": true,
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Mettre en ligne le front et le back sur l'infrastructure cible",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 1,
+    "id": "L4",
+    "title": "Afficher les rôles VIP, STAFF et FESTIVALIER",
+    "date": "2026-10-30",
+    "owner": "Tiéoulé",
+    "criterion": "Créer et visualiser plusieurs rôles (VIP, STAFF, FESTIVALIER) dans l’application bêta pour préparer les tests NFC.",
+    "deps": "L2",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+    "start": "2026-10-26",
+    "assignees": [
+      "Tiéoulé"
+    ],
+    "focus": true,
+    "status": "À confirmer",
+    "proof": ""
+  },
+  {
+    "g": 1,
+    "id": "L5",
+    "title": "Intégrer les premiers écrans analytics",
+    "date": "2026-11-06",
+    "owner": "Tiéoulé",
+    "criterion": "Les premiers écrans analytics sont intégrés et affichent les indicateurs du jeu de référence. Preuve : démonstration dans l’application.",
+    "deps": "L2,I2",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+    "start": "2026-11-02",
+    "assignees": [
+      "Tiéoulé"
+    ],
+    "focus": true,
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Intégrer les écrans analytics dans le front",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 1,
+    "id": "L6",
+    "title": "Version candidate et recette applicative préparées",
+    "date": "2026-11-20",
+    "owner": "Tiéoulé avec Gabriel",
+    "criterion": "Aucun défaut fonctionnel bloquant dans le front et le back. Scénarios de recette définis et version candidate identifiée.",
+    "deps": "L4,L5,L10,I5,N4,N5",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Geler la release candidate front et back",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Figer les scénarios de recette et d'exploitation cloud",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L7",
+    "title": "Valider la recette système et autoriser le pilote",
+    "date": "2026-12-07",
+    "owner": "Thomas avec Tiéoulé avec Gabriel",
+    "criterion": "Recette système sans anomalie critique et au moins 90 % de tests passants. Trois parcours sans aide. Environnement disponible, moyens de reprise prêts et Go signé avant les sessions pilote.",
+    "deps": "P7,E7,L6,I6,N5,N6",
+    "note": "La recette et le Go précèdent les sessions pilote et leur exploitation. Étape distincte proposée au 07/12.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 8,
+      "items": [
+        {
+          "title": "Exécuter la recette système bracelet-cloud",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Faire la recette front et back",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Décider Go/No-Go",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Mettre en ligne le front et le back sur l'infrastructure cible",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Exécuter le pilote",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Supporter le front et le back pendant le pilote",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Clore les incidents du pilote",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Exécuter le runbook d'exploitation pendant le pilote",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas",
+      "Tiéoulé",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L8",
+    "title": "Plateforme finale et dossier applicatif transférés",
+    "date": "2026-12-11",
+    "owner": "Thomas avec Tiéoulé avec Gabriel",
+    "criterion": "Release applicative finale publiée. Le dossier permet à un tiers de reproduire les parcours et de maintenir le front et le back.",
+    "deps": "L7,I7,N8",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 3,
+      "items": [
+        {
+          "title": "Publier la release finale du front et du back",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Finaliser le dossier de conception",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Faire la démonstration finale",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas",
+      "Tiéoulé",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I1",
+    "title": "Données et indicateurs définis",
+    "date": "2026-10-28",
+    "owner": "Thomas avec Tiéoulé",
+    "criterion": "Schéma, unités et règles de qualité versionnés. Jeux d’exemples valides et invalides disponibles.",
+    "deps": "—",
+    "note": "Échéance échue remplacée par une cible proposée au 28/10. L’activité déjà engagée reste visible dans l’historique.",
+    "status": "En cours",
+    "proof": "",
+    "actualStart": "2026-09-28",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Figer le schéma et les règles qualité",
+          "status": "En cours",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I2",
+    "title": "Première baseline par règles mesurée",
+    "date": "2026-10-30",
+    "owner": "Tiéoulé",
+    "criterion": "KPI calculés sur le jeu simulé. Seuils exécutables, métriques et cas d’échec sauvegardés.",
+    "deps": "I1,L2",
+    "note": "Cible proposée au 30/10 pour disposer de la baseline par règles avant la quinzaine IA.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Créer les API analytics et le dashboard baseline",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Implémenter la baseline analytics par règles",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I3",
+    "title": "Jeu de données nettoyé et variables traçables",
+    "date": "2026-10-30",
+    "owner": "Thomas avec Tiéoulé",
+    "criterion": "Au moins 95 % d’événements valides. Données brutes et nettoyées distinguées. Chaque variable a une unité et une origine documentées.",
+    "deps": "I1",
+    "note": "Les données nettoyées et les variables dépendent de leur schéma. Leur préparation ne requiert pas que la baseline par règles soit déjà livrée.",
+    "status": "En cours",
+    "proof": "",
+    "actualStart": "2026-10-26",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Développer les traitements raw et clean",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Spécifier features et garde-fous",
+          "status": "En cours",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I4",
+    "title": "Obtenir une baseline IA v0 relançable",
+    "date": "2026-11-06",
+    "owner": "Gabriel",
+    "criterion": "Relancer la baseline IA et produire les métriques sur un jeu d’évaluation conservé.",
+    "deps": "I2,I3,L3",
+    "note": "Déploiement puis validation de la baseline le 06/11. Les travaux préparatoires peuvent avancer en parallèle.",
+    "start": "2026-11-02",
+    "assignees": [
+      "Gabriel"
+    ],
+    "focus": true,
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Déployer le pipeline data et la baseline IA",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 2,
+    "id": "I5",
+    "title": "Modèle évalué face à la baseline",
+    "date": "2026-11-18",
+    "owner": "Thomas avec Tiéoulé",
+    "criterion": "Modèle et règles évalués sur le même jeu de test. Métriques, biais, seuils et limites publiés dans la fiche modèle. Aucune performance minimale inventée.",
+    "deps": "I4,I9,E4",
+    "note": "Évaluation proposée le 18/11 après le premier modèle et la remontée réelle du 16/11.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Évaluer la baseline et rédiger la model card",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I6",
+    "title": "IA désactivable sans bloquer les alertes",
+    "date": "2026-12-04",
+    "owner": "Tiéoulé",
+    "criterion": "Un arrêt du modèle laisse le SOS et la localisation de base disponibles. Retour au mode par règles démontré.",
+    "deps": "I5,L6",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Valider les analytics et le mode dégradé",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I7",
+    "title": "Résultats du pilote analysés",
+    "date": "2026-12-10",
+    "owner": "Thomas avec Tiéoulé",
+    "criterion": "Rapport agrégé avec KPI, limites et recommandations. Aucun tracé individuel dans le rapport livré.",
+    "deps": "L13",
+    "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Analyser les données pilote et produire les KPI",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 2,
+    "id": "I8",
+    "title": "Modèle et documentation finale transférés",
+    "date": "2026-12-11",
+    "owner": "Tiéoulé avec Gabriel",
+    "criterion": "Modèle, données de référence autorisées, configuration et commande de relance livrés. Un tiers reproduit une prédiction et les métriques.",
+    "deps": "I7",
+    "note": "Critère de transfert précisé pour le livrable IA.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Finaliser le dossier de conception",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E1",
+    "title": "Installer et relancer le logiciel du Raspberry Pi",
+    "date": "2026-10-28",
+    "owner": "Nazim",
+    "criterion": "Installation reproductible sur le Raspberry Pi. Le programme démarre et se relance avec une procédure documentée.",
+    "deps": "—",
+    "note": "Cible proposée au 28/10 pour remplacer l’échéance échue. Logiciel exécutable sur le Raspberry Pi utilisé dans le dashboard.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Créer le squelette firmware",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Coder les fonctions locales sur carte de développement",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Nazim"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E2",
+    "title": "Lire un identifiant NFC sur le Raspberry Pi",
+    "date": "2026-10-30",
+    "owner": "Basile avec Nazim",
+    "criterion": "Présenter un tag et afficher son identifiant sur le Pi. Preuve : démonstration du montage.",
+    "deps": "P2,E1",
+    "note": "La lecture NFC requiert le câblage d’essai et le logiciel du Pi. Démonstration le 30/10 maintenue.",
+    "start": "2026-10-26",
+    "assignees": [
+      "Basile",
+      "Nazim"
+    ],
+    "focus": true,
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Faire fonctionner le NFC",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 3,
+    "id": "E3",
+    "title": "Afficher une première position horodatée",
+    "date": "2026-11-06",
+    "owner": "Basile avec Nazim",
+    "criterion": "Afficher une première position avec sa date et son heure. Prérequis : module de localisation disponible.",
+    "deps": "P1,E1",
+    "note": "Le logiciel du Pi est requis pour afficher une position. L’échéance reste conditionnée à la disponibilité du module.",
+    "start": "2026-10-26",
+    "assignees": [
+      "Basile",
+      "Nazim"
+    ],
+    "focus": true,
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Faire fonctionner la localisation GNSS",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    }
+  },
+  {
+    "g": 3,
+    "id": "E4",
+    "title": "Position, SOS et batterie reçus dans le cloud",
+    "date": "2026-11-16",
+    "owner": "Nazim avec Gabriel",
+    "criterion": "50 messages réels envoyés avec ≥95 % de réception. Horodatage et identifiant du bracelet vérifiés dans le cloud.",
+    "deps": "E3,E9,E10,L3",
+    "note": "La chaîne SOS jusqu’au cloud doit suivre la validation locale du SOS le 13/11. Cible proposée le 16/11 au lieu du 08/11.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Faire remonter les données réelles jusqu'au cloud",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Valider la tranche bracelet connecté",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Nazim",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E5",
+    "title": "Reprise après coupure réseau démontrée",
+    "date": "2026-11-22",
+    "owner": "Nazim",
+    "criterion": "10 minutes hors réseau puis reconnexion sans perte critique. File locale, renvois et redémarrage automatique démontrés par les journaux.",
+    "deps": "E4",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Faire fonctionner le bracelet pendant une coupure réseau",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Nazim"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E6",
+    "title": "Mise à jour distante et retour arrière opérationnels",
+    "date": "2026-11-22",
+    "owner": "Nazim",
+    "criterion": "3 mises à jour à distance et 3 retours à la version précédente réussis. Version et résultat visibles dans les journaux.",
+    "deps": "E5",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Mettre à jour le firmware à distance",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Nazim"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E7",
+    "title": "Même version installée sur quatre bracelets identifiables",
+    "date": "2026-12-06",
+    "owner": "Maia avec Nazim",
+    "criterion": "4 bracelets démarrent, portent une identité propre et sont reconnus par la plateforme. NFC, SOS, LED et localisation testés sur chacun.",
+    "deps": "P5,E6",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Installer le firmware sur quatre bracelets",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia",
+      "Nazim"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E8",
+    "title": "Version embarquée finale livrée",
+    "date": "2026-12-11",
+    "owner": "Nazim",
+    "criterion": "Binaire, sources, version, configuration et procédure d’installation archivés. Réinstallation puis test fonctionnel réussis sur un bracelet.",
+    "deps": "E7,L13",
+    "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Geler la configuration bracelet finale",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Finaliser le dossier de conception",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Nazim"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L9",
+    "title": "Récupérer les informations NFC du bracelet dans le logiciel",
+    "date": "2026-10-30",
+    "start": "2026-10-26",
+    "owner": "Thomas avec Tiéoulé",
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ],
+    "criterion": "Le logiciel récupère l’identifiant NFC lu sur le Pi. Preuve : test de connexion bracelet–logiciel et identifiant affiché côté application.",
+    "deps": "E2,L4",
+    "note": "Dashboard du 26 octobre : Thomas porte le test de connexion le 30/10. Thomas et Tiéoulé poursuivent l’intégration du 2 au 6/11 dès disponibilité du NFC.",
+    "focus": true,
+    "status": "À confirmer",
+    "proof": ""
+  },
+  {
+    "g": 3,
+    "id": "E9",
+    "title": "Valider les fonctions SOS et LED du premier bracelet",
+    "date": "2026-11-13",
+    "owner": "Nazim avec Basile",
+    "criterion": "20 appuis donnent 20 SOS uniques. 20 commandes LED et 10 redémarrages sans blocage.",
+    "deps": "P1,E1",
+    "note": "Critères conservés de la la version précédente. Date du 13/11 proposée après la quinzaine prioritaire, à confirmer.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 2,
+      "items": [
+        {
+          "title": "Faire fonctionner la LED sur le bracelet",
+          "status": "À faire",
+          "completedDate": null
+        },
+        {
+          "title": "Faire fonctionner le bouton SOS",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Nazim",
+      "Basile"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L10",
+    "title": "Contrôler les permissions des rôles côté API",
+    "date": "2026-11-13",
+    "owner": "Thomas avec Tiéoulé",
+    "criterion": "Une action autorisée réussit et une action interdite est refusée par l’API puis journalisée.",
+    "deps": "L4",
+    "note": "L’ancien indicateur En cours provenait d’un travail de sécurité plus large, pas de la preuve de contrôle des rôles. Statut remis à confirmer.",
+    "status": "À confirmer",
+    "proof": "",
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ]
+  },
+  {
+    "g": 3,
+    "id": "E10",
+    "title": "Établir la liaison Cat-M sans reset",
+    "date": "2026-11-08",
+    "owner": "Maia avec Nazim",
+    "criterion": "Trois sessions réseau successives sans reset pendant l’émission.",
+    "deps": "P1",
+    "note": "Objectif réseau conservé séparément de la première position. Date de référence v20 du 08/11 à confirmer selon disponibilité.",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Faire fonctionner la connexion Cat-M sans reset",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Maia",
+      "Nazim"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P9",
+    "title": "Valider le premier bracelet pour le NFC et la localisation",
+    "date": "2026-11-06",
+    "start": "2026-11-02",
+    "owner": "Thomas avec Maia avec Basile avec Nazim",
+    "assignees": [
+      "Thomas",
+      "Maia",
+      "Basile",
+      "Nazim"
+    ],
+    "criterion": "Démontrer sur ce même bracelet : alimentation stable, lecture NFC, récupération de l’identifiant dans le logiciel et position horodatée. Consigner une preuve et les blocages éventuels. Aucun autre bracelet avant cette validation.",
+    "deps": "P1,E2,E3,L11",
+    "note": "Validation fonctionnelle ciblée sur l’alimentation, le NFC, la connexion logicielle et la position. La stabilité complète précède la duplication.",
+    "focus": true,
+    "status": "À confirmer",
+    "proof": ""
+  },
+  {
+    "g": 1,
+    "id": "L11",
+    "title": "Consolider l’intégration NFC sur le même bracelet",
+    "date": "2026-11-06",
+    "start": "2026-11-02",
+    "owner": "Thomas avec Tiéoulé",
+    "assignees": [
+      "Thomas",
+      "Tiéoulé"
+    ],
+    "criterion": "Reprendre le test NFC du 30 octobre, corriger les blocages et confirmer la récupération des informations du bracelet dans le logiciel. Si le module manque, consigner le blocage et une action datée.",
+    "deps": "L9",
+    "note": "Suite du dashboard du 2 au 6 novembre : Thomas et Tiéoulé intègrent le NFC dès sa disponibilité.",
+    "focus": true,
+    "status": "À confirmer",
+    "proof": ""
+  },
+  {
+    "g": 4,
+    "id": "N1",
+    "title": "Disposer des environnements cloud de développement et de test",
+    "date": "2026-10-28",
+    "owner": "Gabriel",
+    "criterion": "Front et back déployables sur deux environnements isolés avec accès et contrôles de santé vérifiés.",
+    "deps": "—",
+    "note": "Nouvelle cible proposée au 28/10 pour remplacer une échéance échue au 09/10. Environnement requis avant le pipeline et le déploiement.",
+    "status": "À faire",
+    "proof": "",
+    "start": "2026-10-26",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Provisionner les environnements cloud de développement et de test",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Gabriel"
+    ],
+    "focus": true
+  },
+  {
+    "g": 4,
+    "id": "N2",
+    "title": "Sécuriser stockage, secrets et sauvegardes",
+    "date": "2026-10-30",
+    "owner": "Gabriel",
+    "criterion": "Stockage chiffré, secrets hors du dépôt et sauvegarde effectivement restaurée.",
+    "deps": "N1",
+    "note": "Nouvelle cible proposée au 30/10 après disponibilité des environnements.",
+    "status": "À faire",
+    "proof": "",
+    "start": "2026-10-28",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Configurer le stockage, les secrets et les sauvegardes",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Gabriel"
+    ],
+    "focus": true
+  },
+  {
+    "g": 4,
+    "id": "N3",
+    "title": "Déployer front et back par le pipeline CI/CD",
+    "date": "2026-11-04",
+    "owner": "Tiéoulé avec Gabriel",
+    "criterion": "Un commit validé produit un déploiement reproductible en test. Les erreurs arrêtent le pipeline.",
+    "deps": "N1,N2",
+    "note": "Nouvelle cible proposée au 04/11, avant le déploiement du 06/11.",
+    "status": "À faire",
+    "proof": "",
+    "start": "2026-10-30",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Créer le pipeline CI/CD du front et du back",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé",
+      "Gabriel"
+    ],
+    "focus": true
+  },
+  {
+    "g": 4,
+    "id": "N4",
+    "title": "Valider la préproduction cloud",
+    "date": "2026-11-13",
+    "owner": "Gabriel",
+    "criterion": "Déploiement reproductible sur un environnement propre avec configuration documentée.",
+    "deps": "L3,N3",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Valider l'infrastructure cloud de préproduction",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 4,
+    "id": "N5",
+    "title": "Restaurer les données et revenir à une version précédente",
+    "date": "2026-11-13",
+    "owner": "Tiéoulé avec Gabriel",
+    "criterion": "Restauration et rollback réussis dans un délai mesuré et consigné.",
+    "deps": "N2,N4",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Tester la restauration, la montée de version et le rollback cloud",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 4,
+    "id": "N6",
+    "title": "Superviser le cloud et déclencher une alerte utile",
+    "date": "2026-11-06",
+    "owner": "Gabriel",
+    "criterion": "Une panne simulée déclenche une alerte exploitable. Logs, métriques et tableau de supervision consultables.",
+    "deps": "N1,N3",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Centraliser les logs, métriques et alertes cloud",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 4,
+    "id": "N7",
+    "title": "Exploiter le pilote avec un runbook",
+    "date": "2026-12-09",
+    "owner": "Gabriel",
+    "criterion": "Incidents détectés, qualifiés et traités avec les procédures de reprise. Preuves horodatées.",
+    "deps": "L7,N5,N6",
+    "note": "Le runbook s’exécute après le Go et pendant les sessions du 08 au 09/12. Le pilote est validé après cette exploitation.",
+    "status": "À faire",
+    "proof": "",
+    "start": "2026-12-08",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Exécuter le runbook d'exploitation pendant le pilote",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 4,
+    "id": "N8",
+    "title": "Transférer l’infrastructure et les procédures cloud",
+    "date": "2026-12-11",
+    "owner": "Tiéoulé avec Gabriel",
+    "criterion": "Un tiers peut déployer, superviser et restaurer le POC avec l’inventaire et le runbook livrés.",
+    "deps": "N7",
+    "note": "",
+    "status": "À faire",
+    "proof": "",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 0,
+      "total": 1,
+      "items": [
+        {
+          "title": "Transférer l'infrastructure cloud et le runbook",
+          "status": "À faire",
+          "completedDate": null
+        }
+      ]
+    },
+    "assignees": [
+      "Tiéoulé",
+      "Gabriel"
+    ]
+  },
+  {
+    "g": 0,
+    "id": "P10",
+    "title": "Disposer d’un inventaire vérifié des composants",
+    "date": "2026-10-02",
+    "owner": "Maia",
+    "criterion": "Chaque composant de la commande a un statut de disponibilité identifié.",
+    "deps": "—",
+    "note": "",
+    "status": "Terminé",
+    "proof": "Historique de suivi repris le 26/10/2026 : Vérifier la liste exacte et le stock. Clôture déclarée le 2026-10-19.",
+    "completedDate": "2026-10-19",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 1,
+      "total": 1,
+      "items": [
+        {
+          "title": "Vérifier la liste exacte et le stock",
+          "status": "Terminé",
+          "completedDate": "2026-10-19"
+        }
+      ]
+    },
+    "assignees": [
+      "Maia"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L12",
+    "title": "Disposer des règles de consentement et de rétention",
+    "date": "2026-10-16",
+    "owner": "Thomas",
+    "criterion": "Textes de consentement, rétention, pseudonymisation et traitement des incidents définis.",
+    "deps": "—",
+    "note": "",
+    "status": "Terminé",
+    "proof": "Historique de suivi repris le 26/10/2026 : Figer consentement et rétention. Clôture déclarée le 2026-10-26.",
+    "completedDate": "2026-10-26",
+    "source": {
+      "asOf": "2026-10-26",
+      "done": 1,
+      "total": 1,
+      "items": [
+        {
+          "title": "Figer consentement et rétention",
+          "status": "Terminé",
+          "completedDate": "2026-10-26"
+        }
+      ]
+    },
+    "assignees": [
+      "Thomas"
+    ]
+  },
+  {
+    "g": 1,
+    "id": "L13",
+    "title": "Exécuter et valider les deux sessions pilote",
+    "date": "2026-12-09",
+    "start": "2026-12-08",
+    "owner": "Thomas avec Gabriel avec Tiéoulé",
+    "assignees": [
+      "Thomas",
+      "Gabriel",
+      "Tiéoulé"
+    ],
+    "criterion": "Deux sessions exploitables après le Go. Incidents consignés, traités et assortis d’un verdict. Preuves et bilan des sessions conservés.",
+    "deps": "L7,N7",
+    "status": "À faire",
+    "proof": "",
+    "note": "Étape séparée de la recette pour éviter de confondre autorisation du pilote et validation de son résultat."
+  },
+  {
+    "g": 2,
+    "id": "I9",
+    "title": "Produire un premier modèle entraîné",
+    "date": "2026-11-16",
+    "owner": "Gabriel avec Tiéoulé",
+    "assignees": [
+      "Gabriel",
+      "Tiéoulé"
+    ],
+    "criterion": "Un entraînement produit un modèle versionné et des métriques sur un jeu de test séparé. Les données utilisées et leurs limites sont documentées. Le modèle peut être relancé.",
+    "deps": "I3,I4",
+    "status": "À faire",
+    "proof": "",
+    "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11."
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "referenceDate": "2026-10-26",
+  "objectives": 50,
+  "deliverables": 5,
+  "completed": 4,
+  "checks": [
+    "Repères uniques",
+    "Critères et affectations présents",
+    "Dates valides",
+    "Prérequis connus et sans cycle",
+    "Ordre des validations et des échéances",
+    "Preuves et dates des réalisations",
+    "Aucune échéance ouverte avant le 26/10",
+    "Ressources HTML présentes",
+    "Aucun lien vers l’ancien outil"
+  ],
+  "errors": []
+}

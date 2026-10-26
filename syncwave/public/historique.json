@@ -1,0 +1,101 @@
+{
+  "asOf": "2026-10-26",
+  "history": [
+    {
+      "title": "Figer consentement et rétention",
+      "completedAt": "2026-10-26",
+      "startedAt": null,
+      "owner": "Thomas"
+    },
+    {
+      "title": "Vérifier la liste exacte et le stock",
+      "completedAt": "2026-10-19",
+      "startedAt": null,
+      "owner": "Maia"
+    },
+    {
+      "title": "Développer le registre et l'authentification des bracelets",
+      "completedAt": "2026-10-09",
+      "startedAt": "2026-10-08",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Finaliser le front des parcours principaux",
+      "completedAt": "2026-10-09",
+      "startedAt": "2026-10-08",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Développer l'alpha front avec simulateur",
+      "completedAt": "2026-10-09",
+      "startedAt": "2026-10-08",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Créer le squelette applicatif",
+      "completedAt": "2026-10-02",
+      "startedAt": "2026-09-30",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Fiabiliser le backend d'ingestion simulée",
+      "completedAt": "2026-10-02",
+      "startedAt": "2026-09-30",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Création de la deuxième partie de la video IoT",
+      "completedAt": "2026-10-02",
+      "startedAt": "2026-09-25",
+      "owner": "Nazim"
+    },
+    {
+      "title": "Communiqué de presse V1",
+      "completedAt": "2026-10-02",
+      "startedAt": "2026-09-25",
+      "owner": "Thomas"
+    },
+    {
+      "title": "Figer les interfaces",
+      "completedAt": "2026-09-30",
+      "startedAt": "2026-09-30",
+      "owner": "Maia"
+    },
+    {
+      "title": "Cadrer l'application POC",
+      "completedAt": "2026-09-28",
+      "startedAt": "2026-09-26",
+      "owner": "Gabriel"
+    },
+    {
+      "title": "Stabiliser l'API simulée",
+      "completedAt": "2026-09-25",
+      "startedAt": "2026-09-25",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Livrer le logiciel v0 sans IA",
+      "completedAt": "2026-09-24",
+      "startedAt": "2026-09-23",
+      "owner": "Tiéoulé"
+    },
+    {
+      "title": "Définir le concept vidéo",
+      "completedAt": "2026-09-23",
+      "startedAt": null,
+      "owner": "Non assigné"
+    },
+    {
+      "title": "Cadrer le MVP",
+      "completedAt": "2026-09-23",
+      "startedAt": null,
+      "owner": "Thomas"
+    },
+    {
+      "title": "Créer le registre risques et la cadence",
+      "completedAt": "2026-09-23",
+      "startedAt": null,
+      "owner": "Thomas"
+    }
+  ]
+}

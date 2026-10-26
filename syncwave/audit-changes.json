@@ -1,0 +1,251 @@
+[
+  {
+    "id": "N1",
+    "reason": "Nouvelle cible proposée au 28/10 pour remplacer une échéance échue au 09/10. Environnement requis avant le pipeline et le déploiement.",
+    "before": {
+      "date": "2026-10-09",
+      "start": null
+    },
+    "after": {
+      "date": "2026-10-28",
+      "start": "2026-10-26"
+    }
+  },
+  {
+    "id": "N2",
+    "reason": "Nouvelle cible proposée au 30/10 après disponibilité des environnements.",
+    "before": {
+      "date": "2026-10-16",
+      "start": null
+    },
+    "after": {
+      "date": "2026-10-30",
+      "start": "2026-10-28"
+    }
+  },
+  {
+    "id": "N3",
+    "reason": "Nouvelle cible proposée au 04/11, avant le déploiement du 06/11.",
+    "before": {
+      "date": "2026-10-23",
+      "start": null
+    },
+    "after": {
+      "date": "2026-11-04",
+      "start": "2026-10-30"
+    }
+  },
+  {
+    "id": "L3",
+    "reason": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle.",
+    "before": {
+      "deps": "L2"
+    },
+    "after": {
+      "deps": "L2,N1,N2,N3"
+    }
+  },
+  {
+    "id": "I1",
+    "reason": "Échéance échue remplacée par une cible proposée au 28/10. L’activité déjà engagée reste visible dans l’historique.",
+    "before": {
+      "date": "2026-09-25"
+    },
+    "after": {
+      "date": "2026-10-28"
+    }
+  },
+  {
+    "id": "I2",
+    "reason": "Cible proposée au 30/10 pour disposer de la baseline par règles avant la quinzaine IA.",
+    "before": {
+      "date": "2026-10-16"
+    },
+    "after": {
+      "date": "2026-10-30"
+    }
+  },
+  {
+    "id": "I3",
+    "reason": "Les données nettoyées et les variables dépendent de leur schéma. Leur préparation ne requiert pas que la baseline par règles soit déjà livrée.",
+    "before": {
+      "deps": "I2"
+    },
+    "after": {
+      "deps": "I1"
+    }
+  },
+  {
+    "id": "I4",
+    "reason": "Déploiement puis validation de la baseline le 06/11. Les travaux préparatoires peuvent avancer en parallèle.",
+    "before": {
+      "deps": "I3"
+    },
+    "after": {
+      "deps": "I2,I3,L3"
+    }
+  },
+  {
+    "id": "E1",
+    "reason": "Cible proposée au 28/10 pour remplacer l’échéance échue. Logiciel exécutable sur le Raspberry Pi utilisé dans le dashboard.",
+    "before": {
+      "date": "2026-09-25",
+      "title": "Logiciel embarqué compilable et installable",
+      "criterion": "Compilation reproductible sur un second poste. Fonctions locales testées sur carte de développement."
+    },
+    "after": {
+      "date": "2026-10-28",
+      "title": "Installer et relancer le logiciel du Raspberry Pi",
+      "criterion": "Installation reproductible sur le Raspberry Pi. Le programme démarre et se relance avec une procédure documentée."
+    }
+  },
+  {
+    "id": "P2",
+    "reason": "La cible du 30/10 concerne le montage d’essai pour l’alimentation et le NFC. SOS, modem et boîtier définitif ne font pas partie de cette validation.",
+    "before": {
+      "title": "NFC, SOS, LED et modem branchés sur le prototype",
+      "criterion": "Câblage repéré. Continuité et tensions contrôlées. Chaque composant est accessible pour les essais."
+    },
+    "after": {
+      "title": "Câbler le prototype d’essai pour l’alimentation et le NFC",
+      "criterion": "Alimentation Pi + LED et lecteur NFC câblés et repérés. Continuité et tensions contrôlées. Les modules restent accessibles pour les essais."
+    }
+  },
+  {
+    "id": "E2",
+    "reason": "La lecture NFC requiert le câblage d’essai et le logiciel du Pi. Démonstration le 30/10 maintenue.",
+    "before": {
+      "deps": "P1"
+    },
+    "after": {
+      "deps": "P2,E1"
+    }
+  },
+  {
+    "id": "E3",
+    "reason": "Le logiciel du Pi est requis pour afficher une position. L’échéance reste conditionnée à la disponibilité du module.",
+    "before": {
+      "deps": "P1"
+    },
+    "after": {
+      "deps": "P1,E1"
+    }
+  },
+  {
+    "id": "E4",
+    "reason": "La chaîne SOS jusqu’au cloud doit suivre la validation locale du SOS le 13/11. Cible proposée le 16/11 au lieu du 08/11.",
+    "before": {
+      "date": "2026-11-08",
+      "deps": "E3,E10,L3"
+    },
+    "after": {
+      "date": "2026-11-16",
+      "deps": "E3,E9,E10,L3"
+    }
+  },
+  {
+    "id": "P9",
+    "reason": "Validation fonctionnelle ciblée sur l’alimentation, le NFC, la connexion logicielle et la position. La stabilité complète précède la duplication.",
+    "before": {
+      "title": "Valider le premier bracelet fonctionnel"
+    },
+    "after": {
+      "title": "Valider le premier bracelet pour le NFC et la localisation"
+    }
+  },
+  {
+    "id": "P5",
+    "reason": "La duplication suit la stabilisation complète du 22/11. Nouvelle cible proposée au 25/11, avant l’adaptation des boîtiers.",
+    "before": {
+      "date": "2026-11-20",
+      "deps": "P9,P3,E9"
+    },
+    "after": {
+      "date": "2026-11-25",
+      "deps": "P9,P4"
+    }
+  },
+  {
+    "id": "L10",
+    "reason": "L’ancien indicateur En cours provenait d’un travail de sécurité plus large, pas de la preuve de contrôle des rôles. Statut remis à confirmer.",
+    "before": {
+      "status": "En cours"
+    },
+    "after": {
+      "status": "À confirmer"
+    }
+  },
+  {
+    "id": "L7",
+    "reason": "La recette et le Go précèdent les sessions pilote et leur exploitation. Étape distincte proposée au 07/12.",
+    "before": {
+      "title": "Logiciel en ligne et pilote validé",
+      "date": "2026-12-09",
+      "deps": "P7,E7,L6,I6",
+      "criterion": "Recette système sans anomalie critique et ≥90 % de tests passants. Trois parcours réalisés sans aide. Go signé avant 2 sessions pilote. Incidents traités et supervision active."
+    },
+    "after": {
+      "title": "Valider la recette système et autoriser le pilote",
+      "date": "2026-12-07",
+      "deps": "P7,E7,L6,I6,N5,N6",
+      "criterion": "Recette système sans anomalie critique et au moins 90 % de tests passants. Trois parcours sans aide. Environnement disponible, moyens de reprise prêts et Go signé avant les sessions pilote."
+    }
+  },
+  {
+    "id": "N7",
+    "reason": "Le runbook s’exécute après le Go et pendant les sessions du 08 au 09/12. Le pilote est validé après cette exploitation.",
+    "before": {
+      "deps": "L7,N5,N6",
+      "start": null
+    },
+    "after": {
+      "deps": "L7,N5,N6",
+      "start": "2026-12-08"
+    }
+  },
+  {
+    "id": "I7",
+    "reason": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "before": {
+      "deps": "L7"
+    },
+    "after": {
+      "deps": "L13"
+    }
+  },
+  {
+    "id": "P8",
+    "reason": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "before": {
+      "deps": "P7,L7"
+    },
+    "after": {
+      "deps": "P7,L13"
+    }
+  },
+  {
+    "id": "E8",
+    "reason": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "before": {
+      "deps": "E7,L7"
+    },
+    "after": {
+      "deps": "E7,L13"
+    }
+  },
+  {
+    "id": "I5",
+    "reason": "Évaluation après le flux réel et le modèle entraîné.",
+    "after": {
+      "date": "2026-11-18",
+      "deps": "I4,I9,E4"
+    }
+  },
+  {
+    "id": "I9",
+    "reason": "Premier modèle entraîné séparé de la baseline par règles.",
+    "after": {
+      "date": "2026-11-16"
+    }
+  }
+]
