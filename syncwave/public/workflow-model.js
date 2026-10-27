@@ -1,4 +1,4 @@
-import {isDone} from './model.js?v=20261027.7';
+import {isDone} from './model.js?v=20261027.8';
 
 export const SPRINTS=[
  {id:'S1',name:'Sprint 1',start:'2026-09-14',end:'2026-09-27',goal:'Cadrage et première plateforme sur données simulées.'},

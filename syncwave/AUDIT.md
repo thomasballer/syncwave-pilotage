@@ -1,6 +1,6 @@
 # Revue de cohérence du planning Syncwave
 
-Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.7.
+Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.8.
 
 ## Décisions confirmées par l’équipe
 
@@ -65,4 +65,12 @@ Le planning de référence compte ainsi 15 objectifs ouverts pour Nazim et 14 po
 
 ## Participation de Thomas renforcée
 
-Thomas est ajouté aux objectifs L4 (vérification des rôles avec Tiéoulé), L3 (accès au logiciel déployé avec Gabriel) et L6 (scénarios et préparation de recette). Les responsables techniques restent associés. Cela porte ses engagements ouverts de 12 à 15 sur le projet, dont 5 sur la quinzaine prioritaire. Les heures de sa projection et son plafond de quatre heures par semaine restent identiques ; le nombre de fiches ne constitue pas une estimation d’effort. Les critères, dates et dépendances ne changent pas. La migration de la révision 20261027.6 reprend ces ajouts sans perdre les autres saisies compatibles.
+Thomas est ajouté aux objectifs L4 (vérification des rôles avec Tiéoulé), L3 (accès au logiciel déployé avec Gabriel) et L6 (scénarios et préparation de recette). Les responsables techniques restent associés. Cette révision portait ses engagements ouverts de 12 à 15 sur le projet, dont 5 sur la quinzaine prioritaire, avant l’ajustement IA ci-dessous. Les heures de sa projection et son plafond de quatre heures par semaine restent identiques ; le nombre de fiches ne constitue pas une estimation d’effort. Les critères, dates et dépendances ne changent pas. La migration de la révision 20261027.6 reprend ces ajouts sans perdre les autres saisies compatibles.
+
+## Pilotage de la partie IA
+
+Maia est la responsable principale des neuf objectifs IA. Thomas l’aide sur cinq objectifs : données, baseline par règles, nettoyage, évaluation et analyse du pilote. Gabriel l’aide sur quatre objectifs : baseline relançable, premier modèle, mode de repli et transfert. Tiéoulé ne figure plus dans les affectations IA ; ses engagements plateforme restent identiques. Chaque fiche IA précise le partage du travail. Les rôles affichés, le livrable IA et les sujets des semaines à venir reflètent cette organisation. Les sujets des semaines passées et les réalisations historiques sont conservés.
+
+Les neuf objectifs gardent leurs dates, statuts, critères, prérequis et preuves. Les enveloppes horaires, pondérations, marges et réductions de Nazim et Gabriel restent identiques. Les aides sont ciblées et ne désignent pas un second travail complet sur chaque objectif. Le cumul avec le matériel doit être priorisé dans l’enveloppe existante, sans hausse automatique des heures. La référence compte désormais 24 engagements ouverts pour Maia, 16 pour Thomas, 18 pour Gabriel et 12 pour Tiéoulé ; ces nombres ne mesurent pas l’effort.
+
+Une référence de migration de la révision 20261027.7 permet de conserver les saisies compatibles et de remplacer les anciennes affectations IA par celles confirmées par l’équipe. Les affectations de la version courante restent modifiables.

@@ -807,10 +807,10 @@
     "id": "I1",
     "title": "Données et indicateurs définis",
     "date": "2026-10-28",
-    "owner": "Thomas avec Tiéoulé",
+    "owner": "Maia avec Thomas",
     "criterion": "Schéma, unités et règles de qualité versionnés. Jeux d’exemples valides et invalides disponibles.",
     "deps": "—",
-    "note": "Échéance échue remplacée par une cible proposée au 28/10. L’activité déjà engagée reste visible dans l’historique.",
+    "note": "Échéance échue remplacée par une cible proposée au 28/10. L’activité déjà engagée reste visible dans l’historique. Répartition IA confirmée le 27/10 : Maia pilote le schéma, les unités et les règles de qualité ; Thomas l’aide à définir les indicateurs et les exemples de validation.",
     "status": "En cours",
     "proof": "",
     "actualStart": "2026-09-28",
@@ -827,8 +827,8 @@
       ]
     },
     "assignees": [
-      "Thomas",
-      "Tiéoulé"
+      "Maia",
+      "Thomas"
     ]
   },
   {
@@ -836,10 +836,10 @@
     "id": "I2",
     "title": "Première baseline par règles mesurée",
     "date": "2026-10-30",
-    "owner": "Tiéoulé",
+    "owner": "Maia avec Thomas",
     "criterion": "KPI calculés sur le jeu simulé. Seuils exécutables, métriques et cas d’échec sauvegardés.",
     "deps": "I1,L2",
-    "note": "Cible proposée au 30/10 pour disposer de la baseline par règles avant la quinzaine IA.",
+    "note": "Cible proposée au 30/10 pour disposer de la baseline par règles avant la quinzaine IA. Répartition IA confirmée le 27/10 : Maia réalise la baseline par règles ; Thomas l’aide sur les indicateurs, les seuils et les cas de test.",
     "status": "À faire",
     "proof": "",
     "source": {
@@ -860,7 +860,8 @@
       ]
     },
     "assignees": [
-      "Tiéoulé"
+      "Maia",
+      "Thomas"
     ]
   },
   {
@@ -868,10 +869,10 @@
     "id": "I3",
     "title": "Jeu de données nettoyé et variables traçables",
     "date": "2026-10-30",
-    "owner": "Thomas avec Tiéoulé",
+    "owner": "Maia avec Thomas",
     "criterion": "Au moins 95 % d’événements valides. Données brutes et nettoyées distinguées. Chaque variable a une unité et une origine documentées.",
     "deps": "I1",
-    "note": "Les données nettoyées et les variables dépendent de leur schéma. Leur préparation ne requiert pas que la baseline par règles soit déjà livrée.",
+    "note": "Les données nettoyées et les variables dépendent de leur schéma. Leur préparation ne requiert pas que la baseline par règles soit déjà livrée. Répartition IA confirmée le 27/10 : Maia pilote le nettoyage et la préparation des variables ; Thomas l’aide à vérifier la qualité et la traçabilité des données.",
     "status": "En cours",
     "proof": "",
     "actualStart": "2026-10-26",
@@ -893,8 +894,8 @@
       ]
     },
     "assignees": [
-      "Thomas",
-      "Tiéoulé"
+      "Maia",
+      "Thomas"
     ]
   },
   {
@@ -902,12 +903,13 @@
     "id": "I4",
     "title": "Obtenir une baseline IA v0 relançable",
     "date": "2026-11-06",
-    "owner": "Gabriel",
+    "owner": "Maia avec Gabriel",
     "criterion": "Relancer la baseline IA et produire les métriques sur un jeu d’évaluation conservé.",
     "deps": "I2,I3,L3",
-    "note": "Déploiement puis validation de la baseline le 06/11. Les travaux préparatoires peuvent avancer en parallèle.",
+    "note": "Déploiement puis validation de la baseline le 06/11. Les travaux préparatoires peuvent avancer en parallèle. Répartition IA confirmée le 27/10 : Maia pilote la baseline IA v0 ; Gabriel l’aide à rendre le pipeline et la relance reproductibles dans l’environnement déployé.",
     "start": "2026-11-02",
     "assignees": [
+      "Maia",
       "Gabriel"
     ],
     "focus": true,
@@ -931,26 +933,26 @@
     "id": "I9",
     "title": "Produire un premier modèle entraîné",
     "date": "2026-11-16",
-    "owner": "Gabriel avec Tiéoulé",
+    "owner": "Maia avec Gabriel",
     "assignees": [
-      "Gabriel",
-      "Tiéoulé"
+      "Maia",
+      "Gabriel"
     ],
     "criterion": "Un entraînement produit un modèle versionné et des métriques sur un jeu de test séparé. Les données utilisées et leurs limites sont documentées. Le modèle peut être relancé.",
     "deps": "I3,I4",
     "status": "À faire",
     "proof": "",
-    "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11."
+    "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11. Répartition IA confirmée le 27/10 : Maia pilote le premier entraînement et le choix du modèle ; Gabriel l’aide sur l’environnement d’entraînement, le versionnement et la reproductibilité."
   },
   {
     "g": 2,
     "id": "I5",
     "title": "Modèle évalué face à la baseline",
     "date": "2026-11-18",
-    "owner": "Thomas avec Tiéoulé",
+    "owner": "Maia avec Thomas",
     "criterion": "Modèle et règles évalués sur le même jeu de test. Métriques, biais, seuils et limites publiés dans la fiche modèle. Aucune performance minimale inventée.",
     "deps": "I4,I9,E4",
-    "note": "Évaluation proposée le 18/11 après le premier modèle et la remontée réelle du 16/11.",
+    "note": "Évaluation proposée le 18/11 après le premier modèle et la remontée réelle du 16/11. Répartition IA confirmée le 27/10 : Maia pilote la comparaison du modèle et de la baseline ; Thomas l’aide à relire les métriques, les limites et les résultats des tests.",
     "status": "À faire",
     "proof": "",
     "source": {
@@ -966,8 +968,8 @@
       ]
     },
     "assignees": [
-      "Thomas",
-      "Tiéoulé"
+      "Maia",
+      "Thomas"
     ]
   },
   {
@@ -975,10 +977,10 @@
     "id": "I6",
     "title": "IA désactivable sans bloquer les alertes",
     "date": "2026-12-04",
-    "owner": "Tiéoulé",
+    "owner": "Maia avec Gabriel",
     "criterion": "Un arrêt du modèle laisse le SOS et la localisation de base disponibles. Retour au mode par règles démontré.",
     "deps": "I5,L6",
-    "note": "",
+    "note": "Répartition IA confirmée le 27/10 : Maia pilote la validation du mode de repli ; Gabriel l’aide à simuler l’indisponibilité du modèle et à vérifier le retour au mode par règles.",
     "status": "À faire",
     "proof": "",
     "source": {
@@ -994,7 +996,8 @@
       ]
     },
     "assignees": [
-      "Tiéoulé"
+      "Maia",
+      "Gabriel"
     ]
   },
   {
@@ -1002,10 +1005,10 @@
     "id": "I7",
     "title": "Résultats du pilote analysés",
     "date": "2026-12-10",
-    "owner": "Thomas avec Tiéoulé",
+    "owner": "Maia avec Thomas",
     "criterion": "Rapport agrégé avec KPI, limites et recommandations. Aucun tracé individuel dans le rapport livré.",
     "deps": "L13",
-    "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go.",
+    "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go. Répartition IA confirmée le 27/10 : Maia pilote l’analyse des résultats du pilote ; Thomas l’aide à interpréter les indicateurs et à préparer le rapport agrégé.",
     "status": "À faire",
     "proof": "",
     "source": {
@@ -1021,8 +1024,8 @@
       ]
     },
     "assignees": [
-      "Thomas",
-      "Tiéoulé"
+      "Maia",
+      "Thomas"
     ]
   },
   {
@@ -1030,10 +1033,10 @@
     "id": "I8",
     "title": "Modèle et documentation finale transférés",
     "date": "2026-12-11",
-    "owner": "Tiéoulé avec Gabriel",
+    "owner": "Maia avec Gabriel",
     "criterion": "Modèle, données de référence autorisées, configuration et commande de relance livrés. Un tiers reproduit une prédiction et les métriques.",
     "deps": "I7",
-    "note": "Critère de transfert précisé pour le livrable IA.",
+    "note": "Critère de transfert précisé pour le livrable IA. Répartition IA confirmée le 27/10 : Maia pilote la documentation et le transfert du modèle ; Gabriel l’aide à vérifier l’environnement, les commandes de relance et la reproduction par un tiers.",
     "status": "À faire",
     "proof": "",
     "source": {
@@ -1049,7 +1052,7 @@
       ]
     },
     "assignees": [
-      "Tiéoulé",
+      "Maia",
       "Gabriel"
     ]
   },

@@ -1,5 +1,5 @@
 export const PEOPLE=['Thomas','Maia','Nazim','Basile','Tiéoulé','Gabriel'];
-export const BASELINE_VERSION='20261027.7';
+export const BASELINE_VERSION='20261027.8';
 export const EDITABLE_FIELDS=['start','date','status','assignees','proof','completedDate'];
 export const STATUSES=['À confirmer','À faire','En cours','Bloqué','Terminé'];
 export const isDone=d=>d.status==='Terminé'&&Boolean(d.proof?.trim())&&Boolean(d.completedDate);
@@ -16,14 +16,14 @@ export function validateObjectives(items){
 
 // Only real local edits override a revised baseline; unchanged old dates and
 // statuses must not silently undo the new hardware sequence.
-export function restoreObjectives(baseline,saved,previousBaseline,previousHardwareBaseline,previousAssignmentsBaseline){
+export function restoreObjectives(baseline,saved,previousBaseline,previousHardwareBaseline,previousAssignmentsBaseline,previousThomasBaseline){
  if(!Array.isArray(saved?.objectives))throw Error('Sauvegarde du planning invalide.');
  const entries=new Map(saved.objectives.map(d=>[d.id,d]));
  if(entries.size!==saved.objectives.length)throw Error('Repères dupliqués dans la sauvegarde.');
  const current=saved.baselineVersion===BASELINE_VERSION;
- const historical=saved.baselineVersion==='20261027.3',priorAssignments=saved.baselineVersion==='20261027.6';
- if(!current&&!historical&&!priorAssignments&&saved.baselineVersion)throw Error('Version de sauvegarde non reconnue.');
- const previous=new Map(((priorAssignments?previousAssignmentsBaseline:historical?previousHardwareBaseline:previousBaseline)||[]).map(d=>[d.id,d]));
+ const historical=saved.baselineVersion==='20261027.3',priorAssignments=saved.baselineVersion==='20261027.6',priorThomas=saved.baselineVersion==='20261027.7';
+ if(!current&&!historical&&!priorAssignments&&!priorThomas&&saved.baselineVersion)throw Error('Version de sauvegarde non reconnue.');
+ const previous=new Map(((priorThomas?previousThomasBaseline:priorAssignments?previousAssignmentsBaseline:historical?previousHardwareBaseline:previousBaseline)||[]).map(d=>[d.id,d]));
  const expected=current?new Set(baseline.map(d=>d.id)):new Set(previous.keys());
  if(expected.size!==entries.size||[...entries.keys()].some(id=>!expected.has(id)))throw Error('Objectifs de sauvegarde non reconnus.');
  const result=baseline.map(d=>{
@@ -35,6 +35,9 @@ export function restoreObjectives(baseline,saved,previousBaseline,previousHardwa
   }
   if(!current&&['P12','P2'].includes(d.id))item.assignees=[...d.assignees];
   if(!current&&['L4','L3','L6'].includes(d.id)&&Array.isArray(item.assignees))item.assignees=[...new Set([...item.assignees,'Thomas'])];
+  // Apply the team's confirmed AI ownership even when an old browser save
+  // still assigns these goals to the former contributors.
+  if(!current&&d.g===2)item.assignees=[...d.assignees];
   item.owner=Array.isArray(item.assignees)?item.assignees.join(' avec ')||'Non assigné':item.owner;
   return item;
  });

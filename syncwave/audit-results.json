@@ -1,7 +1,7 @@
 {
   "referenceDate": "2026-10-26",
   "reviewDate": "2026-10-27",
-  "baselineVersion": "20261027.7",
+  "baselineVersion": "20261027.8",
   "objectives": 57,
   "deliverables": 5,
   "completed": 5,
@@ -60,6 +60,7 @@
   "checks": [
     "Repères uniques",
     "Critères et affectations présents",
+    "Maia pilote l’IA avec Thomas et Gabriel en soutien",
     "Dates valides",
     "Prérequis connus et sans cycle",
     "Ordre des validations et des échéances",

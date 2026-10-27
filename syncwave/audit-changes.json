@@ -836,5 +836,191 @@
       "owner": "Gabriel avec Thomas",
       "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle. Répartition ajustée le 27/10 : Gabriel porte le déploiement technique ; Thomas vérifie l’URL, l’accès et les parcours applicatifs après déploiement."
     }
+  },
+  {
+    "id": "I1",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Thomas",
+        "Tiéoulé"
+      ],
+      "owner": "Thomas avec Tiéoulé",
+      "note": "Échéance échue remplacée par une cible proposée au 28/10. L’activité déjà engagée reste visible dans l’historique."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Thomas"
+      ],
+      "owner": "Maia avec Thomas",
+      "note": "Échéance échue remplacée par une cible proposée au 28/10. L’activité déjà engagée reste visible dans l’historique. Répartition IA confirmée le 27/10 : Maia pilote le schéma, les unités et les règles de qualité ; Thomas l’aide à définir les indicateurs et les exemples de validation."
+    }
+  },
+  {
+    "id": "I2",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Tiéoulé"
+      ],
+      "owner": "Tiéoulé",
+      "note": "Cible proposée au 30/10 pour disposer de la baseline par règles avant la quinzaine IA."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Thomas"
+      ],
+      "owner": "Maia avec Thomas",
+      "note": "Cible proposée au 30/10 pour disposer de la baseline par règles avant la quinzaine IA. Répartition IA confirmée le 27/10 : Maia réalise la baseline par règles ; Thomas l’aide sur les indicateurs, les seuils et les cas de test."
+    }
+  },
+  {
+    "id": "I3",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Thomas",
+        "Tiéoulé"
+      ],
+      "owner": "Thomas avec Tiéoulé",
+      "note": "Les données nettoyées et les variables dépendent de leur schéma. Leur préparation ne requiert pas que la baseline par règles soit déjà livrée."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Thomas"
+      ],
+      "owner": "Maia avec Thomas",
+      "note": "Les données nettoyées et les variables dépendent de leur schéma. Leur préparation ne requiert pas que la baseline par règles soit déjà livrée. Répartition IA confirmée le 27/10 : Maia pilote le nettoyage et la préparation des variables ; Thomas l’aide à vérifier la qualité et la traçabilité des données."
+    }
+  },
+  {
+    "id": "I4",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Gabriel"
+      ],
+      "owner": "Gabriel",
+      "note": "Déploiement puis validation de la baseline le 06/11. Les travaux préparatoires peuvent avancer en parallèle."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Gabriel"
+      ],
+      "owner": "Maia avec Gabriel",
+      "note": "Déploiement puis validation de la baseline le 06/11. Les travaux préparatoires peuvent avancer en parallèle. Répartition IA confirmée le 27/10 : Maia pilote la baseline IA v0 ; Gabriel l’aide à rendre le pipeline et la relance reproductibles dans l’environnement déployé."
+    }
+  },
+  {
+    "id": "I9",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Gabriel",
+        "Tiéoulé"
+      ],
+      "owner": "Gabriel avec Tiéoulé",
+      "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Gabriel"
+      ],
+      "owner": "Maia avec Gabriel",
+      "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11. Répartition IA confirmée le 27/10 : Maia pilote le premier entraînement et le choix du modèle ; Gabriel l’aide sur l’environnement d’entraînement, le versionnement et la reproductibilité."
+    }
+  },
+  {
+    "id": "I5",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Thomas",
+        "Tiéoulé"
+      ],
+      "owner": "Thomas avec Tiéoulé",
+      "note": "Évaluation proposée le 18/11 après le premier modèle et la remontée réelle du 16/11."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Thomas"
+      ],
+      "owner": "Maia avec Thomas",
+      "note": "Évaluation proposée le 18/11 après le premier modèle et la remontée réelle du 16/11. Répartition IA confirmée le 27/10 : Maia pilote la comparaison du modèle et de la baseline ; Thomas l’aide à relire les métriques, les limites et les résultats des tests."
+    }
+  },
+  {
+    "id": "I6",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Tiéoulé"
+      ],
+      "owner": "Tiéoulé",
+      "note": ""
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Gabriel"
+      ],
+      "owner": "Maia avec Gabriel",
+      "note": "Répartition IA confirmée le 27/10 : Maia pilote la validation du mode de repli ; Gabriel l’aide à simuler l’indisponibilité du modèle et à vérifier le retour au mode par règles."
+    }
+  },
+  {
+    "id": "I7",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Thomas",
+        "Tiéoulé"
+      ],
+      "owner": "Thomas avec Tiéoulé",
+      "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Thomas"
+      ],
+      "owner": "Maia avec Thomas",
+      "note": "Le bilan et la configuration finale suivent les sessions pilote terminées, pas seulement le Go. Répartition IA confirmée le 27/10 : Maia pilote l’analyse des résultats du pilote ; Thomas l’aide à interpréter les indicateurs et à préparer le rapport agrégé."
+    }
+  },
+  {
+    "id": "I8",
+    "revision": "20261027.8",
+    "reason": "Maia pilote l’IA avec le soutien ciblé de Thomas et Gabriel ; Tiéoulé reste sur la plateforme.",
+    "before": {
+      "assignees": [
+        "Tiéoulé",
+        "Gabriel"
+      ],
+      "owner": "Tiéoulé avec Gabriel",
+      "note": "Critère de transfert précisé pour le livrable IA."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Gabriel"
+      ],
+      "owner": "Maia avec Gabriel",
+      "note": "Critère de transfert précisé pour le livrable IA. Répartition IA confirmée le 27/10 : Maia pilote la documentation et le transfert du modèle ; Gabriel l’aide à vérifier l’environnement, les commandes de relance et la reproduction par un tiers."
+    }
   }
 ]

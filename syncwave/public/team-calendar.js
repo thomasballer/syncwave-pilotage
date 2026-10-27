@@ -1,4 +1,4 @@
-const teamRoles={Thomas:'Intégration NFC, validations et recette',Maia:'Alimentation et électronique',Nazim:'NFC, localisation et firmware',Basile:'Montage, NFC et essais matériels','Tiéoulé':'Application, rôles et analytics',Gabriel:'Infrastructure, déploiement et IA v0'};
+const teamRoles={Thomas:'Intégration NFC, recette et soutien IA',Maia:'Pilotage IA, alimentation et électronique',Nazim:'NFC, localisation et firmware',Basile:'Montage, NFC et essais matériels','Tiéoulé':'Application, rôles et analytics',Gabriel:'Infrastructure, déploiement et soutien IA'};
 let calendarMode='fortnight',calendarAnchor='2026-10-26';const expandedPeople=new Set();
 const isoDate=d=>d.toISOString().slice(0,10),addDays=(s,n)=>isoDate(new Date(stamp(s)+n*dayMs));
 const eventDate=d=>validated(d)&&d.completedDate?d.completedDate:d.date;

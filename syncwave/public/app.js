@@ -4,7 +4,7 @@ const PLAN_VIEWS=['overview','objectives','calendar','gantt','team','organizatio
 let planReady=false;
 const people=['Thomas','Maia','Nazim','Basile','Tiéoulé','Gabriel'];
 const assignments=d=>Array.isArray(d.assignees)?d.assignees:[];
-const groups=[{name:'Objet physique',color:'#3ff0e4',icon:'⌑',desc:'Un premier prototype à valider, puis à stabiliser avant toute duplication.',team:'Maia · Basile'},{name:'Logiciel plateforme',color:'#a879f3',icon:'▣',desc:'Rôles, connexion au bracelet, analytics et parcours applicatifs.',team:'Tiéoulé · Thomas'},{name:'IA',color:'#ec5cbd',icon:'✳',desc:'Données préparées, baseline reproductible, évaluation et mode de repli.',team:'Gabriel et contributeurs'},{name:'Logiciel embarqué',color:'#bca5ff',icon:'⌘',desc:'Programme du Pico, SOS, GNSS, réseau et mise à jour du prototype.',team:'Basile · Nazim'},{name:'Infrastructure & cloud',color:'#f3be68',icon:'☁',desc:'Environnements, déploiement, sauvegardes et exploitation.',team:'Gabriel · Tiéoulé'}];
+const groups=[{name:'Objet physique',color:'#3ff0e4',icon:'⌑',desc:'Un premier prototype à valider, puis à stabiliser avant toute duplication.',team:'Maia · Basile'},{name:'Logiciel plateforme',color:'#a879f3',icon:'▣',desc:'Rôles, connexion au bracelet, analytics et parcours applicatifs.',team:'Tiéoulé · Thomas'},{name:'IA',color:'#ec5cbd',icon:'✳',desc:'Données, modèles et évaluation pilotés par Maia, avec l’aide de Gabriel et Thomas.',team:'Maia (pilote) · Gabriel et Thomas (soutien)'},{name:'Logiciel embarqué',color:'#bca5ff',icon:'⌘',desc:'Programme du Pico, SOS, GNSS, réseau et mise à jour du prototype.',team:'Basile · Nazim'},{name:'Infrastructure & cloud',color:'#f3be68',icon:'☁',desc:'Environnements, déploiement, sauvegardes et exploitation.',team:'Gabriel · Tiéoulé'}];
 let data=[],historyData=null,activeView='overview',editing=null,stateRevision=0,validatePlan,baselineVersion,restorePlan,hardwareData=null,organizationConfig=null,organizationPlan=null;
 const STORAGE_KEY='syncwave-static-v1';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -32,15 +32,15 @@ async function init(){
  try{
   const model=await import('./model.js?v='+encodeURIComponent(ASSET_VERSION));validatePlan=model.validateObjectives;baselineVersion=model.BASELINE_VERSION;restorePlan=model.restoreObjectives;
   workflowModel=await import('./workflow-model.js?v='+encodeURIComponent(ASSET_VERSION));organizationModel=await import('./organization-model.js?v='+encodeURIComponent(ASSET_VERSION));
-  const responses=await Promise.all(['objectifs.json','historique.json','hardware-plan.json','baseline-20261026.json','organization-plan.json','baseline-20261027.json','baseline-20261027-assignments.json'].map(name=>fetch(name+'?v='+encodeURIComponent(ASSET_VERSION))));
+  const responses=await Promise.all(['objectifs.json','historique.json','hardware-plan.json','baseline-20261026.json','organization-plan.json','baseline-20261027.json','baseline-20261027-assignments.json','baseline-20261027-thomas.json'].map(name=>fetch(name+'?v='+encodeURIComponent(ASSET_VERSION))));
   if(responses.some(r=>!r.ok))throw Error('Le planning de référence ne peut pas être chargé.');
-  const [baseline,history,hardware,previousBaseline,organization,previousHardwareBaseline,previousAssignmentsBaseline]=await Promise.all(responses.map(r=>r.json()));historyData=history;hardwareData=hardware;organizationConfig=organization;data=baseline;
+  const [baseline,history,hardware,previousBaseline,organization,previousHardwareBaseline,previousAssignmentsBaseline,previousThomasBaseline]=await Promise.all(responses.map(r=>r.json()));historyData=history;hardwareData=hardware;organizationConfig=organization;data=baseline;
   let raw=null;try{raw=localStorage.getItem(STORAGE_KEY);}catch{}
   if(raw){
    try{
     const saved=JSON.parse(raw);
     if(saved.baselineVersion!==baselineVersion){try{if(!localStorage.getItem(STORAGE_KEY+'-avant-'+baselineVersion))localStorage.setItem(STORAGE_KEY+'-avant-'+baselineVersion,raw);}catch{}}
-    data=restorePlan(baseline,saved,previousBaseline,previousHardwareBaseline,previousAssignmentsBaseline);stateRevision=Number.isInteger(saved.revision)?saved.revision:0;
+    data=restorePlan(baseline,saved,previousBaseline,previousHardwareBaseline,previousAssignmentsBaseline,previousThomasBaseline);stateRevision=Number.isInteger(saved.revision)?saved.revision:0;
     if(saved.baselineVersion!==baselineVersion){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({baselineVersion,revision:stateRevision,objectives:data}));}catch{}}
    }catch{
     $('#storageBanner').hidden=false;$('#storageBanner').textContent='Le planning a été réorganisé. Votre ancienne saisie est conservée, mais elle ne peut pas être appliquée sans incohérence. Le nouveau planning est affiché. ';

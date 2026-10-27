@@ -1,5 +1,5 @@
 {
-  "version": "20261027.7",
+  "version": "20261027.8",
   "asOf": "2026-10-27",
   "start": "2026-09-14",
   "end": "2026-12-11",
@@ -32,13 +32,13 @@
         "Suivi des parcours applicatifs",
         "Consentement et critères de recette",
         "Préparation de la démonstration",
-        "Validation des rôles d’accès et intégration NFC",
-        "Validation NFC, prototype et logiciel déployé",
+        "Rôles d’accès, intégration NFC et aide aux données IA",
+        "Validation NFC, logiciel déployé et appui aux tests IA",
         "Permissions et protocole de test",
-        "Évaluation et préparation de la recette applicative",
+        "Aide à l’évaluation IA et recette applicative",
         "Suivi de la stabilisation",
         "Préparation de la recette",
-        "Pilote, analyse et transfert"
+        "Pilote, aide à l’analyse IA et transfert"
       ]
     },
     "Maia": {
@@ -64,13 +64,13 @@
         "Préparation des essais électriques",
         "Vérification des composants",
         "Préparation de l’alimentation",
-        "Contrôles USB et qualification batterie",
-        "Essai du Pico et de la LED sur batterie",
-        "Modem et mesure batterie",
-        "Intégration et autonomie du prototype",
-        "Assemblage des quatre électroniques",
-        "Validation du lot",
-        "Recette et configuration finale"
+        "Contrôles USB, qualification batterie et données IA",
+        "Essai batterie et pilotage de la baseline IA v0",
+        "Modem, mesure batterie et premier modèle IA",
+        "Autonomie du prototype et évaluation du modèle",
+        "Assemblage des électroniques et suivi du modèle",
+        "Validation du lot et mode de repli IA",
+        "Recette physique et transfert du modèle IA"
       ]
     },
     "Nazim": {
@@ -163,8 +163,8 @@
         "Préparation de l’intégration NFC",
         "Rôles d’accès et démonstration NFC",
         "Consolidation NFC et analytics",
-        "Permissions et premier modèle IA",
-        "Évaluation et version candidate",
+        "Permissions et parcours analytics de la plateforme",
+        "Version candidate et préparation de la recette",
         "Ajustements de la plateforme",
         "Préparation de la recette",
         "Pilote et transfert applicatif"
@@ -194,12 +194,12 @@
         "Préparation de la sécurité",
         "Préparation du déploiement",
         "Environnements et sécurité cloud",
-        "Pipeline et baseline IA",
-        "Préproduction et réception des mesures",
+        "Pipeline et soutien à Maia pour la baseline IA",
+        "Préproduction, réception des mesures et aide à l’entraînement IA",
         "Chaîne cloud et supervision",
         "Stabilisation et préparation du lot",
-        "Préparation de l’exploitation",
-        "Pilote, runbook et transfert"
+        "Exploitation et aide aux tests de repli IA",
+        "Pilote, runbook et aide au transfert IA"
       ],
       "weeklyLimitMinutes": 210
     }
