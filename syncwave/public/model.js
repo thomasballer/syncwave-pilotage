@@ -1,5 +1,5 @@
 export const PEOPLE=['Thomas','Maia','Nazim','Basile','Tiéoulé','Gabriel'];
-export const BASELINE_VERSION='20261027.3';
+export const BASELINE_VERSION='20261027.6';
 export const EDITABLE_FIELDS=['start','date','status','assignees','proof','completedDate'];
 export const STATUSES=['À confirmer','À faire','En cours','Bloqué','Terminé'];
 export const isDone=d=>d.status==='Terminé'&&Boolean(d.proof?.trim())&&Boolean(d.completedDate);
@@ -16,13 +16,14 @@ export function validateObjectives(items){
 
 // Only real local edits override a revised baseline; unchanged old dates and
 // statuses must not silently undo the new hardware sequence.
-export function restoreObjectives(baseline,saved,previousBaseline){
+export function restoreObjectives(baseline,saved,previousBaseline,previousHardwareBaseline){
  if(!Array.isArray(saved?.objectives))throw Error('Sauvegarde du planning invalide.');
  const entries=new Map(saved.objectives.map(d=>[d.id,d]));
  if(entries.size!==saved.objectives.length)throw Error('Repères dupliqués dans la sauvegarde.');
  const current=saved.baselineVersion===BASELINE_VERSION;
- if(!current&&saved.baselineVersion)throw Error('Version de sauvegarde non reconnue.');
- const previous=new Map((previousBaseline||[]).map(d=>[d.id,d]));
+ const historical=saved.baselineVersion==='20261027.3';
+ if(!current&&!historical&&saved.baselineVersion)throw Error('Version de sauvegarde non reconnue.');
+ const previous=new Map(((historical?previousHardwareBaseline:previousBaseline)||[]).map(d=>[d.id,d]));
  const expected=current?new Set(baseline.map(d=>d.id)):new Set(previous.keys());
  if(expected.size!==entries.size||[...entries.keys()].some(id=>!expected.has(id)))throw Error('Objectifs de sauvegarde non reconnus.');
  const result=baseline.map(d=>{
@@ -32,6 +33,7 @@ export function restoreObjectives(baseline,saved,previousBaseline){
     if(local[key]===undefined)delete item[key];else item[key]=structuredClone(local[key]);
    }
   }
+  if(!current&&['P12','P2'].includes(d.id))item.assignees=[...d.assignees];
   item.owner=Array.isArray(item.assignees)?item.assignees.join(' avec ')||'Non assigné':item.owner;
   return item;
  });

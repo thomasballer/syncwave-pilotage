@@ -1,6 +1,6 @@
 # Revue de cohérence du planning Syncwave
 
-Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.3.
+Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.6.
 
 ## Décisions confirmées par l’équipe
 
@@ -43,9 +43,9 @@ Le site reste statique, avec sauvegarde dans le navigateur et export JSON. Aucun
 
 ## Organisation et capacité
 
-L’organisation affiche une projection de charge commune sans saisie de disponibilités. Le plafond confirmé par l’équipe est de quatre heures par personne et par semaine, marge comprise. Sur les treize semaines du 14 septembre au 11 décembre, cinq profils prévoient 41 h 30 de travail et 10 h 30 de marge sur 52 h. La charge prévue de Nazim est réduite d’environ 25 % grâce à une enveloppe de 3 h maximum par semaine : 31 h 15 prévues et 7 h 45 de marge sur 39 h. Les arrondis donnent 79,8 % / 20,2 % pour les cinq profils et 80,1 % / 19,9 % pour Nazim. Les bilans et les totaux équipe sont calculés à partir des enveloppes individuelles.
+L’organisation affiche une projection de charge de l’équipe sans saisie de disponibilités. Le plafond confirmé par l’équipe est de quatre heures par personne et par semaine, marge comprise. Sur les treize semaines du 14 septembre au 11 décembre, quatre profils prévoient 41 h 30 de travail et 10 h 30 de marge sur 52 h. La charge prévue de Nazim est réduite d’environ 25 % grâce à une enveloppe de 3 h maximum par semaine : 31 h 15 prévues et 7 h 45 de marge sur 39 h. Les arrondis donnent 79,8 % / 20,2 % pour les quatre profils et 80,1 % / 19,9 % pour Nazim. Gabriel reçoit également une enveloppe allégée de 3 h 30 par semaine : 36 h 30 prévues et 9 h de marge sur 45 h 30, soit environ 80,2 % / 19,8 %. Les bilans et les totaux équipe sont calculés à partir des enveloppes individuelles.
 
-Les profils hebdomadaires varient selon les personnes et les phases, avec des semaines entre 2 h et 2 h 30 prévues pour Nazim et entre 2 h 30 et 3 h 30 pour les autres. Les semaines plus soutenues sont compensées par des semaines plus légères ; le plafond individuel de trois ou quatre heures est respecté et au moins trente minutes de marge subsistent chaque semaine. Les semaines passées sont clairement présentées comme reconstituées, sans preuve de temps réellement passé. La projection n’est pas calculée à partir du nombre d’objectifs ni une mesure de la vitesse de chacun.
+Les profils hebdomadaires varient selon les personnes et les phases, avec des semaines entre 2 h et 2 h 30 prévues pour Nazim, entre 2 h 15 et 3 h pour Gabriel et entre 2 h 30 et 3 h 30 pour les quatre autres. Les semaines plus soutenues sont compensées par des semaines plus légères ; le plafond individuel de trois, trois heures trente ou quatre heures est respecté et au moins trente minutes de marge subsistent chaque semaine. Les semaines passées sont clairement présentées comme reconstituées, sans preuve de temps réellement passé. La projection n’est pas calculée à partir du nombre d’objectifs ni une mesure de la vitesse de chacun.
 
 Le calendrier permet d’examiner quatre semaines ou les treize semaines du projet, et d’ouvrir le sujet et les échéances associés à une cellule. Les bilans par personne, les totaux hebdomadaires et le bilan équipe utilisent les mêmes minutes entières. Le périmètre doit être ajusté si le travail réel dépasse cette enveloppe ; la projection seule ne démontre pas que chaque objectif est réalisable dans ces heures. Aucun système de personne de secours n’est ajouté.
 
@@ -56,3 +56,9 @@ Les sprints couvrent deux semaines calendaires, puis une clôture de cinq jours 
 Les tests couvrent dates, statuts, affectations, preuves, prérequis connus, absence de cycle, ordre des échéances, couverture des sprints, plafond hebdomadaire étudiant, arrondis et bilan global 80/20, navigation, migration des saisies et séquence matérielle. L’audit vérifie aussi les ressources d’interface, les références du parcours matériel et l’absence de composants backend ou de dépôt.
 
 Ces contrôles ne prouvent pas un essai physique. Les références de composants, la compatibilité batterie/charge/alimentation LED, la disponibilité SIM/réseau et la faisabilité du lot doivent être confirmées par les essais de l’équipe. La semaine finale reste courte.
+
+## Rééquilibrage des affectations
+
+Les objectifs P12 (vérification du montage USB) et P2 (fonctionnement du Pico et de la LED sur batterie) passent de Maia/Nazim à Maia/Basile. Nazim conserve notamment le programme du Pico, les essais de connectivité, la reprise réseau et les mises à jour. Les objectifs terminés ne sont pas réattribués. Les échéances, critères et dépendances restent identiques.
+
+Le planning de référence compte ainsi 15 objectifs ouverts pour Nazim et 14 pour Basile, dont respectivement 3 et 4 dans les priorités de la quinzaine. Ces nombres décrivent les engagements ; ils ne constituent pas une mesure d’effort. La migration de l’ancienne référence matérielle applique les deux transferts explicitement, même si une ancienne saisie portait encore ces affectations. Les autres modifications locales compatibles sont reprises. Le plafond horaire de Basile reste de quatre heures, sans hausse automatique de sa projection.

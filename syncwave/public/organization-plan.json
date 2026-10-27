@@ -1,5 +1,5 @@
 {
-  "version": "20261027.5",
+  "version": "20261027.6",
   "asOf": "2026-10-27",
   "start": "2026-09-14",
   "end": "2026-12-11",
@@ -7,7 +7,7 @@
   "targetPlannedRatio": 0.8,
   "maxWeeklyPlannedRatio": 0.9,
   "roundingMinutes": 15,
-  "description": "Projection indicative étudiante : jusqu’à 4 h par semaine, et 3 h maximum pour Nazim, marge comprise. Les semaines passées sont reconstituées, sans pointage du temps réel.",
+  "description": "Projection indicative étudiante : jusqu’à 4 h par semaine, 3 h pour Nazim et 3 h 30 pour Gabriel, marge comprise. Les semaines passées sont reconstituées, sans pointage du temps réel.",
   "profiles": {
     "Thomas": {
       "weights": [
@@ -97,7 +97,7 @@
         "Préparation des modules",
         "Préparation du programme du Pico",
         "Programme reproductible et test NFC",
-        "Essai batterie et intégration NFC",
+        "Intégration NFC et suivi du programme du Pico",
         "SOS, GNSS, LTE-M et mesure batterie",
         "Réception cloud et reprise réseau",
         "Mise à jour et diffusion de la version",
@@ -129,8 +129,8 @@
         "Interfaces mécaniques",
         "Gabarit et implantation préliminaire",
         "Préparation du montage",
-        "Lecture du tag NFC passif",
-        "Consolidation NFC sur le même prototype",
+        "Contrôles USB et lecture du tag NFC",
+        "Essai batterie et consolidation NFC",
         "Montage modem et bouton SOS",
         "Montage compact, boîtier et NFC porté",
         "Adaptation des boîtiers aux montages",
@@ -200,7 +200,8 @@
         "Stabilisation et préparation du lot",
         "Préparation de l’exploitation",
         "Pilote, runbook et transfert"
-      ]
+      ],
+      "weeklyLimitMinutes": 210
     }
   }
 }

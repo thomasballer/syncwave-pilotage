@@ -1,7 +1,7 @@
 {
   "referenceDate": "2026-10-26",
   "reviewDate": "2026-10-27",
-  "baselineVersion": "20261027.3",
+  "baselineVersion": "20261027.6",
   "objectives": 57,
   "deliverables": 5,
   "completed": 5,
@@ -15,9 +15,9 @@
   },
   "organization": {
     "weeks": 13,
-    "weeklyTeamCapacityMinutes": 1380,
-    "plannedMinutes": 14325,
-    "marginMinutes": 3615,
+    "weeklyTeamCapacityMinutes": 1350,
+    "plannedMinutes": 14025,
+    "marginMinutes": 3525,
     "members": [
       {
         "name": "Thomas",
@@ -51,9 +51,9 @@
       },
       {
         "name": "Gabriel",
-        "weeklyMaximumMinutes": 240,
-        "plannedMinutes": 2490,
-        "marginMinutes": 630
+        "weeklyMaximumMinutes": 210,
+        "plannedMinutes": 2190,
+        "marginMinutes": 540
       }
     ]
   },

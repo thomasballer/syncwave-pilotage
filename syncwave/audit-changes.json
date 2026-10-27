@@ -732,5 +732,47 @@
     "after": {
       "criterion": "Quatre bracelets démarrent avec la même version embarquée, portent une identité propre et sont reconnus par la plateforme. SOS, LED et localisation testés ; chaque tag NFC passif est lu par un appareil externe et associé au bon bracelet."
     }
+  },
+  {
+    "id": "P12",
+    "revision": "20261027.6",
+    "reason": "Transfert de Nazim à Basile demandé par l’équipe pour équilibrer les engagements.",
+    "before": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "owner": "Maia avec Nazim",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Basile"
+      ],
+      "owner": "Maia avec Basile",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026. Répartition ajustée le 27/10 : essais matériels confiés à Maia et Basile pour alléger Nazim, qui conserve le programme du Pico et la connectivité."
+    }
+  },
+  {
+    "id": "P2",
+    "revision": "20261027.6",
+    "reason": "Transfert de Nazim à Basile demandé par l’équipe pour équilibrer les engagements.",
+    "before": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "owner": "Maia avec Nazim",
+      "note": "Priorité maintenue pour les deux prochaines semaines. Montage d’essai sur table ; l’autonomie avec modem, GNSS et transmissions sera validée après leur intégration."
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Basile"
+      ],
+      "owner": "Maia avec Basile",
+      "note": "Priorité maintenue pour les deux prochaines semaines. Montage d’essai sur table ; l’autonomie avec modem, GNSS et transmissions sera validée après leur intégration. Répartition ajustée le 27/10 : essais matériels confiés à Maia et Basile pour alléger Nazim, qui conserve le programme du Pico et la connectivité."
+    }
   }
 ]
