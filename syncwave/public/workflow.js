@@ -1,6 +1,6 @@
 let workflowModel,organizationModel,selectedDependency='P9';
 const dependencyTrail=[];
-const roleFocus={Thomas:'Coordination, intégration NFC et recette.',Maia:'Alimentation, électronique et mesures.',Nazim:'Programme du Pico et connectivité.',Basile:'Montage, essais matériels et boîtiers.','Tiéoulé':'Plateforme, rôles et analytics.',Gabriel:'Cloud, déploiement et IA v0.'};
+const roleFocus={Thomas:'Coordination, tests d’intégration et recette.',Maia:'Alimentation, électronique et mesures.',Nazim:'Programme du Pico et connectivité.',Basile:'Montage, essais matériels et boîtiers.','Tiéoulé':'Plateforme, rôles et analytics.',Gabriel:'Cloud, déploiement et IA v0.'};
 let orgCalendarMode='four',orgWindowStart=0,orgSelectedWeek=0,orgSelectedPerson='Thomas';
 const orgHours=value=>organizationModel.formatMinutes(value);
 const orgPercent=value=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:1}).format(value*100);

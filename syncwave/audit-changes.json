@@ -774,5 +774,67 @@
       "owner": "Maia avec Basile",
       "note": "Priorité maintenue pour les deux prochaines semaines. Montage d’essai sur table ; l’autonomie avec modem, GNSS et transmissions sera validée après leur intégration. Répartition ajustée le 27/10 : essais matériels confiés à Maia et Basile pour alléger Nazim, qui conserve le programme du Pico et la connectivité."
     }
+  },
+  {
+    "id": "L4",
+    "revision": "20261027.7",
+    "reason": "Ajout de Thomas demandé par l’équipe, sur la validation et la préparation de la recette.",
+    "before": {
+      "assignees": [
+        "Tiéoulé"
+      ],
+      "owner": "Tiéoulé",
+      "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. "
+    },
+    "after": {
+      "assignees": [
+        "Tiéoulé",
+        "Thomas"
+      ],
+      "owner": "Tiéoulé avec Thomas",
+      "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe.  Répartition ajustée le 27/10 : Thomas prépare les cas VIP, STAFF et FESTIVALIER et vérifie les parcours ; Tiéoulé réalise l’implémentation des rôles."
+    }
+  },
+  {
+    "id": "L6",
+    "revision": "20261027.7",
+    "reason": "Ajout de Thomas demandé par l’équipe, sur la validation et la préparation de la recette.",
+    "before": {
+      "assignees": [
+        "Tiéoulé",
+        "Gabriel"
+      ],
+      "owner": "Tiéoulé avec Gabriel",
+      "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. "
+    },
+    "after": {
+      "assignees": [
+        "Tiéoulé",
+        "Gabriel",
+        "Thomas"
+      ],
+      "owner": "Tiéoulé avec Gabriel avec Thomas",
+      "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe.  Répartition ajustée le 27/10 : Thomas prépare les scénarios et les critères de recette ; Tiéoulé et Gabriel préparent la version candidate et son environnement."
+    }
+  },
+  {
+    "id": "L3",
+    "revision": "20261027.7",
+    "reason": "Ajout de Thomas demandé par l’équipe, sur la validation et la préparation de la recette.",
+    "before": {
+      "assignees": [
+        "Gabriel"
+      ],
+      "owner": "Gabriel",
+      "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle."
+    },
+    "after": {
+      "assignees": [
+        "Gabriel",
+        "Thomas"
+      ],
+      "owner": "Gabriel avec Thomas",
+      "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle. Répartition ajustée le 27/10 : Gabriel porte le déploiement technique ; Thomas vérifie l’URL, l’accès et les parcours applicatifs après déploiement."
+    }
   }
 ]

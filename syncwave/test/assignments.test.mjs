@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {restoreObjectives,validateObjectives} from '../public/model.js';
+import {BASELINE_VERSION,restoreObjectives,validateObjectives} from '../public/model.js';
 const read=name=>fs.readFile(new URL('../public/'+name,import.meta.url),'utf8').then(JSON.parse);
-const [seed,previous,legacy]=await Promise.all([read('objectifs.json'),read('baseline-20261027.json'),read('baseline-20261026.json')]);
+const [seed,previous,legacy,recent]=await Promise.all([read('objectifs.json'),read('baseline-20261027.json'),read('baseline-20261026.json'),read('baseline-20261027-assignments.json')]);
 const goal=(items,id)=>items.find(d=>d.id===id);
 const open=(items,name,priority=false)=>items.filter(d=>d.status!=='Terminé'&&d.assignees.includes(name)&&(!priority||d.focus));
 
@@ -23,4 +23,27 @@ test('Une ancienne sauvegarde matérielle adopte les transferts et conserve les 
  for(const id of ['P12','P2'])assert.deepEqual(goal(restored,id).assignees,['Maia','Basile']);
  assert.equal(goal(restored,'L12').proof,'Compte rendu local complété.');
  assert.deepEqual(validateObjectives(restored),[]);
+});
+
+test('Thomas rejoint trois validations sans changer leurs critères ni les engagements des autres',()=>{
+ const targets=['L4','L3','L6'];
+ for(const d of seed){
+  const old=goal(recent,d.id);
+  if(targets.includes(d.id)){assert.deepEqual(d.assignees,[...old.assignees,'Thomas']);for(const field of ['date','start','status','criterion','deps','proof'])assert.deepEqual(d[field],old[field]);}
+  else assert.deepEqual(d,old);
+ }
+ assert.equal(open(seed,'Thomas').length,15);assert.equal(open(seed,'Thomas',true).length,5);
+});
+test('La sauvegarde précédente reçoit les ajouts de Thomas et conserve ses autres modifications',()=>{
+ const saved=structuredClone(recent);goal(saved,'L12').proof='Compte rendu local conservé.';
+ const restored=restoreObjectives(seed,{baselineVersion:'20261027.6',objectives:saved},legacy,previous,recent);
+ for(const id of ['L4','L3','L6'])assert.ok(goal(restored,id).assignees.includes('Thomas'));
+ assert.equal(goal(restored,'L12').proof,'Compte rendu local conservé.');
+ for(const id of ['P2','P12'])assert.deepEqual(goal(restored,id).assignees,['Maia','Basile']);
+ assert.deepEqual(validateObjectives(restored),[]);
+});
+test('Les nouvelles affectations restent modifiables après la migration',()=>{
+ const edited=structuredClone(seed);goal(edited,'L4').assignees=['Tiéoulé'];
+ const restored=restoreObjectives(seed,{baselineVersion:BASELINE_VERSION,objectives:edited},legacy,previous,recent);
+ assert.deepEqual(goal(restored,'L4').assignees,['Tiéoulé']);
 });

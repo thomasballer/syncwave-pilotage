@@ -553,13 +553,14 @@
     "id": "L4",
     "title": "Afficher les rôles VIP, STAFF et FESTIVALIER",
     "date": "2026-10-30",
-    "owner": "Tiéoulé",
+    "owner": "Tiéoulé avec Thomas",
     "criterion": "Créer et visualiser plusieurs rôles (VIP, STAFF, FESTIVALIER) dans l’application bêta pour préparer les tests NFC.",
     "deps": "L2",
-    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe.  Répartition ajustée le 27/10 : Thomas prépare les cas VIP, STAFF et FESTIVALIER et vérifie les parcours ; Tiéoulé réalise l’implémentation des rôles.",
     "start": "2026-10-26",
     "assignees": [
-      "Tiéoulé"
+      "Tiéoulé",
+      "Thomas"
     ],
     "focus": true,
     "status": "À confirmer",
@@ -651,10 +652,10 @@
     "id": "L6",
     "title": "Version candidate et recette applicative préparées",
     "date": "2026-11-20",
-    "owner": "Tiéoulé avec Gabriel",
+    "owner": "Tiéoulé avec Gabriel avec Thomas",
     "criterion": "Aucun défaut fonctionnel bloquant dans le front et le back. Scénarios de recette définis et version candidate identifiée.",
     "deps": "L4,L5,L10,I5,N4,N5",
-    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+    "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe.  Répartition ajustée le 27/10 : Thomas prépare les scénarios et les critères de recette ; Tiéoulé et Gabriel préparent la version candidate et son environnement.",
     "status": "À faire",
     "proof": "",
     "source": {
@@ -676,7 +677,8 @@
     },
     "assignees": [
       "Tiéoulé",
-      "Gabriel"
+      "Gabriel",
+      "Thomas"
     ]
   },
   {
@@ -1466,13 +1468,14 @@
     "id": "L3",
     "title": "Déployer le logiciel sur notre infrastructure",
     "date": "2026-11-06",
-    "owner": "Gabriel",
+    "owner": "Gabriel avec Thomas",
     "criterion": "Le logiciel est accessible sur l’infrastructure cible. Preuve : URL testée.",
     "deps": "L2,N1,N2,N3",
-    "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle.",
+    "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle. Répartition ajustée le 27/10 : Gabriel porte le déploiement technique ; Thomas vérifie l’URL, l’accès et les parcours applicatifs après déploiement.",
     "start": "2026-10-26",
     "assignees": [
-      "Gabriel"
+      "Gabriel",
+      "Thomas"
     ],
     "focus": true,
     "status": "À faire",

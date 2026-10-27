@@ -1,5 +1,5 @@
 {
-  "version": "20261027.6",
+  "version": "20261027.7",
   "asOf": "2026-10-27",
   "start": "2026-09-14",
   "end": "2026-12-11",
@@ -32,10 +32,10 @@
         "Suivi des parcours applicatifs",
         "Consentement et critères de recette",
         "Préparation de la démonstration",
-        "Coordination et lecture NFC",
-        "Intégration NFC et validation du prototype",
+        "Validation des rôles d’accès et intégration NFC",
+        "Validation NFC, prototype et logiciel déployé",
         "Permissions et protocole de test",
-        "Évaluation et préparation du pilote",
+        "Évaluation et préparation de la recette applicative",
         "Suivi de la stabilisation",
         "Préparation de la recette",
         "Pilote, analyse et transfert"

@@ -1,6 +1,6 @@
 # Revue de cohérence du planning Syncwave
 
-Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.6.
+Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.7.
 
 ## Décisions confirmées par l’équipe
 
@@ -62,3 +62,7 @@ Ces contrôles ne prouvent pas un essai physique. Les références de composants
 Les objectifs P12 (vérification du montage USB) et P2 (fonctionnement du Pico et de la LED sur batterie) passent de Maia/Nazim à Maia/Basile. Nazim conserve notamment le programme du Pico, les essais de connectivité, la reprise réseau et les mises à jour. Les objectifs terminés ne sont pas réattribués. Les échéances, critères et dépendances restent identiques.
 
 Le planning de référence compte ainsi 15 objectifs ouverts pour Nazim et 14 pour Basile, dont respectivement 3 et 4 dans les priorités de la quinzaine. Ces nombres décrivent les engagements ; ils ne constituent pas une mesure d’effort. La migration de l’ancienne référence matérielle applique les deux transferts explicitement, même si une ancienne saisie portait encore ces affectations. Les autres modifications locales compatibles sont reprises. Le plafond horaire de Basile reste de quatre heures, sans hausse automatique de sa projection.
+
+## Participation de Thomas renforcée
+
+Thomas est ajouté aux objectifs L4 (vérification des rôles avec Tiéoulé), L3 (accès au logiciel déployé avec Gabriel) et L6 (scénarios et préparation de recette). Les responsables techniques restent associés. Cela porte ses engagements ouverts de 12 à 15 sur le projet, dont 5 sur la quinzaine prioritaire. Les heures de sa projection et son plafond de quatre heures par semaine restent identiques ; le nombre de fiches ne constitue pas une estimation d’effort. Les critères, dates et dépendances ne changent pas. La migration de la révision 20261027.6 reprend ces ajouts sans perdre les autres saisies compatibles.
