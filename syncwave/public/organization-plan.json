@@ -1,5 +1,5 @@
 {
-  "version": "20261027.4",
+  "version": "20261027.5",
   "asOf": "2026-10-27",
   "start": "2026-09-14",
   "end": "2026-12-11",
@@ -7,7 +7,7 @@
   "targetPlannedRatio": 0.8,
   "maxWeeklyPlannedRatio": 0.9,
   "roundingMinutes": 15,
-  "description": "Projection indicative pour une équipe étudiante : 4 h maximum par personne et par semaine, marge comprise. Les semaines passées sont reconstituées, sans pointage du temps réel.",
+  "description": "Projection indicative étudiante : jusqu’à 4 h par semaine, et 3 h maximum pour Nazim, marge comprise. Les semaines passées sont reconstituées, sans pointage du temps réel.",
   "profiles": {
     "Thomas": {
       "weights": [
@@ -103,7 +103,8 @@
         "Mise à jour et diffusion de la version",
         "Validation des quatre bracelets",
         "Recette et livraison embarquée"
-      ]
+      ],
+      "weeklyLimitMinutes": 180
     },
     "Basile": {
       "weights": [

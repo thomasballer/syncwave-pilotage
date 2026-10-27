@@ -1,4 +1,4 @@
-import {PEOPLE,isDate} from './model.js?v=20261027.4';
+import {PEOPLE,isDate} from './model.js?v=20261027.5';
 
 const DAY=86400000;
 const dateAt=value=>new Date(value+'T00:00:00Z');
@@ -30,15 +30,17 @@ function allocateWeeks(weights,target,limit,step){
 export function buildOrganizationPlan(config){
  const weeks=projectWeeks(config.start,config.end),capacity=config.weeklyLimitMinutes,step=config.roundingMinutes,ratio=config.targetPlannedRatio,peak=config.maxWeeklyPlannedRatio;
  if(!Number.isInteger(capacity)||capacity<=0||!Number.isInteger(step)||step<=0||capacity%step||!Number.isFinite(ratio)||ratio<=0||ratio>=1||!Number.isFinite(peak)||peak<ratio||peak>1)throw Error('Paramètres de charge invalides.');
- const totalCapacity=weeks.length*capacity,target=Math.round(totalCapacity*ratio/step)*step,limit=Math.floor(capacity*peak/step)*step;
  const members=PEOPLE.map(name=>{
   const profile=config.profiles?.[name];
   if(!profile||profile.weights?.length!==weeks.length||profile.focus?.length!==weeks.length||profile.weights.some(value=>!Number.isFinite(value)||value<=0)||profile.focus.some(value=>typeof value!=='string'||!value.trim()))throw Error('Profil hebdomadaire incomplet : '+name);
+  const memberCapacity=profile.weeklyLimitMinutes??capacity;
+  if(!Number.isInteger(memberCapacity)||memberCapacity<=0||memberCapacity>capacity||memberCapacity%step)throw Error('Plafond individuel invalide : '+name);
+  const totalCapacity=weeks.length*memberCapacity,target=Math.round(totalCapacity*ratio/step)*step,limit=Math.floor(memberCapacity*peak/step)*step;
   const minutes=allocateWeeks(profile.weights,target,limit,step);
-  const allocations=weeks.map((week,index)=>({...week,capacity,planned:minutes[index],margin:capacity-minutes[index],focus:profile.focus[index]}));
-  return {name,weeks:allocations,capacity:totalCapacity,planned:sum(minutes),margin:totalCapacity-sum(minutes),plannedRatio:sum(minutes)/totalCapacity,minWeek:Math.min(...minutes),maxWeek:Math.max(...minutes)};
+  const allocations=weeks.map((week,index)=>({...week,capacity:memberCapacity,planned:minutes[index],margin:memberCapacity-minutes[index],focus:profile.focus[index]}));
+  return {name,weeklyLimitMinutes:memberCapacity,weeks:allocations,capacity:totalCapacity,planned:sum(minutes),margin:totalCapacity-sum(minutes),plannedRatio:sum(minutes)/totalCapacity,minWeek:Math.min(...minutes),maxWeek:Math.max(...minutes)};
  });
- return {version:config.version,asOf:config.asOf,start:config.start,end:config.end,weeklyLimitMinutes:capacity,targetPlannedRatio:ratio,roundingMinutes:step,weeks,members,capacity:sum(members.map(member=>member.capacity)),planned:sum(members.map(member=>member.planned)),margin:sum(members.map(member=>member.margin))};
+ return {version:config.version,asOf:config.asOf,start:config.start,end:config.end,weeklyLimitMinutes:capacity,targetPlannedRatio:ratio,roundingMinutes:step,weeks,members,weeklyTeamCapacity:sum(members.map(member=>member.weeklyLimitMinutes)),capacity:sum(members.map(member=>member.capacity)),planned:sum(members.map(member=>member.planned)),margin:sum(members.map(member=>member.margin))};
 }
 
 export function weekForDate(weeks,date){return weeks.find(week=>date>=week.start&&date<=week.end)||null;}

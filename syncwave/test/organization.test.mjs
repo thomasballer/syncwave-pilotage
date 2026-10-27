@@ -14,14 +14,14 @@ test('Le calendrier couvre les treize semaines du projet, sans semaine manquante
 });
 test('Aucune personne ni aucune semaine ne dépasse quatre heures, marge comprise',()=>{
  for(const member of plan.members)for(const week of member.weeks){
-  assert.equal(week.capacity,240);assert.equal(week.planned+week.margin,240);
+  assert.equal(week.capacity,member.name==='Nazim'?180:240);assert.equal(week.planned+week.margin,week.capacity);
   assert.ok(week.planned>=0&&week.planned<=210);assert.ok(week.margin>=30);
   assert.equal(week.planned%15,0);
  }
 });
 test('Le 80/20 est obtenu approximativement sur le projet pour chacun, avec des semaines variables',()=>{
  for(const member of plan.members){
-  assert.equal(member.capacity,3120);assert.equal(member.planned,2490);assert.equal(member.margin,630);
+  assert.equal(member.capacity,member.name==='Nazim'?2340:3120);assert.equal(member.planned,member.name==='Nazim'?1875:2490);assert.equal(member.margin,member.name==='Nazim'?465:630);
   assert.ok(Math.abs(member.plannedRatio-0.8)<0.005);
   assert.ok(new Set(member.weeks.map(w=>w.planned)).size>=3);
   assert.ok(member.weeks.some(w=>w.planned/w.capacity>0.8));assert.ok(member.weeks.some(w=>w.planned/w.capacity<0.8));
@@ -30,8 +30,8 @@ test('Le 80/20 est obtenu approximativement sur le projet pour chacun, avec des 
 });
 test('Les totaux hebdomadaires et le bilan global réconcilient travail prévu et marge',()=>{
  let planned=0,margin=0;
- plan.weeks.forEach((_,index)=>{const total=weekTotals(plan,index);assert.equal(total.capacity,1440);assert.equal(total.planned+total.margin,total.capacity);planned+=total.planned;margin+=total.margin;});
- assert.equal(planned,plan.planned);assert.equal(margin,plan.margin);assert.equal(plan.capacity,18720);
+ plan.weeks.forEach((_,index)=>{const total=weekTotals(plan,index);assert.equal(total.capacity,1380);assert.equal(total.planned+total.margin,total.capacity);planned+=total.planned;margin+=total.margin;});
+ assert.equal(planned,plan.planned);assert.equal(margin,plan.margin);assert.equal(plan.capacity,17940);
  assert.throws(()=>weekTotals(plan,13));
 });
 test('Les estimations incomplètes ou les plafonds incohérents sont refusés',()=>{
@@ -43,5 +43,16 @@ test('Les heures sont lisibles et l’organisation ne demande plus de disponibil
  const html=await fs.readFile(new URL('../public/index.html',import.meta.url),'utf8');
  const section=html.slice(html.indexOf('<section id="organization"'),html.indexOf('<section id="dependencies"'));
  assert.doesNotMatch(section,/<input|<form|orgCapacityForm|Enregistrer les disponibilités/);
- assert.match(section,/4 h maximum par semaine/);assert.match(section,/reconstituée/);
+ assert.match(section,/3 h maximum pour Nazim/);assert.match(section,/reconstituée/);
+});
+
+test('La réduction de Nazim diminue chaque semaine sans reporter les heures sur les autres',()=>{
+ const original=structuredClone(config);delete original.profiles.Nazim.weeklyLimitMinutes;
+ const before=buildOrganizationPlan(original);
+ for(const member of plan.members){
+  const old=before.members.find(person=>person.name===member.name);
+  if(member.name==='Nazim'){assert.equal(member.weeklyLimitMinutes,180);assert.equal(old.planned-member.planned,615);member.weeks.forEach((week,i)=>assert.ok(week.planned<old.weeks[i].planned));}
+  else assert.deepEqual(member,old);
+ }
+ for(const capacity of [0,245,300]){const invalid=structuredClone(config);invalid.profiles.Nazim.weeklyLimitMinutes=capacity;assert.throws(()=>buildOrganizationPlan(invalid));}
 });

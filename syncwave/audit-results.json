@@ -15,8 +15,47 @@
   },
   "organization": {
     "weeks": 13,
-    "plannedMinutesPerPerson": 2490,
-    "marginMinutesPerPerson": 630
+    "weeklyTeamCapacityMinutes": 1380,
+    "plannedMinutes": 14325,
+    "marginMinutes": 3615,
+    "members": [
+      {
+        "name": "Thomas",
+        "weeklyMaximumMinutes": 240,
+        "plannedMinutes": 2490,
+        "marginMinutes": 630
+      },
+      {
+        "name": "Maia",
+        "weeklyMaximumMinutes": 240,
+        "plannedMinutes": 2490,
+        "marginMinutes": 630
+      },
+      {
+        "name": "Nazim",
+        "weeklyMaximumMinutes": 180,
+        "plannedMinutes": 1875,
+        "marginMinutes": 465
+      },
+      {
+        "name": "Basile",
+        "weeklyMaximumMinutes": 240,
+        "plannedMinutes": 2490,
+        "marginMinutes": 630
+      },
+      {
+        "name": "Tiéoulé",
+        "weeklyMaximumMinutes": 240,
+        "plannedMinutes": 2490,
+        "marginMinutes": 630
+      },
+      {
+        "name": "Gabriel",
+        "weeklyMaximumMinutes": 240,
+        "plannedMinutes": 2490,
+        "marginMinutes": 630
+      }
+    ]
   },
   "checks": [
     "Repères uniques",
