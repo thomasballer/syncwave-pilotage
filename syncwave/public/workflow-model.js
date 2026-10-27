@@ -1,11 +1,11 @@
-import {isDone} from './model.js?v=20261027.2';
+import {isDone} from './model.js?v=20261027.3';
 
 export const SPRINTS=[
  {id:'S1',name:'Sprint 1',start:'2026-09-14',end:'2026-09-27',goal:'Cadrage et première plateforme sur données simulées.'},
  {id:'S2',name:'Sprint 2',start:'2026-09-28',end:'2026-10-11',goal:'Application, API et inventaire des composants.'},
  {id:'S3',name:'Sprint 3',start:'2026-10-12',end:'2026-10-25',goal:'Préparation du prototype, sécurité et données.'},
- {id:'S4',name:'Sprint 4',start:'2026-10-26',end:'2026-11-08',goal:'Terminer le même prototype pour le NFC, la localisation et sa connexion au logiciel.'},
- {id:'S5',name:'Sprint 5',start:'2026-11-09',end:'2026-11-22',goal:'Stabiliser le prototype, valider les fonctions et évaluer le premier modèle IA.'},
+ {id:'S4',name:'Sprint 4',start:'2026-10-26',end:'2026-11-08',goal:'Valider le NFC passif dans l’application et le fonctionnement du même prototype sur batterie.'},
+ {id:'S5',name:'Sprint 5',start:'2026-11-09',end:'2026-11-22',goal:'Valider SOS, GNSS, réseau, boîtier d’essai et autonomie, puis stabiliser le prototype.'},
  {id:'S6',name:'Sprint 6',start:'2026-11-23',end:'2026-12-06',goal:'Assembler et valider le lot uniquement si le premier prototype est stabilisé.'},
  {id:'S7',name:'Clôture',start:'2026-12-07',end:'2026-12-11',goal:'Recette, Go, sessions pilote, analyse et transfert final.'}
 ];

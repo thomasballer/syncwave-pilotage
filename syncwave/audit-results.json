@@ -1,10 +1,12 @@
 {
   "referenceDate": "2026-10-26",
-  "objectives": 50,
+  "reviewDate": "2026-10-27",
+  "baselineVersion": "20261027.3",
+  "objectives": 57,
   "deliverables": 5,
-  "completed": 4,
+  "completed": 5,
   "sprintPeriods": 7,
-  "dependencyLinks": 91,
+  "dependencyLinks": 109,
   "capacityRule": {
     "planned": 0.8,
     "margin": 0.2
@@ -21,7 +23,8 @@
     "Aucun lien vers l’ancien outil",
     "Site statique sans backend ni dépôt de fichiers",
     "Périodes de sprint couvrant les échéances et réalisations",
-    "Chaînes de dépendances calculables pour chaque objectif"
+    "Chaînes de dépendances calculables pour chaque objectif",
+    "Étapes matérielles reliées au planning révisé"
   ],
   "errors": []
 }

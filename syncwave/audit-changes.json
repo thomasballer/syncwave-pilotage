@@ -247,5 +247,490 @@
     "after": {
       "date": "2026-11-16"
     }
+  },
+  {
+    "id": "P11",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "completedDate": "2026-10-27",
+      "completionDateKind": "confirmation",
+      "criterion": "La LED est reliée au Raspberry Pi Pico et s’allume. Ce constat ne valide ni l’autonomie, ni le fonctionnement sur batterie, ni le bouton SOS.",
+      "date": "2026-10-27",
+      "deps": "—",
+      "focus": true,
+      "g": 0,
+      "id": "P11",
+      "note": "Acquis conservé. Le 27/10 est la date de confirmation, pas une date d’essai inventée. Maia et Nazim suivent cet acquis ; l’auteur initial du montage n’est pas précisé.",
+      "owner": "Maia avec Nazim",
+      "proof": "Confirmation de l’équipe reçue le 27/10/2026 : la LED est branchée au Raspberry et s’allume. La date exacte de l’essai n’a pas été renseignée.",
+      "status": "Terminé",
+      "title": "LED branchée au Raspberry Pi Pico et allumée"
+    }
+  },
+  {
+    "id": "P12",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "criterion": "Montage existant contrôlé sous USB : rails d’alimentation mesurés, câblage LED et composants d’adaptation vérifiés, faible luminosité stable sans redémarrage. Preuve : relevé des tensions et essai reproductible.",
+      "date": "2026-10-28",
+      "deps": "P11",
+      "focus": true,
+      "g": 0,
+      "id": "P12",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
+      "owner": "Maia avec Nazim",
+      "proof": "",
+      "start": "2026-10-27",
+      "status": "À faire",
+      "title": "Vérifier le montage USB déjà allumé"
+    }
+  },
+  {
+    "id": "P1",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Montage Pi + LED alimenté sans coupure pendant l’essai LED. Preuve : relevé de l’essai.",
+      "deps": "—",
+      "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. ",
+      "title": "Alimenter le Pi et la LED sans coupure"
+    },
+    "after": {
+      "criterion": "Références réelles, chimie, polarité, protection et compatibilité de charge vérifiées. Chemin d’alimentation du Pico et de la LED défini et mesuré, avec gestion des sources USB et batterie. Preuve : schéma validé et relevé de contrôle avant branchement.",
+      "deps": "P12",
+      "note": "Priorité maintenue au 30/10. Les guides ne fournissent pas de montage batterie prêt à brancher : qualifier la batterie, le convertisseur 5 V pour la LED et la gestion des deux sources. La LED déjà allumée ne valide pas ces points.",
+      "title": "Qualifier la batterie et son alimentation 5 V"
+    }
+  },
+  {
+    "id": "P2",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "assignees": [
+        "Maia",
+        "Basile",
+        "Nazim"
+      ],
+      "criterion": "Alimentation Pi + LED et lecteur NFC câblés et repérés. Continuité et tensions contrôlées. Les modules restent accessibles pour les essais.",
+      "date": "2026-10-30",
+      "deps": "P1",
+      "focus": null,
+      "note": "La cible du 30/10 concerne le montage d’essai pour l’alimentation et le NFC. SOS, modem et boîtier définitif ne font pas partie de cette validation.",
+      "owner": "Maia avec Basile avec Nazim",
+      "start": null,
+      "title": "Câbler le prototype d’essai pour l’alimentation et le NFC"
+    },
+    "after": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "criterion": "USB débranché : le Pico et la LED fonctionnent avec l’alimentation batterie préalablement qualifiée. Mesures de tension, consommation et durée de l’essai consignées, sans redémarrage observé. Cette première validation ne vaut pas encore essai d’autonomie du bracelet complet.",
+      "date": "2026-11-06",
+      "deps": "P1,P12",
+      "focus": true,
+      "note": "Priorité maintenue pour les deux prochaines semaines. Montage d’essai sur table ; l’autonomie avec modem, GNSS et transmissions sera validée après leur intégration.",
+      "owner": "Maia avec Nazim",
+      "start": "2026-11-02",
+      "title": "Faire fonctionner le Pico et la LED sur batterie"
+    }
+  },
+  {
+    "id": "P9",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Démontrer sur ce même bracelet : alimentation stable, lecture NFC, récupération de l’identifiant dans le logiciel et position horodatée. Consigner une preuve et les blocages éventuels. Aucun autre bracelet avant cette validation.",
+      "deps": "P1,E2,E3,L11",
+      "note": "Validation fonctionnelle ciblée sur l’alimentation, le NFC, la connexion logicielle et la position. La stabilité complète précède la duplication.",
+      "title": "Valider le premier bracelet pour le NFC et la localisation"
+    },
+    "after": {
+      "criterion": "Sur ce même prototype : Pico et LED fonctionnent sur batterie sans USB, le tag NFC passif est lu par un appareil compatible et son identifiant ou lien est exploité dans le logiciel. Une preuve par résultat et les blocages éventuels sont consignés. La localisation n’est pas un prérequis de cette validation ciblée.",
+      "deps": "P2,E2,L11",
+      "note": "Jalon du 06/11 conservé et recentré sur les deux priorités confirmées : NFC et alimentation batterie. GNSS, modem et SOS sont testés ensuite ; aucune duplication avant la stabilisation complète.",
+      "title": "Valider le premier bracelet pour le NFC et la batterie"
+    }
+  },
+  {
+    "id": "P13",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Maia",
+        "Nazim",
+        "Basile"
+      ],
+      "criterion": "Révision du modem identifiée, Pico empilé sans décalage, soudures et rails contrôlés. Antennes LTE/GNSS raccordées avant essais radio. Le programme de test communique avec le modem sous USB sans redémarrage.",
+      "date": "2026-11-10",
+      "deps": "P12,E1",
+      "g": 0,
+      "id": "P13",
+      "note": "Le tutoriel PDF corrigé retient directement l’empilement Pico/Waveshare ; les huit fils temporaires du guide Word ne deviennent pas un passage obligatoire.",
+      "owner": "Maia avec Nazim avec Basile",
+      "proof": "",
+      "start": "2026-11-09",
+      "status": "À faire",
+      "title": "Valider le Pico et le modem assemblés sous USB"
+    }
+  },
+  {
+    "id": "P3",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Composants, câbles, antennes et accès recharge positionnés sur un plan coté.",
+      "date": "2026-11-08",
+      "deps": "P2",
+      "note": "",
+      "start": null,
+      "title": "Implantation interne et encombrement mesurés"
+    },
+    "after": {
+      "criterion": "Dimensions du Pico et du modem empilés, de la batterie, des antennes et des connecteurs mesurées. Implantation cotée et gabarit d’essai préparés avec accès USB, bouton, LED visible et zone NFC séparée du métal.",
+      "date": "2026-11-16",
+      "deps": "P2,P13,E3,E9,E10",
+      "note": "La préparation mécanique déjà engagée reste visible. Les dimensions finales sont validées après les essais locaux et radio, à partir du montage réel.",
+      "start": "2026-11-13",
+      "title": "Mesurer le montage réel et préparer le gabarit"
+    }
+  },
+  {
+    "id": "P15",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Maia",
+        "Basile"
+      ],
+      "criterion": "Montage mesuré fixé sur supports isolants, connexions retenues sans traction, batterie non comprimée et séparée des soudures. Bouton, LED et USB accessibles ; zone NFC extérieure éloignée du métal. Prototype de boîtier avant version définitive.",
+      "date": "2026-11-18",
+      "deps": "P3",
+      "g": 0,
+      "id": "P15",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
+      "owner": "Maia avec Basile",
+      "proof": "",
+      "start": "2026-11-16",
+      "status": "À faire",
+      "title": "Réaliser le montage compact et son boîtier d’essai"
+    }
+  },
+  {
+    "id": "P14",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "criterion": "Même prototype compact sur batterie avec GNSS, LED et transmissions du scénario POC : au moins 2 h mesurées, sans redémarrage ni échauffement anormal. Durée, consommation, réglages et incidents consignés. Essai sur table avant port surveillé.",
+      "date": "2026-11-20",
+      "deps": "P15,E4",
+      "g": 0,
+      "id": "P14",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
+      "owner": "Maia avec Nazim",
+      "proof": "",
+      "start": "2026-11-18",
+      "status": "À faire",
+      "title": "Vérifier au moins deux heures d’autonomie réelle"
+    }
+  },
+  {
+    "id": "P16",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Basile",
+        "Thomas"
+      ],
+      "criterion": "Tag passif fixé sur une zone rigide extérieure, séparé de la batterie, des blindages et des antennes. Lectures répétées après fermeture et en conditions portées, avec deux appareils compatibles si disponibles ; limites et appareils consignés.",
+      "date": "2026-11-20",
+      "deps": "P15,E2",
+      "g": 0,
+      "id": "P16",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
+      "owner": "Basile avec Thomas",
+      "proof": "",
+      "start": "2026-11-18",
+      "status": "À faire",
+      "title": "Lire le tag NFC dans le boîtier fermé et porté"
+    }
+  },
+  {
+    "id": "P4",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Aucun faux contact ni reset pendant les essais. Mesures autonomie et température consignées, seuils de sécurité respectés.",
+      "deps": "P3,E5,E9",
+      "note": "Priorité issue de dashboard iot.pptx, 26 octobre 2026. Répartition proposée à confirmer en équipe. Valider d’abord ce même bracelet. Aucun autre bracelet à fabriquer avant validation fonctionnelle."
+    },
+    "after": {
+      "criterion": "Le même prototype compact passe les essais NFC, SOS, LED, GNSS et réseau, avec une autonomie réelle d’au moins 2 h dans le scénario POC. Aucun faux contact ni redémarrage observé ; mesures et anomalies consignées.",
+      "deps": "P9,P14,P16,E5",
+      "note": "Stabilisation du premier bracelet avant duplication. Les résultats sur batterie, dans le boîtier et sous charge radio sont requis ; la seule LED allumée ne suffit pas."
+    }
+  },
+  {
+    "id": "P5",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "note": "La duplication suit la stabilisation complète du 22/11. Nouvelle cible proposée au 25/11, avant l’adaptation des boîtiers."
+    },
+    "after": {
+      "note": "Duplication seulement après stabilisation du même prototype le 22/11. Cible proposée au 25/11 ; reconfirmer les composants et le schéma réellement validés."
+    }
+  },
+  {
+    "id": "P6",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Mesures prises sur les assemblages réels puis CAO et impression. Les 4 boîtiers acceptent les montages et la recharge reste accessible.",
+      "note": "Cible intermédiaire proposée : 27/11 selon la semaine S11. Aucun boîtier définitif avant mesure du montage."
+    },
+    "after": {
+      "criterion": "Mesures prises sur les quatre assemblages réels puis CAO et impression. Les boîtiers acceptent les montages, la recharge reste accessible et le tag NFC passif dispose d’une zone extérieure adaptée.",
+      "note": "Cible du 27/11 maintenue. Les dimensions viennent du montage réel ; aucune version définitive avant le boîtier d’essai et la stabilisation."
+    }
+  },
+  {
+    "id": "P7",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "4 checklists signées après mise en boîtier : charge, NFC, SOS, LED, localisation et stabilité."
+    },
+    "after": {
+      "criterion": "Quatre checklists après mise en boîtier : alimentation et charge, tag NFC lu extérieurement, bouton SOS, LED, localisation, transmissions et stabilité. Le tag passif n’est pas relié électriquement au Pico."
+    }
+  },
+  {
+    "id": "L9",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Le logiciel récupère l’identifiant NFC lu sur le Pi. Preuve : test de connexion bracelet–logiciel et identifiant affiché côté application.",
+      "note": "Dashboard du 26 octobre : Thomas porte le test de connexion le 30/10. Thomas et Tiéoulé poursuivent l’intégration du 2 au 6/11 dès disponibilité du NFC."
+    },
+    "after": {
+      "criterion": "Le logiciel exploite l’identifiant ou le lien lu depuis le tag NFC passif par un téléphone ou un lecteur externe compatible. Preuve : lecture et affichage de la bonne fiche bracelet dans l’application.",
+      "note": "Démonstration du 30/10 conservée avec Thomas et Tiéoulé. La lecture NFC ne passe pas par un lecteur câblé au Pico."
+    }
+  },
+  {
+    "id": "L11",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Reprendre le test NFC du 30 octobre, corriger les blocages et confirmer la récupération des informations du bracelet dans le logiciel. Si le module manque, consigner le blocage et une action datée.",
+      "note": "Suite du dashboard du 2 au 6 novembre : Thomas et Tiéoulé intègrent le NFC dès sa disponibilité."
+    },
+    "after": {
+      "criterion": "Reprendre la démonstration du 30/10 sur le même tag passif, corriger les blocages et confirmer l’association à la bonne fiche bracelet. Une preuve de lecture et d’exploitation dans l’application est consignée.",
+      "note": "Intégration NFC maintenue du 2 au 6 novembre. L’état d’alimentation du Pico ne doit pas être présenté comme un prérequis de lecture du tag passif."
+    }
+  },
+  {
+    "id": "E1",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Installation reproductible sur le Raspberry Pi. Le programme démarre et se relance avec une procédure documentée.",
+      "deps": "—",
+      "focus": null,
+      "note": "Cible proposée au 28/10 pour remplacer l’échéance échue. Logiciel exécutable sur le Raspberry Pi utilisé dans le dashboard.",
+      "title": "Installer et relancer le logiciel du Raspberry Pi"
+    },
+    "after": {
+      "criterion": "Le programme de test du Pico est sauvegardé avec sa version et sa procédure d’installation. Un autre membre peut le charger et le relancer. L’allumage de la LED est déjà acquis ; seule la reproductibilité reste à vérifier.",
+      "deps": "P11",
+      "focus": true,
+      "note": "Raspberry Pi Pico confirmé par l’équipe le 27/10. Procédure de microcontrôleur adaptée au Pico, sans supposer un système Raspberry Pi OS.",
+      "title": "Installer et relancer le programme du Raspberry Pi Pico"
+    }
+  },
+  {
+    "id": "E2",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Présenter un tag et afficher son identifiant sur le Pi. Preuve : démonstration du montage.",
+      "deps": "P2,E1",
+      "note": "La lecture NFC requiert le câblage d’essai et le logiciel du Pi. Démonstration le 30/10 maintenue.",
+      "title": "Lire un identifiant NFC sur le Raspberry Pi"
+    },
+    "after": {
+      "criterion": "Le tag passif est lu de manière répétée par un téléphone ou un lecteur externe compatible. Le même identifiant ou lien de test est récupéré et consigné. Le tag n’est pas câblé au Pico et fonctionne indépendamment de sa batterie.",
+      "deps": "—",
+      "note": "Pico et tag NFC passif confirmés par l’équipe le 27/10. Première démonstration du 30/10 maintenue. La fixation définitive et la lecture après fermeture du boîtier seront vérifiées plus tard.",
+      "title": "Lire un identifiant NFC sur le tag passif du bracelet"
+    }
+  },
+  {
+    "id": "E9",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "20 appuis donnent 20 SOS uniques. 20 commandes LED et 10 redémarrages sans blocage.",
+      "date": "2026-11-13",
+      "deps": "P1,E1",
+      "note": "Critères conservés de la la version précédente. Date du 13/11 proposée après la quinzaine prioritaire, à confirmer.",
+      "start": null,
+      "title": "Valider les fonctions SOS et LED du premier bracelet"
+    },
+    "after": {
+      "criterion": "20 appuis donnent 20 événements locaux uniques avec anti-rebond. La LED change d’état à l’appui et au relâchement ; 10 redémarrages sans blocage. Ce test local n’envoie pas encore un SOS reçu dans le cloud.",
+      "date": "2026-11-11",
+      "deps": "P12,E1",
+      "note": "Après la quinzaine prioritaire. Le branchement et l’allumage simple de la LED sont déjà acquis ; on valide ici le bouton et le comportement programmé.",
+      "start": "2026-11-09",
+      "title": "Valider le bouton SOS et les états LED en local"
+    }
+  },
+  {
+    "id": "E10",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Trois sessions réseau successives sans reset pendant l’émission.",
+      "date": "2026-11-08",
+      "deps": "P1",
+      "note": "Objectif réseau conservé séparément de la première position. Date de référence v20 du 08/11 à confirmer selon disponibilité.",
+      "start": null
+    },
+    "after": {
+      "criterion": "Avec antenne LTE et SIM compatible, établir trois sessions réseau successives sous USB sans redémarrage pendant l’émission. Journaux et alimentation sous charge contrôlés.",
+      "date": "2026-11-13",
+      "deps": "P13,E1",
+      "note": "Test radio après validation du Pico et du modem assemblés. Il ne fait plus partie de la quinzaine NFC/batterie ; il précède le test cloud et l’autonomie complète.",
+      "start": "2026-11-11"
+    }
+  },
+  {
+    "id": "E11",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": null,
+    "after": {
+      "assignees": [
+        "Maia",
+        "Nazim"
+      ],
+      "criterion": "Sur les références réelles, méthode de mesure et raccordement validés avant essai. Le Pico produit une valeur avec unité, comparée à une mesure de référence. Pas de pourcentage de charge sans étalonnage.",
+      "date": "2026-11-13",
+      "deps": "P2,E1",
+      "g": 3,
+      "id": "E11",
+      "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
+      "owner": "Maia avec Nazim",
+      "proof": "",
+      "start": "2026-11-09",
+      "status": "À faire",
+      "title": "Obtenir une mesure batterie vérifiée sur le Pico"
+    }
+  },
+  {
+    "id": "E3",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "Afficher une première position avec sa date et son heure. Prérequis : module de localisation disponible.",
+      "date": "2026-11-06",
+      "deps": "P1,E1",
+      "focus": true,
+      "note": "Le logiciel du Pi est requis pour afficher une position. L’échéance reste conditionnée à la disponibilité du module.",
+      "start": "2026-10-26"
+    },
+    "after": {
+      "criterion": "Avec le programme de test et l’antenne GNSS du modem, obtenir à ciel ouvert une position valide et horodatée. Journal de test conservé. L’acquisition GNSS est distinguée de la connexion cellulaire.",
+      "date": "2026-11-13",
+      "deps": "P13,E1",
+      "focus": false,
+      "note": "Déplacé après la quinzaine NFC/batterie. Le GNSS est testé sur le montage USB vérifié ; aucune position n’est déclarée acquise sur la seule base du câblage.",
+      "start": "2026-11-11"
+    }
+  },
+  {
+    "id": "E4",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "50 messages réels envoyés avec ≥95 % de réception. Horodatage et identifiant du bracelet vérifiés dans le cloud.",
+      "deps": "E3,E9,E10,L3",
+      "note": "La chaîne SOS jusqu’au cloud doit suivre la validation locale du SOS le 13/11. Cible proposée le 16/11 au lieu du 08/11."
+    },
+    "after": {
+      "criterion": "50 messages réels de position, événements SOS et mesure batterie sont envoyés avec au moins 95 % de réception. Identifiant et horodatage vérifiés côté cloud. La mesure batterie vient d’une méthode validée ; aucun pourcentage de charge non étalonné n’est inventé.",
+      "deps": "E3,E9,E10,E11,L3",
+      "note": "Réception de bout en bout proposée au 16/11 après les essais locaux, GNSS, réseau et mesure batterie du 13/11."
+    }
+  },
+  {
+    "id": "E5",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "date": "2026-11-22",
+      "note": "",
+      "start": null
+    },
+    "after": {
+      "date": "2026-11-19",
+      "note": "La réception cloud précède le test de coupure et de reprise. Les journaux permettent de vérifier les renvois avant la stabilisation du prototype.",
+      "start": "2026-11-17"
+    }
+  },
+  {
+    "id": "E6",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "date": "2026-11-22",
+      "deps": "E5",
+      "note": "",
+      "start": null
+    },
+    "after": {
+      "date": "2026-11-23",
+      "deps": "E5,P4",
+      "note": "Préparation possible en parallèle ; validation de la mise à jour et du retour arrière après stabilisation, avant installation de la même version sur les quatre bracelets.",
+      "start": "2026-11-20"
+    }
+  },
+  {
+    "id": "E7",
+    "revision": "20261027.3",
+    "reason": "Révision matérielle : guides fournis, Pico et tag NFC passif confirmés, priorités NFC/batterie maintenues.",
+    "before": {
+      "criterion": "4 bracelets démarrent, portent une identité propre et sont reconnus par la plateforme. NFC, SOS, LED et localisation testés sur chacun."
+    },
+    "after": {
+      "criterion": "Quatre bracelets démarrent avec la même version embarquée, portent une identité propre et sont reconnus par la plateforme. SOS, LED et localisation testés ; chaque tag NFC passif est lu par un appareil externe et associé au bon bracelet."
+    }
   }
 ]

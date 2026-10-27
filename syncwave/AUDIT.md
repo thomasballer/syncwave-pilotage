@@ -1,44 +1,54 @@
-# Revue de cohérence — référence du 26 octobre 2026
+# Revue de cohérence du planning Syncwave
 
-## Version actuelle du site
+Référence historique : 26 octobre 2026. Révision matérielle : 27 octobre 2026, version 20261027.3.
 
-Le site est entièrement statique. Le backend, les routes API, le dépôt de livrables et les composants de téléchargement de fichiers ont été retirés. Les anciens fichiers de stockage ont été conservés à part du projet livré, sans être inclus dans l’archive des sources.
+## Décisions confirmées par l’équipe
 
-Les dates, statuts et affectations restent modifiables. Les modifications sont sauvegardées dans le navigateur uniquement, et l’interface le précise. L’export JSON conserve une copie du suivi. Aucun enregistrement partagé entre personnes n’est annoncé.
+Le matériel est un Raspberry Pi Pico et un tag NFC passif. Le tag se lit avec un téléphone ou un lecteur externe compatible, sans connexion électrique au Pico. La LED est déjà branchée au Pico et s’allume. Cet acquis est confirmé le 27 octobre ; la date exacte du premier essai reste inconnue. L’interface affiche donc « Confirmé le » et ne le transforme pas en validation de la batterie, du SOS ou de l’autonomie.
 
-## Corrections du planning conservées
+Les deux priorités du 26 octobre au 6 novembre sont conservées : NFC et alimentation batterie. La localisation ne conditionne plus le jalon ciblé du 6 novembre.
 
-- Cinq livrables utilisés dans les cartes, les filtres, l’équipe, le calendrier et le Gantt.
-- Compteurs et jalons calculés depuis le même planning.
-- Historique de réalisation conservé sans connexion à l’ancien outil de suivi.
-- Anciennes échéances ouvertes remplacées par des cibles proposées : environnements le 28/10, secrets le 30/10, pipeline le 04/11, schéma de données le 28/10, baseline par règles le 30/10, logiciel du Pi le 28/10.
-- Montage d’essai du 30/10 limité à l’alimentation et au NFC. Validation ciblée du même prototype le 06/11.
-- Remontée du SOS au cloud proposée au 16/11, après sa validation locale du 13/11.
-- Baseline par règles du 06/11 distincte du premier modèle entraîné proposé au 16/11, puis évalué le 18/11.
-- Duplication proposée au 25/11 après stabilisation du 22/11. Boîtiers adaptés aux montages réels le 27/11.
-- Recette et Go le 07/12, sessions pilote les 08–09/12, analyse le 10/12 et transfert le 11/12.
-- Objectifs terminés accompagnés d’une preuve et d’une date, avec prérequis terminés.
-- Compteurs de la vue équipe cohérents avec la personne sélectionnée.
-- Gantt avec synthèse des cinq livrables, dates lisibles, détail au clic, mode agrandi et comparaison prévu/réalisé facultative.
+## Ordre physique et embarqué retenu
 
-## Organisation et dépendances
+- Acquis : LED branchée et allumée, confirmé le 27/10.
+- 28/10 : vérifier le montage USB existant et rendre le programme du Pico reproductible.
+- 30/10 : qualifier la batterie et le chemin d’alimentation de la LED ; démontrer la lecture du tag NFC et son exploitation dans le logiciel.
+- 06/11 : faire fonctionner le Pico et la LED sur batterie sans USB, consolider le NFC dans l’application et valider ce même prototype sur ce périmètre.
+- 10–13/11 : valider l’assemblage Pico/modem sous USB, le bouton et les états LED en local, puis GNSS, LTE-M et mesure batterie.
+- 16–19/11 : vérifier la réception des messages dans le cloud puis la reprise après coupure. Les dimensions réelles et le boîtier d’essai peuvent avancer en parallèle après les tests locaux et radio.
+- 18–20/11 : montage compact et boîtier d’essai, autonomie réelle d’au moins deux heures dans le scénario POC et lecture du tag après fermeture et en conditions portées.
+- 22–23/11 : stabiliser ce premier prototype, puis valider mise à jour et retour arrière avant la diffusion sur le lot.
+- 25/11–06/12 : assembler quatre électroniques, adapter les boîtiers aux montages réels et valider les quatre bracelets.
+- 07–11/12 : recette et Go, sessions pilote les 8–9, analyse le 10 et transfert final le 11.
 
-La règle retenue est 80 % de capacité planifiable et 20 % de marge. La disponibilité est renseignée séparément pour chaque personne et chaque sprint. Une valeur absente reste inconnue ; les totaux sont marqués partiels tant que les six disponibilités ne sont pas connues. Zéro heure reste une valeur valide. Aucune estimation en heures par objectif ni répartition égale n’est déduite du nombre d’objectifs.
+Les dates futures sont des cibles proposées. Les prérequis des fiches définissent l’ordre exact de validation ; une préparation peut avancer en parallèle.
 
-Les sprints couvrent deux semaines calendaires pour conserver les échéances existantes du dimanche. Le 7–11 décembre est une clôture de cinq jours. Les périodes antérieures au 26 octobre sont seulement des regroupements historiques, et ne sont pas présentées comme des sprints attestés. Le cadre organisationnel reste à confirmer avec l’équipe.
+## Références et différences entre guides
 
-La vue Dépendances utilise le graphe réel des 50 objectifs, sans agréger les cinq livrables en un faux graphe linéaire. Elle montre les prérequis directs, les successeurs et les ancêtres uniques dans un ordre de validation valide. Les statuts sont ceux du planning : un prérequis non terminé ne modifie pas le statut en « Bloqué ». Les préparations peuvent avancer en parallèle. Aucun système de personne de secours n’est ajouté.
+`Guide_construction_bracelet_festival_v3.docx` décrit les contrôles USB, une liaison temporaire Pico/modem par huit fils, le montage compact, la qualification batterie, le boîtier et le tag passif.
 
-## Contrôles
+`IoT_Physical_Tutorial_V4.pdf` est intitulé « Tutorial V3 » dans son contenu. Sa version corrigée retient directement l’empilement Pico/Waveshare ; les huit fils temporaires ne deviennent donc pas un objectif obligatoire. Ses pages 10–14 distinguent tests locaux USB, qualification batterie et intégration portable. La qualification du 30/10 ne déclare pas connus la référence de batterie, les courants, le convertisseur ou la gestion des deux sources.
 
-Repères uniques, affectations valides, critères présents, dates valides, ordre des prérequis, absence de cycles, cohérence des clôtures et ressources d’interface présentes. Vérification de l’absence de backend applicatif, d’appels API et d’interface de dépôt. Tests du budget 80/20, des capacités inconnues ou nulles, de la couverture continue des périodes et des chaînes de dépendances pour chaque objectif, sans doublons ni inversion de prérequis.
+La batterie reste une priorité de la quinzaine selon la décision de l’équipe. Le premier essai sans USB vise le Pico et la LED. Après ajout du modem et des fonctions complètes, un nouvel essai d’autonomie est requis. Une alimentation USB correcte ou une LED allumée ne démontre pas que la LED dispose encore de son alimentation adaptée sans USB.
 
-## Points de projet à confirmer
+La fiche NXP NTAG213/215/216 confirme le fonctionnement du tag par couplage sans contact. Aucun paiement sécurisé ni portée de lecture garantie ne sont déduits du tag seul.
 
-Les nouvelles cibles sont des propositions. L’équipe doit confirmer la disponibilité des modules NFC/localisation, sa capacité à stabiliser le prototype et l’opportunité du lot de quatre. Le planning ne contient pas d’estimation de charge ni de performance IA minimale inventée. La marge du 7 au 11 décembre reste courte.
+## Cohérence des vues et des sauvegardes
 
-Les clôtures historiques restent des déclarations antérieures. Un contrôle structurel sans erreur ne démontre pas la disponibilité du matériel ni l’achèvement d’un nouvel essai.
+Les cinq livrables, les compteurs, les fiches, le Gantt, les dépendances, le calendrier, l’équipe, les sprints et le parcours matériel utilisent les mêmes 57 objectifs. Les clôtures historiques restent accompagnées de preuves et dates ; la nouvelle confirmation de LED est explicitement distinguée.
 
-## Correction du chargement et des liens directs
+La migration compare les saisies anciennes à leur référence avant d’appliquer uniquement les vrais changements locaux à la nouvelle référence. Les objectifs ajoutés restent présents. Une saisie incompatible est conservée et téléchargeable ; elle ne remplace pas silencieusement le nouveau planning. L’ancienne référence est un fichier de migration et n’est pas le planning affiché.
 
-La navigation prend en charge les changements de fragment (`#organization`, `#dependencies`) après le chargement initial. Une demande de changement de vue avant la disponibilité des données ne masque plus la vue initiale. Les deux nouveaux contenus sont préparés dès que les données sont prêtes. Les scripts, feuilles de style et modules utilisent un numéro de version pour éviter le mélange de fichiers de versions différentes dans le cache. Trois tests supplémentaires vérifient ces cas et le rendu effectif des cartes avec le planning de référence.
+Le site reste statique, avec sauvegarde dans le navigateur et export JSON. Aucun backend applicatif, dépôt de fichiers, lien ou connexion à l’ancien outil de suivi. Les fichiers d’interface sont versionnés pour éviter le mélange de versions au chargement, et les liens directs vers les onglets sont pris en charge.
+
+## Organisation et capacité
+
+Chaque personne peut renseigner sa disponibilité par sprint. Au maximum 80 % sont planifiables et 20 % restent en marge. Aucune disponibilité égale ni estimation de travail en heures n’est déduite du nombre d’objectifs. Les totaux incomplets sont marqués partiels. Aucun système de personne de secours n’est ajouté.
+
+Les sprints couvrent deux semaines calendaires, puis une clôture de cinq jours du 7 au 11 décembre. Les périodes antérieures au 26 octobre regroupent l’historique sans attester de sprints réellement exécutés.
+
+## Contrôles et limites
+
+Les tests couvrent dates, statuts, affectations, preuves, prérequis connus, absence de cycle, ordre des échéances, couverture des sprints, calcul 80/20, navigation, migration des saisies et séquence matérielle. L’audit vérifie aussi les ressources d’interface, les références du parcours matériel et l’absence de composants backend ou de dépôt.
+
+Ces contrôles ne prouvent pas un essai physique. Les références de composants, la compatibilité batterie/charge/alimentation LED, la disponibilité SIM/réseau et la faisabilité du lot doivent être confirmées par les essais de l’équipe. La semaine finale reste courte.

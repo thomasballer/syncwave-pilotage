@@ -1,0 +1,93 @@
+{
+  "revision": "20261027.3",
+  "updatedAt": "2026-10-27",
+  "architecture": "Raspberry Pi Pico et tag NFC passif confirmés par l’équipe le 27 octobre 2026.",
+  "sources": [
+    {
+      "title": "Guide_construction_bracelet_festival_v3.docx",
+      "sections": "Sections 11 à 15 : validation USB, montage compact, batterie, boîtier et tag NFC."
+    },
+    {
+      "title": "IoT_Physical_Tutorial_V4.pdf",
+      "sections": "Le contenu est titré « Tutorial V3 ». Pages 4–6 : empilement et USB ; pages 10–14 : essais locaux, batterie puis boîtier et NFC."
+    }
+  ],
+  "stages": [
+    {
+      "title": "Acquis confirmé",
+      "description": "La LED est branchée et s’allume. La date exacte du premier essai reste inconnue.",
+      "objectives": [
+        "P11"
+      ]
+    },
+    {
+      "title": "NFC et batterie en priorité",
+      "description": "Jusqu’au 6 novembre : contrôles USB, batterie qualifiée puis essai sans USB. En parallèle, lecture du tag passif et intégration à l’application.",
+      "objectives": [
+        "P12",
+        "E1",
+        "P1",
+        "P2",
+        "E2",
+        "L9",
+        "L11",
+        "P9"
+      ]
+    },
+    {
+      "title": "Fonctions locales et radio",
+      "description": "Après la quinzaine : bouton et états LED, modem sous USB, GNSS, LTE-M et mesure batterie.",
+      "objectives": [
+        "E9",
+        "P13",
+        "E3",
+        "E10",
+        "E11"
+      ]
+    },
+    {
+      "title": "Chaîne cloud et reprise réseau",
+      "description": "Vérifier la réception des messages, puis la reprise après coupure.",
+      "objectives": [
+        "E4",
+        "E5"
+      ]
+    },
+    {
+      "title": "Montage compact et boîtier d’essai",
+      "description": "Mesurer les pièces réelles puis fixer et isoler le montage.",
+      "objectives": [
+        "P3",
+        "P15"
+      ]
+    },
+    {
+      "title": "Autonomie et NFC une fois porté",
+      "description": "Essai réel d’au moins deux heures et nouvelle lecture NFC après fermeture du boîtier.",
+      "objectives": [
+        "P14",
+        "P16"
+      ]
+    },
+    {
+      "title": "Stabilisation avant duplication",
+      "description": "Valider le même prototype, puis la mise à jour et le retour arrière.",
+      "objectives": [
+        "P4",
+        "E6"
+      ]
+    },
+    {
+      "title": "Lot puis transfert",
+      "description": "Assembler les quatre unités seulement après stabilisation, adapter leurs boîtiers et les valider.",
+      "objectives": [
+        "P5",
+        "P6",
+        "E7",
+        "P7",
+        "P8",
+        "E8"
+      ]
+    }
+  ]
+}

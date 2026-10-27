@@ -19,12 +19,16 @@ Ouvrir `http://127.0.0.1:8770`. Cette commande sert uniquement les fichiers stat
 - Calendrier mensuel ou sur deux semaines et vue « Qui fait quoi ».
 - Organisation par sprints : disponibilités propres à chaque personne et à chaque sprint, 80 % planifiables et 20 % de marge. Aucune capacité égale ou estimation de charge par objectif n’est inventée.
 - Dépendances hors du Gantt : prérequis directs, résultat visé, résultats suivants et chaîne complète en amont. Les cartes ouvrent les mêmes fiches éditables.
+- Parcours de construction physique et embarquée réordonné à partir des deux guides : NFC et batterie jusqu’au 6 novembre, puis fonctions locales/radio, cloud, boîtier d’essai, autonomie et stabilisation avant duplication.
+- LED branchée et allumée enregistrée comme acquis confirmé le 27 octobre ; la date exacte du premier essai n’est pas inventée.
 - Historique de réalisation repris le 26 octobre 2026, sans lien ni connexion à l’ancien outil de suivi.
 - Modifications enregistrées uniquement dans le navigateur avec `localStorage`. Elles ne sont pas synchronisées entre personnes, appareils ou navigateurs.
 - Export du suivi au format JSON, avec objectifs, cadence et disponibilités renseignées, pour conserver ou transmettre une copie.
 - Contrôles de dates, de prérequis et de clôture appliqués dans le navigateur.
 
 Les périodes de sprint sont un cadre proposé : deux semaines calendaires, puis une clôture du 7 au 11 décembre. Les périodes passées regroupent seulement les réalisations historiques. Les objectifs sont affichés dans leur période d’échéance, ou de réalisation pour les objectifs terminés. Les heures planifiables sont un plafond de capacité ; sans estimation du travail, elles ne constituent pas une mesure de charge consommée. Il n’y a pas d’attribution de personne de secours.
+
+Le chargement reprend les modifications réellement faites sur l’ancienne version sans rétablir ses dates ou ses dépendances remplacées. Une copie locale de la saisie antérieure est conservée lors de cette migration. Si une saisie contredit les nouveaux prérequis, le nouveau planning est affiché et un bouton permet de télécharger l’ancienne saisie. `public/baseline-20261026.json` est uniquement la référence de migration ; le planning courant est `public/objectifs.json`.
 
 Effacer les données du navigateur efface ses modifications locales. Le planning de référence reste dans `public/objectifs.json`.
 

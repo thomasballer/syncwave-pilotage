@@ -31,11 +31,11 @@ test('Les réalisations sont regroupées par date réelle et les objectifs ouver
  assert.equal(inSprint({...goal,status:'En cours'},SPRINTS[3]),true);
 });
 test('Les liens directs et les prérequis terminés correspondent au planning',()=>{
- assert.deepEqual(directPrerequisites(seed,'P9').map(d=>d.id),['P1','E2','E3','L11']);
+ assert.deepEqual(directPrerequisites(seed,'P9').map(d=>d.id),['P2','E2','L11']);
  assert.ok(directSuccessors(seed,'E2').some(d=>d.id==='L9'));
  assert.deepEqual(prerequisiteState(seed,'L2'),{total:1,done:1,remaining:0,ready:true});
  assert.equal(prerequisiteState(seed,'P9').ready,false);
- assert.equal(prerequisiteState(seed,'P1').ready,true);
+ assert.equal(prerequisiteState(seed,'P11').ready,true);
  assert.throws(()=>directPrerequisites(seed,'inconnu'));
 });
 test('Toutes les chaînes utilisent les vrais liens, sans doublon et dans un ordre valide',()=>{
