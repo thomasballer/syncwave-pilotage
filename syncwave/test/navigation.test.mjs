@@ -3,19 +3,20 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import * as workflowModel from '../public/workflow-model.js';
+import * as organizationModel from '../public/organization-model.js';
 
 const read=name=>fs.readFile(new URL('../public/'+name,import.meta.url),'utf8');
-const [app,workflow,html,seed]=await Promise.all([read('app.js'),read('workflow.js'),read('index.html'),read('objectifs.json')]);
+const [app,workflow,html,seed,organizationConfig]=await Promise.all([read('app.js'),read('workflow.js'),read('index.html'),read('objectifs.json'),read('organization-plan.json')]);
 function page(){
  const elements=new Map(),events=new Map(),location={hash:'#overview'};
- function element(selector){if(!elements.has(selector))elements.set(selector,{hidden:false,value:'',textContent:'',innerHTML:'',style:{},classList:{toggle(){},remove(){}},addEventListener(){},insertAdjacentHTML(_,text){this.innerHTML+=text;}});return elements.get(selector);}
+ function element(selector){if(!elements.has(selector))elements.set(selector,{hidden:false,value:'',textContent:'',innerHTML:'',style:{},classList:{toggle(){},remove(){}},addEventListener(){},setAttribute(name,value){this[name]=value;},insertAdjacentHTML(_,text){this.innerHTML+=text;}});return elements.get(selector);}
  for(const id of [...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]))element('#'+id).hidden=html.includes('id="'+id+'" hidden');
- element('#orgSprint').value='S4';element('#depGroup').value='0';element('#depTarget').value='P9';element('#depMode').value='direct';
+ element('#depGroup').value='0';element('#depTarget').value='P9';element('#depMode').value='direct';
  const document={querySelector:element,querySelectorAll:()=>[],addEventListener(){},body:element('body'),currentScript:{src:'http://localhost/app.js?v=test'}};
  const window={history:{replaceState(_,__,hash){location.hash=hash;}},scrollTo(){},addEventListener(name,callback){events.set(name,callback);}};
- const context=vm.createContext({document,window,location,URL,setTimeout,__workflowModel:workflowModel,__data:JSON.parse(seed),shortDate:d=>d});
+ const context=vm.createContext({document,window,location,URL,setTimeout,__workflowModel:workflowModel,__organizationModel:organizationModel,__organizationConfig:JSON.parse(organizationConfig),__data:JSON.parse(seed),shortDate:d=>d});
  vm.runInContext(app,context);vm.runInContext(workflow,context);
- vm.runInContext('workflowModel=__workflowModel;data=__data;',context);
+ vm.runInContext('workflowModel=__workflowModel;organizationModel=__organizationModel;organizationConfig=__organizationConfig;organizationPlan=organizationModel.buildOrganizationPlan(organizationConfig);data=__data;',context);
  return {context,element,events,location};
 }
 test('Un lien direct affiche les vraies cartes Organisation et Dépendances après le chargement',()=>{

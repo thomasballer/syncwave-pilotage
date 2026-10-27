@@ -1,17 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {SPRINTS,capacityBudget,sprintForDate,inSprint,depsOf,upstream,dependencyLayers,prerequisiteState,directPrerequisites,directSuccessors} from '../public/workflow-model.js';
+import {SPRINTS,sprintForDate,inSprint,depsOf,upstream,dependencyLayers,prerequisiteState,directPrerequisites,directSuccessors} from '../public/workflow-model.js';
 const seed=JSON.parse(await fs.readFile(new URL('../public/objectifs.json',import.meta.url),'utf8'));
 
-test('Les disponibilités différentes gardent chacune une marge de 20 %',()=>{
- assert.deepEqual(capacityBudget(10),{hours:10,planned:8,margin:2});
- assert.deepEqual(capacityBudget(25),{hours:25,planned:20,margin:5});
- assert.deepEqual(capacityBudget(0),{hours:0,planned:0,margin:0});
- for(const value of [null,undefined,'',' '])assert.equal(capacityBudget(value),null);
- for(const value of [-1,'inconnu',Infinity,NaN])assert.throws(()=>capacityBudget(value));
- assert.equal(capacityBudget(7.25).planned,5.8);
-});
 test('Les périodes couvrent le projet sans trou ni chevauchement, week-ends compris',()=>{
  assert.equal(SPRINTS[0].start,'2026-09-14');assert.equal(SPRINTS.at(-1).end,'2026-12-11');
  for(let i=0;i<SPRINTS.length;i++){

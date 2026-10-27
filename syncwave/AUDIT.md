@@ -43,12 +43,16 @@ Le site reste statique, avec sauvegarde dans le navigateur et export JSON. Aucun
 
 ## Organisation et capacité
 
-Chaque personne peut renseigner sa disponibilité par sprint. Au maximum 80 % sont planifiables et 20 % restent en marge. Aucune disponibilité égale ni estimation de travail en heures n’est déduite du nombre d’objectifs. Les totaux incomplets sont marqués partiels. Aucun système de personne de secours n’est ajouté.
+L’organisation affiche une projection de charge commune sans saisie de disponibilités. Le plafond confirmé par l’équipe est de quatre heures par personne et par semaine, marge comprise. Sur les treize semaines du 14 septembre au 11 décembre, chaque profil prévoit 41 h 30 de travail et 10 h 30 de marge sur une enveloppe maximale de 52 h. L’arrondi au quart d’heure donne 79,8 % / 20,2 %, affiché comme une cible approximative 80/20.
+
+Les profils hebdomadaires varient selon les personnes et les phases, avec des semaines entre 2 h 30 et 3 h 30 de travail prévu. Les semaines plus soutenues sont compensées par des semaines plus légères ; le plafond de quatre heures est respecté et au moins trente minutes de marge subsistent chaque semaine. Les semaines passées sont clairement présentées comme reconstituées, sans preuve de temps réellement passé. La projection n’est pas calculée à partir du nombre d’objectifs ni une mesure de la vitesse de chacun.
+
+Le calendrier permet d’examiner quatre semaines ou les treize semaines du projet, et d’ouvrir le sujet et les échéances associés à une cellule. Les bilans par personne, les totaux hebdomadaires et le bilan équipe utilisent les mêmes minutes entières. Le périmètre doit être ajusté si le travail réel dépasse cette enveloppe ; la projection seule ne démontre pas que chaque objectif est réalisable dans ces heures. Aucun système de personne de secours n’est ajouté.
 
 Les sprints couvrent deux semaines calendaires, puis une clôture de cinq jours du 7 au 11 décembre. Les périodes antérieures au 26 octobre regroupent l’historique sans attester de sprints réellement exécutés.
 
 ## Contrôles et limites
 
-Les tests couvrent dates, statuts, affectations, preuves, prérequis connus, absence de cycle, ordre des échéances, couverture des sprints, calcul 80/20, navigation, migration des saisies et séquence matérielle. L’audit vérifie aussi les ressources d’interface, les références du parcours matériel et l’absence de composants backend ou de dépôt.
+Les tests couvrent dates, statuts, affectations, preuves, prérequis connus, absence de cycle, ordre des échéances, couverture des sprints, plafond hebdomadaire étudiant, arrondis et bilan global 80/20, navigation, migration des saisies et séquence matérielle. L’audit vérifie aussi les ressources d’interface, les références du parcours matériel et l’absence de composants backend ou de dépôt.
 
 Ces contrôles ne prouvent pas un essai physique. Les références de composants, la compatibilité batterie/charge/alimentation LED, la disponibilité SIM/réseau et la faisabilité du lot doivent être confirmées par les essais de l’équipe. La semaine finale reste courte.

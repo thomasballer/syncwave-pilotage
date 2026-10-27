@@ -8,8 +8,15 @@
   "sprintPeriods": 7,
   "dependencyLinks": 109,
   "capacityRule": {
-    "planned": 0.8,
-    "margin": 0.2
+    "targetPlanned": 0.8,
+    "targetMargin": 0.2,
+    "weeklyMaximumMinutes": 240,
+    "roundingMinutes": 15
+  },
+  "organization": {
+    "weeks": 13,
+    "plannedMinutesPerPerson": 2490,
+    "marginMinutesPerPerson": 630
   },
   "checks": [
     "Repères uniques",
@@ -24,7 +31,8 @@
     "Site statique sans backend ni dépôt de fichiers",
     "Périodes de sprint couvrant les échéances et réalisations",
     "Chaînes de dépendances calculables pour chaque objectif",
-    "Étapes matérielles reliées au planning révisé"
+    "Étapes matérielles reliées au planning révisé",
+    "Plafond de quatre heures et bilan global proche de 80/20 pour chacun"
   ],
   "errors": []
 }

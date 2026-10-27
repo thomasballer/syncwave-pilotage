@@ -1,4 +1,4 @@
-import {isDone} from './model.js?v=20261027.3';
+import {isDone} from './model.js?v=20261027.4';
 
 export const SPRINTS=[
  {id:'S1',name:'Sprint 1',start:'2026-09-14',end:'2026-09-27',goal:'Cadrage et première plateforme sur données simulées.'},
@@ -10,7 +10,6 @@ export const SPRINTS=[
  {id:'S7',name:'Clôture',start:'2026-12-07',end:'2026-12-11',goal:'Recette, Go, sessions pilote, analyse et transfert final.'}
 ];
 export const depsOf=d=>[...new Set((d.deps||'—').split(',').map(x=>x.trim()).filter(x=>x&&x!=='—'))];
-export function capacityBudget(raw){if(raw===null||raw===undefined||(typeof raw==='string'&&!raw.trim()))return null;const hours=Number(raw);if(!Number.isFinite(hours)||hours<0)throw Error('La disponibilité doit être un nombre positif ou nul.');const planned=Math.round(hours*0.8*100)/100;return {hours,planned,margin:Math.round((hours-planned)*100)/100};}
 export function sprintForDate(date){return SPRINTS.find(s=>date>=s.start&&date<=s.end)||null;}
 export function inSprint(d,sprint){const date=isDone(d)?d.completedDate:d.date;return date>=sprint.start&&date<=sprint.end;}
 export function directPrerequisites(items,id){const map=new Map(items.map(d=>[d.id,d])),target=map.get(id);if(!target)throw Error('Résultat inconnu : '+id);return depsOf(target).map(dep=>{if(!map.has(dep))throw Error('Prérequis inconnu : '+dep);return map.get(dep);});}

@@ -1,0 +1,205 @@
+{
+  "version": "20261027.4",
+  "asOf": "2026-10-27",
+  "start": "2026-09-14",
+  "end": "2026-12-11",
+  "weeklyLimitMinutes": 240,
+  "targetPlannedRatio": 0.8,
+  "maxWeeklyPlannedRatio": 0.9,
+  "roundingMinutes": 15,
+  "description": "Projection indicative pour une équipe étudiante : 4 h maximum par personne et par semaine, marge comprise. Les semaines passées sont reconstituées, sans pointage du temps réel.",
+  "profiles": {
+    "Thomas": {
+      "weights": [
+        6,
+        7,
+        8,
+        7,
+        8,
+        8,
+        9,
+        9,
+        8,
+        8,
+        8,
+        9,
+        9
+      ],
+      "focus": [
+        "Cadrage du projet",
+        "Parcours et règles du projet",
+        "Coordination et préparation des tests",
+        "Suivi des parcours applicatifs",
+        "Consentement et critères de recette",
+        "Préparation de la démonstration",
+        "Coordination et lecture NFC",
+        "Intégration NFC et validation du prototype",
+        "Permissions et protocole de test",
+        "Évaluation et préparation du pilote",
+        "Suivi de la stabilisation",
+        "Préparation de la recette",
+        "Pilote, analyse et transfert"
+      ]
+    },
+    "Maia": {
+      "weights": [
+        7,
+        7,
+        8,
+        7,
+        7,
+        8,
+        9,
+        9,
+        8,
+        9,
+        9,
+        8,
+        8
+      ],
+      "focus": [
+        "Préparation matérielle",
+        "Choix des composants",
+        "Inventaire et interfaces",
+        "Préparation des essais électriques",
+        "Vérification des composants",
+        "Préparation de l’alimentation",
+        "Contrôles USB et qualification batterie",
+        "Essai du Pico et de la LED sur batterie",
+        "Modem et mesure batterie",
+        "Intégration et autonomie du prototype",
+        "Assemblage des quatre électroniques",
+        "Validation du lot",
+        "Recette et configuration finale"
+      ]
+    },
+    "Nazim": {
+      "weights": [
+        6,
+        7,
+        7,
+        8,
+        7,
+        8,
+        9,
+        9,
+        9,
+        9,
+        9,
+        8,
+        8
+      ],
+      "focus": [
+        "Prise en main du Pico",
+        "Préparation du programme de test",
+        "Interfaces du logiciel embarqué",
+        "Essais logiciels sur carte",
+        "Préparation des modules",
+        "Préparation du programme du Pico",
+        "Programme reproductible et test NFC",
+        "Essai batterie et intégration NFC",
+        "SOS, GNSS, LTE-M et mesure batterie",
+        "Réception cloud et reprise réseau",
+        "Mise à jour et diffusion de la version",
+        "Validation des quatre bracelets",
+        "Recette et livraison embarquée"
+      ]
+    },
+    "Basile": {
+      "weights": [
+        6,
+        7,
+        7,
+        7,
+        8,
+        8,
+        9,
+        8,
+        9,
+        9,
+        9,
+        9,
+        8
+      ],
+      "focus": [
+        "Préparation mécanique",
+        "Étude d’encombrement",
+        "Préparation du support d’essai",
+        "Interfaces mécaniques",
+        "Gabarit et implantation préliminaire",
+        "Préparation du montage",
+        "Lecture du tag NFC passif",
+        "Consolidation NFC sur le même prototype",
+        "Montage modem et bouton SOS",
+        "Montage compact, boîtier et NFC porté",
+        "Adaptation des boîtiers aux montages",
+        "Assemblage et contrôle du lot",
+        "Recette et dossier physique"
+      ]
+    },
+    "Tiéoulé": {
+      "weights": [
+        8,
+        9,
+        9,
+        9,
+        8,
+        7,
+        8,
+        8,
+        8,
+        8,
+        7,
+        7,
+        8
+      ],
+      "focus": [
+        "Première plateforme",
+        "Parcours sur données simulées",
+        "API et écrans principaux",
+        "Intégration des parcours",
+        "Règles d’accès et sécurité",
+        "Préparation de l’intégration NFC",
+        "Rôles d’accès et démonstration NFC",
+        "Consolidation NFC et analytics",
+        "Permissions et premier modèle IA",
+        "Évaluation et version candidate",
+        "Ajustements de la plateforme",
+        "Préparation de la recette",
+        "Pilote et transfert applicatif"
+      ]
+    },
+    "Gabriel": {
+      "weights": [
+        6,
+        7,
+        8,
+        7,
+        7,
+        8,
+        9,
+        9,
+        9,
+        9,
+        8,
+        8,
+        9
+      ],
+      "focus": [
+        "Cadrage technique",
+        "Préparation de l’infrastructure",
+        "Architecture cloud et données",
+        "Préparation des environnements",
+        "Préparation de la sécurité",
+        "Préparation du déploiement",
+        "Environnements et sécurité cloud",
+        "Pipeline et baseline IA",
+        "Préproduction et réception des mesures",
+        "Chaîne cloud et supervision",
+        "Stabilisation et préparation du lot",
+        "Préparation de l’exploitation",
+        "Pilote, runbook et transfert"
+      ]
+    }
+  }
+}
