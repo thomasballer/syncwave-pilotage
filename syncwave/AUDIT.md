@@ -21,9 +21,17 @@ Les dates, statuts et affectations restent modifiables. Les modifications sont s
 - Compteurs de la vue équipe cohérents avec la personne sélectionnée.
 - Gantt avec synthèse des cinq livrables, dates lisibles, détail au clic, mode agrandi et comparaison prévu/réalisé facultative.
 
+## Organisation et dépendances
+
+La règle retenue est 80 % de capacité planifiable et 20 % de marge. La disponibilité est renseignée séparément pour chaque personne et chaque sprint. Une valeur absente reste inconnue ; les totaux sont marqués partiels tant que les six disponibilités ne sont pas connues. Zéro heure reste une valeur valide. Aucune estimation en heures par objectif ni répartition égale n’est déduite du nombre d’objectifs.
+
+Les sprints couvrent deux semaines calendaires pour conserver les échéances existantes du dimanche. Le 7–11 décembre est une clôture de cinq jours. Les périodes antérieures au 26 octobre sont seulement des regroupements historiques, et ne sont pas présentées comme des sprints attestés. Le cadre organisationnel reste à confirmer avec l’équipe.
+
+La vue Dépendances utilise le graphe réel des 50 objectifs, sans agréger les cinq livrables en un faux graphe linéaire. Elle montre les prérequis directs, les successeurs et les ancêtres uniques dans un ordre de validation valide. Les statuts sont ceux du planning : un prérequis non terminé ne modifie pas le statut en « Bloqué ». Les préparations peuvent avancer en parallèle. Aucun système de personne de secours n’est ajouté.
+
 ## Contrôles
 
-Repères uniques, affectations valides, critères présents, dates valides, ordre des prérequis, absence de cycles, cohérence des clôtures et ressources d’interface présentes. Vérification de l’absence de backend applicatif, d’appels API et d’interface de dépôt.
+Repères uniques, affectations valides, critères présents, dates valides, ordre des prérequis, absence de cycles, cohérence des clôtures et ressources d’interface présentes. Vérification de l’absence de backend applicatif, d’appels API et d’interface de dépôt. Tests du budget 80/20, des capacités inconnues ou nulles, de la couverture continue des périodes et des chaînes de dépendances pour chaque objectif, sans doublons ni inversion de prérequis.
 
 ## Points de projet à confirmer
 

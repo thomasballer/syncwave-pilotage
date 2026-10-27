@@ -1,6 +1,6 @@
 # Syncwave — site statique de pilotage du projet IoT
 
-Cette version contient uniquement l’interface HTML, CSS, JavaScript et les données du planning. Elle ne comporte ni backend applicatif, ni API, ni dépôt de fichiers. Aucun dépôt GitHub ni déploiement n’a été effectué dans cette livraison.
+Cette version contient uniquement l’interface HTML, CSS, JavaScript et les données du planning. Elle ne comporte ni backend applicatif, ni API, ni dépôt de fichiers. Le code est versionné dans le dépôt GitHub du projet ; le déploiement est confié au collègue chargé de l’hébergement.
 
 ## Ouvrir l’aperçu local
 
@@ -17,10 +17,14 @@ Ouvrir `http://127.0.0.1:8770`. Cette commande sert uniquement les fichiers stat
 - Cinq livrables et des objectifs avec dates, personnes assignées et critères de validation.
 - Gantt synthétique par livrable, objectifs détaillés au clic et mode agrandi. Le lien `/#gantt` ouvre directement cette vue.
 - Calendrier mensuel ou sur deux semaines et vue « Qui fait quoi ».
+- Organisation par sprints : disponibilités propres à chaque personne et à chaque sprint, 80 % planifiables et 20 % de marge. Aucune capacité égale ou estimation de charge par objectif n’est inventée.
+- Dépendances hors du Gantt : prérequis directs, résultat visé, résultats suivants et chaîne complète en amont. Les cartes ouvrent les mêmes fiches éditables.
 - Historique de réalisation repris le 26 octobre 2026, sans lien ni connexion à l’ancien outil de suivi.
 - Modifications enregistrées uniquement dans le navigateur avec `localStorage`. Elles ne sont pas synchronisées entre personnes, appareils ou navigateurs.
-- Export du suivi au format JSON pour conserver ou transmettre une copie.
+- Export du suivi au format JSON, avec objectifs, cadence et disponibilités renseignées, pour conserver ou transmettre une copie.
 - Contrôles de dates, de prérequis et de clôture appliqués dans le navigateur.
+
+Les périodes de sprint sont un cadre proposé : deux semaines calendaires, puis une clôture du 7 au 11 décembre. Les périodes passées regroupent seulement les réalisations historiques. Les objectifs sont affichés dans leur période d’échéance, ou de réalisation pour les objectifs terminés. Les heures planifiables sont un plafond de capacité ; sans estimation du travail, elles ne constituent pas une mesure de charge consommée. Il n’y a pas d’attribution de personne de secours.
 
 Effacer les données du navigateur efface ses modifications locales. Le planning de référence reste dans `public/objectifs.json`.
 

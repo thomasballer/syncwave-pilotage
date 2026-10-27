@@ -3,6 +3,12 @@
   "objectives": 50,
   "deliverables": 5,
   "completed": 4,
+  "sprintPeriods": 7,
+  "dependencyLinks": 91,
+  "capacityRule": {
+    "planned": 0.8,
+    "margin": 0.2
+  },
   "checks": [
     "Repères uniques",
     "Critères et affectations présents",
@@ -13,7 +19,9 @@
     "Aucune échéance ouverte avant le 26/10",
     "Ressources HTML présentes",
     "Aucun lien vers l’ancien outil",
-    "Site statique sans backend ni dépôt de fichiers"
+    "Site statique sans backend ni dépôt de fichiers",
+    "Périodes de sprint couvrant les échéances et réalisations",
+    "Chaînes de dépendances calculables pour chaque objectif"
   ],
   "errors": []
 }
