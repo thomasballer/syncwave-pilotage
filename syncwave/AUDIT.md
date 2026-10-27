@@ -38,3 +38,7 @@ Repères uniques, affectations valides, critères présents, dates valides, ordr
 Les nouvelles cibles sont des propositions. L’équipe doit confirmer la disponibilité des modules NFC/localisation, sa capacité à stabiliser le prototype et l’opportunité du lot de quatre. Le planning ne contient pas d’estimation de charge ni de performance IA minimale inventée. La marge du 7 au 11 décembre reste courte.
 
 Les clôtures historiques restent des déclarations antérieures. Un contrôle structurel sans erreur ne démontre pas la disponibilité du matériel ni l’achèvement d’un nouvel essai.
+
+## Correction du chargement et des liens directs
+
+La navigation prend en charge les changements de fragment (`#organization`, `#dependencies`) après le chargement initial. Une demande de changement de vue avant la disponibilité des données ne masque plus la vue initiale. Les deux nouveaux contenus sont préparés dès que les données sont prêtes. Les scripts, feuilles de style et modules utilisent un numéro de version pour éviter le mélange de fichiers de versions différentes dans le cache. Trois tests supplémentaires vérifient ces cas et le rendu effectif des cartes avec le planning de référence.
