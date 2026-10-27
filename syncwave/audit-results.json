@@ -12,7 +12,8 @@
     "Preuves et dates des réalisations",
     "Aucune échéance ouverte avant le 26/10",
     "Ressources HTML présentes",
-    "Aucun lien vers l’ancien outil"
+    "Aucun lien vers l’ancien outil",
+    "Site statique sans backend ni dépôt de fichiers"
   ],
   "errors": []
 }
