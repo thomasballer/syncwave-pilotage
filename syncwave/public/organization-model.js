@@ -1,4 +1,4 @@
-import {PEOPLE,isDate} from './model.js?v=20261027.8';
+import {PEOPLE,isDate} from './model.js?v=20261028.1';
 
 const DAY=86400000;
 const dateAt=value=>new Date(value+'T00:00:00Z');

@@ -15,7 +15,7 @@ Ouvrir `http://127.0.0.1:8770`. Cette commande sert uniquement les fichiers stat
 ## Fonctionnalités
 
 - Cinq livrables et des objectifs avec dates, personnes assignées et critères de validation.
-- Gantt synthétique par livrable, objectifs détaillés au clic et mode agrandi. Le lien `/#gantt` ouvre directement cette vue.
+- Gantt détaillé par défaut : périodes connues, jalons sans durée inventée, flèches entre les validations, chaîne mise en évidence et possibilité de l’isoler. Échelles compacte, semaines et jours, mode agrandi, ligne du jour, titres fixes à gauche et en-tête des dates fixe. La vue synthétique par livrable reste disponible. Le lien `/#gantt` ouvre directement cette vue.
 - Calendrier mensuel ou sur deux semaines et vue « Qui fait quoi » ; Maia pilote l’IA, Thomas l’aide sur les données et l’évaluation, Gabriel sur les modèles et leur mise en service.
 - Organisation sans saisie de disponibilités : calendrier des heures prévues pour chaque personne, sur un plafond étudiant de 4 h par semaine, abaissé à 3 h pour Nazim et à 3 h 30 pour Gabriel, marge comprise. Des semaines différentes et un bilan global proche de 80/20 sur les treize semaines du projet.
 - Dépendances hors du Gantt : prérequis directs, résultat visé, résultats suivants et chaîne complète en amont. Les cartes ouvrent les mêmes fiches éditables.
@@ -37,6 +37,8 @@ Effacer les données du navigateur efface ses modifications locales. Le planning
 ## Mise sur GitHub et hébergement
 
 Le dossier `public/` contient tous les fichiers à servir par un hébergement statique. Il peut être utilisé par le collègue chargé de l’hébergement, sans serveur Node.js ni stockage de fichiers déposés à configurer. Les modifications locales du navigateur ne changent pas automatiquement les fichiers du dépôt GitHub.
+
+Les dépendances du Gantt reprennent les liens entre objectifs, y compris entre livrables. Les flèches entrent sur la date de validation du résultat : elles n’imposent pas un début après la fin du prérequis, car les préparations peuvent avancer en parallèle. Un bouton ou une barre sélectionne la chaîne ; le titre de l’objectif ouvre la fiche éditable. Les prérequis masqués par la période, les filtres ou les groupes repliés sont signalés. « Voir toute la chaîne » affiche l’historique et enlève les filtres restrictifs. Les flèches sont recalculées au redimensionnement et au changement d’échelle. La synthèse des cinq livrables n’affiche pas de dépendances agrégées artificielles.
 
 ## Contrôles facultatifs pour le développeur
 

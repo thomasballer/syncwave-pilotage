@@ -74,3 +74,13 @@ Maia est la responsable principale des neuf objectifs IA. Thomas l’aide sur ci
 Les neuf objectifs gardent leurs dates, statuts, critères, prérequis et preuves. Les enveloppes horaires, pondérations, marges et réductions de Nazim et Gabriel restent identiques. Les aides sont ciblées et ne désignent pas un second travail complet sur chaque objectif. Le cumul avec le matériel doit être priorisé dans l’enveloppe existante, sans hausse automatique des heures. La référence compte désormais 24 engagements ouverts pour Maia, 16 pour Thomas, 18 pour Gabriel et 12 pour Tiéoulé ; ces nombres ne mesurent pas l’effort.
 
 Une référence de migration de la révision 20261027.7 permet de conserver les saisies compatibles et de remplacer les anciennes affectations IA par celles confirmées par l’équipe. Les affectations de la version courante restent modifiables.
+
+## Gantt et dépendances — interface du 28 octobre 2026
+
+La révision d’interface 20261028.1 ouvre le Gantt sur les objectifs et leurs liens. La référence des données reste 20261027.8 : aucune date, personne, réalisation, marge ou dépendance n’a été changée pour le dessin. Les barres représentent uniquement les périodes dont un début est connu. Les autres objectifs restent des jalons d’échéance ; les points verts distinguent les acquis terminés. La LED garde sa date de confirmation.
+
+Les flèches relient les validations des objectifs à celles de leurs résultats suivants. Il ne s’agit pas de contraintes de début après la fin : des préparations existantes commencent avant la validation du prérequis. Aucun début ni durée n’est inventé. Les groupes servent à classer les lignes et ne deviennent pas des nœuds de dépendance.
+
+La sélection met la chaîne en amont en évidence. L’isolation affiche ses vrais ancêtres, y compris les acquis antérieurs. Les liens hors période, filtrés ou repliés sont signalés et peuvent être réaffichés. Le centrage sur l’objectif facilite le parcours des longues chaînes. Le zoom ajuste l’espacement des dates ; les titres restent fixes à gauche et l’en-tête reste visible pendant le défilement. Les filtres secondaires sont repliés pour libérer de la place au diagramme.
+
+Vérifications : les 57 lignes et 109 liens sont présents sur tout le projet ; les extrémités restent alignées après passage à l’échelle des jours (écart de mesure inférieur à 0,1 pixel). Les cinq réalisations, les groupes repliés, un filtre sans résultat, la synthèse et l’isolation de la chaîne batterie ont été contrôlés dans le navigateur. Les tests du graphe couvrent les ancêtres NFC/batterie, les liens masqués et le routage des flèches sur les validations.
