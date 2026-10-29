@@ -6,17 +6,17 @@ import * as workflowModel from '../public/workflow-model.js';
 import * as organizationModel from '../public/organization-model.js';
 
 const read=name=>fs.readFile(new URL('../public/'+name,import.meta.url),'utf8');
-const [app,workflow,html,seed,organizationConfig]=await Promise.all([read('app.js'),read('workflow.js'),read('index.html'),read('objectifs.json'),read('organization-plan.json')]);
+const [app,workflow,html,seed,organizationConfig,components,catalog]=await Promise.all([read('app.js'),read('workflow.js'),read('index.html'),read('objectifs.json'),read('organization-plan.json'),read('components.js'),read('components.json')]);
 function page(){
  const elements=new Map(),events=new Map(),location={hash:'#overview'};
  function element(selector){if(!elements.has(selector))elements.set(selector,{hidden:false,value:'',textContent:'',innerHTML:'',style:{},classList:{toggle(){},remove(){}},addEventListener(){},setAttribute(name,value){this[name]=value;},insertAdjacentHTML(_,text){this.innerHTML+=text;}});return elements.get(selector);}
  for(const id of [...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]))element('#'+id).hidden=html.includes('id="'+id+'" hidden');
- element('#depGroup').value='0';element('#depTarget').value='P9';element('#depMode').value='direct';
+ element('#componentCategory').value='all';element('#componentState').value='all';element('#depGroup').value='0';element('#depTarget').value='P9';element('#depMode').value='direct';
  const document={querySelector:element,querySelectorAll:()=>[],addEventListener(){},body:element('body'),currentScript:{src:'http://localhost/app.js?v=test'}};
  const window={history:{replaceState(_,__,hash){location.hash=hash;}},scrollTo(){},addEventListener(name,callback){events.set(name,callback);}};
- const context=vm.createContext({document,window,location,URL,setTimeout,__workflowModel:workflowModel,__organizationModel:organizationModel,__organizationConfig:JSON.parse(organizationConfig),__data:JSON.parse(seed),shortDate:d=>d});
- vm.runInContext(app,context);vm.runInContext(workflow,context);
- vm.runInContext('workflowModel=__workflowModel;organizationModel=__organizationModel;organizationConfig=__organizationConfig;organizationPlan=organizationModel.buildOrganizationPlan(organizationConfig);data=__data;',context);
+ const context=vm.createContext({document,window,location,URL,setTimeout,__workflowModel:workflowModel,__organizationModel:organizationModel,__organizationConfig:JSON.parse(organizationConfig),__data:JSON.parse(seed),__catalog:JSON.parse(catalog),shortDate:d=>d});
+ vm.runInContext(app,context);vm.runInContext(workflow,context);vm.runInContext(components,context);
+ vm.runInContext('workflowModel=__workflowModel;organizationModel=__organizationModel;organizationConfig=__organizationConfig;organizationPlan=organizationModel.buildOrganizationPlan(organizationConfig);data=__data;componentCatalog=__catalog;configureComponents();',context);
  return {context,element,events,location};
 }
 test('Un lien direct affiche les vraies cartes Organisation et Dépendances après le chargement',()=>{
@@ -39,4 +39,15 @@ test('Les fichiers de présentation et les scripts portent la même version de c
  const urls=[...html.matchAll(/(?:src|href)="([^"#]+\.(?:js|css)(?:\?[^"]*)?)"/g)].map(m=>new URL(m[1],'http://localhost/'));
  assert.ok(urls.length>5);assert.ok(urls.every(url=>url.searchParams.get('v')));
  assert.equal(new Set(urls.map(url=>url.searchParams.get('v'))).size,1);
+});
+
+test('Le lien direct Composants affiche le catalogue et les trois confirmations sans modifier le planning',()=>{
+ const p=page();vm.runInContext('planReady=true;',p.context);
+ p.location.hash='#components';p.events.get('hashchange')();
+ assert.equal(p.element('#components').hidden,false);assert.equal(p.element('#overview').hidden,true);
+ assert.match(p.element('#componentStats').innerHTML,/17/);assert.match(p.element('#componentCount').textContent,/17 fiches/);
+ for(const name of ['Raspberry Pi Pico','Tag NFC passif','LED adressable','Batterie du bracelet'])assert.ok(p.element('#componentGrid').innerHTML.includes(name));
+ assert.equal(vm.runInContext('JSON.stringify(data)',p.context),JSON.stringify(JSON.parse(seed)));
+ p.element('#componentState').value='pending';vm.runInContext('renderComponents();',p.context);
+ assert.match(p.element('#componentCount').textContent,/2 fiches/);assert.doesNotMatch(p.element('#componentGrid').innerHTML,/id="component-pico"/);
 });

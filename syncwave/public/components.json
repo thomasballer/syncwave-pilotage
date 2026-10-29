@@ -1,0 +1,497 @@
+{
+  "version": "20261029.1",
+  "asOf": "2026-10-29",
+  "basis": "Guides matériels fournis et confirmations matérielles reçues le 27 octobre 2026. Catalogue ajouté le 29 octobre 2026.",
+  "categories": [
+    {
+      "id": "calcul-radio",
+      "name": "Calcul et radio"
+    },
+    {
+      "id": "interaction",
+      "name": "NFC, bouton et LED"
+    },
+    {
+      "id": "electronique",
+      "name": "Électronique"
+    },
+    {
+      "id": "montage",
+      "name": "Montage et boîtier"
+    },
+    {
+      "id": "alimentation",
+      "name": "Alimentation"
+    }
+  ],
+  "items": [
+    {
+      "id": "pico",
+      "name": "Raspberry Pi Pico",
+      "reference": "Pico standard · RP2040 dans les guides",
+      "category": "calcul-radio",
+      "role": "Exécute le programme embarqué, lit le bouton et commande la LED.",
+      "note": "La famille Pico est confirmée par l’équipe. Le modèle standard est celui décrit dans les guides ; la variante exacte peut être précisée avec la liste des achats.",
+      "status": "confirmed",
+      "objectives": [
+        "E1",
+        "P11"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1–3 et 8–10",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/pico.png",
+        "alt": "Photo fabricant de la gamme Raspberry Pi Pico : carte standard au centre",
+        "kind": "photo",
+        "caption": "Gamme Pico · modèle standard au centre",
+        "credit": "Raspberry Pi",
+        "sourceUrl": "https://www.raspberrypi.com/products/raspberry-pi-pico/",
+        "assetUrl": "https://assets.raspberrypi.com/static/hero-mobile-226918a036a9f3717d04170387cd439e.png"
+      },
+      "documentation": {
+        "label": "Raspberry Pi · documentation",
+        "url": "https://www.raspberrypi.com/products/raspberry-pi-pico/"
+      }
+    },
+    {
+      "id": "modem",
+      "name": "Carte modem et localisation",
+      "reference": "Waveshare Pico-SIM7080G-Cat-M/NB-IoT",
+      "category": "calcul-radio",
+      "role": "Relie le prototype au réseau cellulaire et fournit la localisation GNSS.",
+      "note": "C’est la carte d’extension Pico citée dans les guides, distincte du HAT pour Raspberry Pi à 40 broches. Révision et référence reçues à vérifier.",
+      "status": "guide",
+      "objectives": [
+        "P13",
+        "E3",
+        "E10"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1, 6–7",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/modem.jpg",
+        "alt": "Photo fabricant de la carte Waveshare Pico-SIM7080G-Cat-M/NB-IoT",
+        "kind": "photo",
+        "caption": "Photo fabricant · carte prévue dans les guides",
+        "credit": "Waveshare",
+        "sourceUrl": "https://www.waveshare.com/Pico-SIM7080G-Cat-M-NB-IoT.htm",
+        "assetUrl": "https://www.waveshare.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/p/i/pico-sim7080g-cat-m-nb-iot-1.jpg"
+      },
+      "documentation": {
+        "label": "Waveshare · documentation",
+        "url": "https://www.waveshare.com/wiki/Pico-SIM7080G-Cat-M/NB-IoT"
+      }
+    },
+    {
+      "id": "nfc",
+      "name": "Tag NFC passif",
+      "reference": "NTAG215 proposé dans le guide",
+      "category": "interaction",
+      "role": "Associe le bracelet à sa fiche grâce à une lecture avec un téléphone ou un lecteur externe.",
+      "note": "Le tag passif est confirmé par l’équipe. La référence NTAG215 est une proposition du guide, pas une identification certaine du tag acheté. Il n’est pas câblé au Pico.",
+      "status": "confirmed",
+      "objectives": [
+        "E2",
+        "L9",
+        "P16"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 15",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/nfc.svg",
+        "alt": "Illustration de repérage : Tag NFC passif",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": {
+        "label": "NXP · fiche NTAG213/215/216",
+        "url": "https://www.nxp.com/docs/en/data-sheet/NTAG213_215_216.pdf"
+      }
+    },
+    {
+      "id": "led",
+      "name": "LED adressable",
+      "reference": "WS2812B 5 V sur petit circuit · selon les guides",
+      "category": "interaction",
+      "role": "Donne un retour lumineux sur le bracelet.",
+      "note": "La LED branchée au Pico et allumée est un acquis confirmé. Le marquage WS2812B et le format réel restent à vérifier ; la photo montre un exemple SparkFun, pas votre module exact.",
+      "status": "confirmed",
+      "objectives": [
+        "P11",
+        "E9"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 9–10",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/led.jpg",
+        "alt": "Photo d’un module SparkFun à une LED WS2812B, donné comme exemple de format",
+        "kind": "photo",
+        "caption": "Exemple WS2812B · format réel à confirmer",
+        "credit": "SparkFun Electronics",
+        "sourceUrl": "https://www.sparkfun.com/sparkfun-rgb-led-breakout-ws2812b.html",
+        "assetUrl": "https://www.sparkfun.com/media/catalog/product/cache/f3020b7489dcfc4d1d147cf4dad07b7f/1/3/13282-03.jpg"
+      },
+      "documentation": {
+        "label": "SparkFun · exemple WS2812B",
+        "url": "https://www.sparkfun.com/sparkfun-rgb-led-breakout-ws2812b.html"
+      }
+    },
+    {
+      "id": "button",
+      "name": "Bouton SOS",
+      "reference": "Bouton poussoir momentané · SW1",
+      "category": "interaction",
+      "role": "Permet de déclencher un événement SOS dans le programme.",
+      "note": "Type décrit dans les guides. Le câblage et les événements logiciels seront validés dans les essais SOS ; la référence physique du bouton reste à préciser.",
+      "status": "guide",
+      "objectives": [
+        "E9"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 8",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/button.svg",
+        "alt": "Illustration de repérage : Bouton SOS",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "antennas",
+      "name": "Antennes LTE et GNSS",
+      "reference": "Antennes adaptées à la carte modem",
+      "category": "calcul-radio",
+      "role": "Assurent les échanges radio et la réception des signaux de localisation.",
+      "note": "Deux fonctions distinctes sont prévues dans les guides : réseau LTE et réception GNSS. Les modèles et connecteurs exacts dépendent de la carte reçue.",
+      "status": "guide",
+      "objectives": [
+        "P13",
+        "E3",
+        "E10"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 7",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/antennas.svg",
+        "alt": "Illustration de repérage : Antennes LTE et GNSS",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "buffer",
+      "name": "Adaptateur de niveau logique",
+      "reference": "SN74AHCT125N · DIP-14 · U1",
+      "category": "electronique",
+      "role": "Adapte le signal de commande 3,3 V du Pico au circuit de LED prévu en 5 V.",
+      "note": "Référence à ajouter selon les guides. Un autre module doit être identifié séparément ; le nom de cette fiche ne confirme pas sa présence dans le montage déjà allumé.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "P1"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1 et 9",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/buffer.svg",
+        "alt": "Illustration de repérage : Adaptateur de niveau logique",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": {
+        "label": "Texas Instruments · fiche technique",
+        "url": "https://www.ti.com/lit/ds/symlink/sn74ahct125.pdf"
+      }
+    },
+    {
+      "id": "resistors",
+      "name": "Résistances",
+      "reference": "10 kΩ · 330 Ω · 100 kΩ",
+      "category": "electronique",
+      "role": "Stabilisent le bouton et le signal de commande de la LED.",
+      "note": "Valeurs des guides : R1 10 kΩ, R2 330 Ω et R3 100 kΩ. Elles ne constituent pas un inventaire des résistances effectivement reçues.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "E9"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1, 8–10",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/resistors.svg",
+        "alt": "Illustration de repérage : Résistances",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "capacitors",
+      "name": "Condensateurs",
+      "reference": "100 nF · 1 000 µF ≥ 6,3 V",
+      "category": "electronique",
+      "role": "Découplent l’alimentation et limitent les perturbations autour de la LED et de son adaptateur.",
+      "note": "Les guides indiquent 100 nF près de U1, 1 000 µF pour la LED et un autre 100 nF si absent du circuit de la LED. Le nombre réellement nécessaire dépend du module utilisé.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "P1"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1 et 9–10",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/capacitors.svg",
+        "alt": "Illustration de repérage : Condensateurs",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "headers",
+      "name": "Barrettes de connexion",
+      "reference": "1 × 20 broches · pas de 2,54 mm",
+      "category": "montage",
+      "role": "Permettent l’assemblage du Pico et de son extension modem.",
+      "note": "Les guides prévoient deux barrettes mâles et deux femelles compatibles. Vérifier ce qui est déjà soudé sur les cartes reçues.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "P13"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1 et 3",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/headers.svg",
+        "alt": "Illustration de repérage : Barrettes de connexion",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "breadboard",
+      "name": "Plaque d’essai",
+      "reference": "Breadboard · modèle non précisé",
+      "category": "montage",
+      "role": "Permet de vérifier le montage avant l’assemblage compact.",
+      "note": "Accessoire d’essai décrit dans les guides. La photo exacte et le format pourront être remplacés à partir de votre liste.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "E9"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1 et 5",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/breadboard.svg",
+        "alt": "Illustration de repérage : Plaque d’essai",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "wires",
+      "name": "Fils et isolation",
+      "reference": "Fils souples, raccords et gaine thermorétractable",
+      "category": "montage",
+      "role": "Relient les sous-ensembles et isolent les connexions du prototype.",
+      "note": "Les guides distinguent les essais sur table et les liaisons souples du montage compact. Longueurs, sections et références restent liées au matériel réel.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "P15"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 1, 10 et 12",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/wires.svg",
+        "alt": "Illustration de repérage : Fils et isolation",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "perfboard",
+      "name": "Support du montage compact",
+      "reference": "Plaque à pastilles et entretoises isolantes",
+      "category": "montage",
+      "role": "Maintient les composants et protège les liaisons pendant les essais du bracelet.",
+      "note": "Éléments prévus pour l’intégration portable. Leur format sera choisi après mesure du montage réel.",
+      "status": "guide",
+      "objectives": [
+        "P3",
+        "P15"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 12 et 14",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/perfboard.svg",
+        "alt": "Illustration de repérage : Support du montage compact",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "enclosure",
+      "name": "Boîtier et sangle",
+      "reference": "Boîtier d’essai puis version adaptée au montage",
+      "category": "montage",
+      "role": "Maintient et protège l’électronique sur le bracelet tout en laissant accessibles les interfaces utiles.",
+      "note": "L’image est une illustration de forme, pas la CAO finale de Syncwave. Les dimensions viennent du prototype mesuré ; la zone du tag reste accessible extérieurement.",
+      "status": "guide",
+      "objectives": [
+        "P3",
+        "P15",
+        "P6",
+        "P16"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 14–15",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/enclosure.svg",
+        "alt": "Illustration de repérage : Boîtier et sangle",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "usb",
+      "name": "Alimentation des essais USB",
+      "reference": "Source USB 5 V et câble du Pico",
+      "category": "alimentation",
+      "role": "Alimente le montage lors des premières vérifications sur table.",
+      "note": "Prévue dans les guides pour les essais USB. Le câble, la source et leur comportement sous charge doivent correspondre au prototype.",
+      "status": "guide",
+      "objectives": [
+        "P12",
+        "P13"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 7 et 11",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/usb.svg",
+        "alt": "Illustration de repérage : Alimentation des essais USB",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "battery",
+      "name": "Batterie du bracelet",
+      "reference": "Référence à renseigner",
+      "category": "alimentation",
+      "role": "Alimente le Pico et les fonctions du bracelet lorsqu’il est débranché de l’USB.",
+      "note": "Le besoin est prévu, mais la référence réelle, la capacité, le connecteur et les caractéristiques de protection et de charge ne sont pas confirmés dans la liste disponible.",
+      "status": "pending",
+      "objectives": [
+        "P1",
+        "P2",
+        "P14"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 13",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/battery.svg",
+        "alt": "Illustration de repérage : Batterie du bracelet",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    },
+    {
+      "id": "boost",
+      "name": "Alimentation 5 V de la LED",
+      "reference": "Convertisseur et gestion des sources à identifier",
+      "category": "alimentation",
+      "role": "Doit fournir l’alimentation adaptée à la LED pendant le fonctionnement sur batterie.",
+      "note": "Architecture envisagée dans le guide : élévation vers 5 V et gestion USB/batterie à préciser sur les références réelles. Aucun modèle de convertisseur n’est attribué d’office au projet.",
+      "status": "pending",
+      "objectives": [
+        "P1",
+        "P2"
+      ],
+      "source": {
+        "document": "Guide_construction_bracelet_festival_v3.docx",
+        "section": "§ 13",
+        "secondDocument": "IoT_Physical_Tutorial_V4.pdf (contenu titré Tutorial V3)"
+      },
+      "image": {
+        "path": "images/components/boost.svg",
+        "alt": "Illustration de repérage : Alimentation 5 V de la LED",
+        "kind": "illustration",
+        "caption": "Illustration de repérage · format indicatif",
+        "credit": "Syncwave · illustration originale"
+      },
+      "documentation": null
+    }
+  ]
+}

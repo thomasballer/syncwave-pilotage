@@ -16,6 +16,7 @@ Ouvrir `http://127.0.0.1:8770`. Cette commande sert uniquement les fichiers stat
 
 - Cinq livrables et des objectifs avec dates, personnes assignées et critères de validation.
 - Gantt détaillé par défaut : périodes connues, jalons sans durée inventée, flèches entre les validations, chaîne mise en évidence et possibilité de l’isoler. Échelles compacte, semaines et jours, mode agrandi, ligne du jour, titres fixes à gauche et en-tête des dates fixe. La vue synthétique par livrable reste disponible. Le lien `/#gantt` ouvre directement cette vue.
+- Onglet Composants : 17 fiches illustrées, recherche, filtres par famille et origine, rôle et référence de chaque pièce, sources et accès aux objectifs associés. Les trois confirmations de l’équipe restent distinctes des pièces prévues dans les guides et des références à préciser.
 - Calendrier mensuel ou sur deux semaines et vue « Qui fait quoi » ; Maia pilote l’IA, Thomas l’aide sur les données et l’évaluation, Gabriel sur les modèles et leur mise en service.
 - Organisation sans saisie de disponibilités : calendrier des heures prévues pour chaque personne, sur un plafond étudiant de 4 h par semaine, abaissé à 3 h pour Nazim et à 3 h 30 pour Gabriel, marge comprise. Des semaines différentes et un bilan global proche de 80/20 sur les treize semaines du projet.
 - Dépendances hors du Gantt : prérequis directs, résultat visé, résultats suivants et chaîne complète en amont. Les cartes ouvrent les mêmes fiches éditables.
@@ -33,6 +34,14 @@ Le fichier `public/organization-plan.json` contient la base de cette projection 
 Le chargement reprend les modifications réellement faites sur l’ancienne version sans rétablir ses dates ou ses dépendances remplacées. Une copie locale de la saisie antérieure est conservée lors de cette migration. Si une saisie contredit les nouveaux prérequis, le nouveau planning est affiché et un bouton permet de télécharger l’ancienne saisie. Les fichiers `public/baseline-*.json` sont uniquement des références de migration ; le planning courant est `public/objectifs.json`. La révision des affectations transfère les contrôles USB et l’essai batterie de Nazim vers Basile, en conservant Maia sur ces deux objectifs. Thomas est également associé à la validation des rôles, à l’accès au logiciel déployé et à la préparation de la recette. La révision IA place Maia sur les neuf objectifs IA, avec Thomas sur cinq objectifs de données, règles et évaluation, et Gabriel sur quatre objectifs de modèles et de mise en service. Tiéoulé n’est plus affecté aux objectifs IA. Les heures prévues restent dans leurs enveloppes existantes ; le soutien porte sur une partie des travaux et ne correspond pas à une duplication du travail. Les anciennes sauvegardes, y compris la révision 20261027.7, reprennent les nouvelles affectations tout en conservant leurs autres modifications compatibles.
 
 Effacer les données du navigateur efface ses modifications locales. Le planning de référence reste dans `public/objectifs.json`.
+
+## Catalogue des composants
+
+Le fichier `public/components.json` contient les 17 fiches et les cinq familles du catalogue. Les photos et illustrations se trouvent dans `public/images/components/`. Les visuels sont servis localement ; l’affichage ne dépend pas du chargement d’images externes. Les crédits des photos figurent sur les fiches et dans le fichier de crédits du dossier d’images.
+
+Les statuts « confirmé », « prévu dans les guides » et « référence à préciser » décrivent l’origine de l’information. Ils ne constituent pas un inventaire d’achats ni un relevé de stock. Le Pico et le tag passif sont confirmés ; l’allumage de la LED est confirmé, sans certifier le modèle de son module. NTAG215 reste une proposition du guide. La batterie et le convertisseur n’ont pas de référence réelle renseignée. Les images génériques ne remplacent pas l’identification des pièces reçues.
+
+Le lien `/#components` ouvre directement le catalogue. Les objectifs du planning, leurs dates, affectations, prérequis et réalisations sont conservés.
 
 ## Mise sur GitHub et hébergement
 

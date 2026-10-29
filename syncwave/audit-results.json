@@ -1,9 +1,15 @@
 {
   "referenceDate": "2026-10-26",
   "reviewDate": "2026-10-27",
-  "interfaceReviewDate": "2026-10-28",
-  "interfaceVersion": "20261028.1",
+  "interfaceReviewDate": "2026-10-29",
+  "interfaceVersion": "20261029.1",
   "baselineVersion": "20261027.8",
+  "components": {
+    "cards": 17,
+    "categories": 5,
+    "confirmedStatements": 3,
+    "unidentifiedReferences": 2
+  },
   "objectives": 57,
   "deliverables": 5,
   "completed": 5,
@@ -69,6 +75,7 @@
     "Preuves et dates des réalisations",
     "Aucune échéance ouverte avant le 26/10",
     "Ressources HTML présentes",
+    "Visuels locaux et objectifs associés du catalogue présents",
     "Aucun lien vers l’ancien outil",
     "Site statique sans backend ni dépôt de fichiers",
     "Périodes de sprint couvrant les échéances et réalisations",

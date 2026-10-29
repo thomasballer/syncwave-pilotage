@@ -1,4 +1,4 @@
-import {depsOf,upstream} from './workflow-model.js?v=20261028.1';
+import {depsOf,upstream} from './workflow-model.js?v=20261029.1';
 
 export function ganttChain(items,id){
  if(!items.some(d=>d.id===id))return new Set();
