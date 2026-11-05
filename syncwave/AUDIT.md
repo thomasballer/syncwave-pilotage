@@ -92,3 +92,18 @@ L’onglet Composants réunit 17 fiches issues des guides et des confirmations d
 Les trois photos proviennent de Raspberry Pi, Waveshare et SparkFun. La vue Pico montre une famille de cartes, avec le modèle standard au centre ; le visuel WS2812B représente un exemple de module et ne prétend pas montrer celui de l’équipe. Quatorze illustrations originales identifient les autres familles sans fournir de brochage. Chaque fiche conserve l’origine de son information et l’accès aux objectifs concernés.
 
 La navigation directe, la recherche avec ou sans accents et les références numériques (« 1000 » pour « 1 000 µF »), les filtres, l’état sans résultat, les images et l’ouverture d’un objectif ont été vérifiés. Les images sont enregistrées dans les sources du site et se chargent localement. Le planning de référence reste en version 20261027.8 ; aucun de ses 57 objectifs n’est modifié.
+
+
+## Lisibilité et tableau de bord — interface du 5 novembre 2026
+
+La révision 20261105.1 conserve les 57 objectifs, leurs dates, affectations, prérequis, statuts et preuves. Une comparaison avec la référence précédente confirme que seuls les intitulés et les informations de validation ont évolué. Les cinq critères des réalisations historiques sont conservés. La version de migration reste 20261027.8 ; une sauvegarde courante reprend les nouveaux textes tout en conservant ses saisies compatibles.
+
+Tous les titres suivent désormais un verbe à l’infinitif. Les fiches contiennent des conditions observables et une preuve attendue. Les contrôles du port de charge précisent le déclenchement de la charge, la comparaison des tensions et courants aux limites des références réelles, l’absence de coupure au connecteur et le relevé par unité. Aucun courant admissible ou modèle de batterie n’est inventé.
+
+Le Gantt affiche ses 109 dépendances par défaut, dont 40 entre livrables. Un mode permet de ne garder que ces 40 liens ; un sélecteur permet de consulter un lien réel entre deux objectifs. Les prérequis directs provenant d’autres livrables restent présents comme contexte d’un filtre, avec un repère explicite. Les autres prérequis masqués restent comptés, avec un bouton pour élargir la vue. Les sections ne créent aucun lien artificiel.
+
+La vue équipe s’ouvre sur tout le projet. Chaque personne distingue les objectifs terminés dans une section verte, avant les objectifs ouverts. La LED porte toujours « Confirmé le 27 octobre », sans prétendre connaître la date du premier allumage.
+
+La vue d’ensemble devient un tableau de bord calculé depuis le suivi : jalon NFC/batterie, objectifs en cours et bloqués, prochaines échéances et validations récentes. Les dates dépassées sont à actualiser avec leurs responsables ; elles ne modifient pas automatiquement le statut. Le lien de plateforme https://syncwave.mooroon5.fr a été confirmé par Thomas le 5 novembre. Les annonces sont facultatives, initialement vides, et restent dans le navigateur avec export JSON et archivage réversible.
+
+Vérification navigateur : 57 lignes et 109 flèches, filtre matériel avec prérequis externes, lien E2 → P9 isolé, et alignement des extrémités au zoom jours (erreur d’arrondi inférieure à 0,1 pixel). Les critères du port de charge et les sections vertes de l’équipe ont été contrôlés visuellement. Les tests couvrent aussi le tableau de bord, les annonces, les migrations et la conservation des affectations, des dates et de la règle 80/20.

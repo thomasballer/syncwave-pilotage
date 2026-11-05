@@ -1,8 +1,8 @@
 {
   "referenceDate": "2026-10-26",
   "reviewDate": "2026-10-27",
-  "interfaceReviewDate": "2026-10-29",
-  "interfaceVersion": "20261029.1",
+  "interfaceReviewDate": "2026-11-05",
+  "interfaceVersion": "20261105.1",
   "baselineVersion": "20261027.8",
   "components": {
     "cards": 17,
@@ -14,6 +14,9 @@
   "deliverables": 5,
   "completed": 5,
   "sprintPeriods": 7,
+  "crossDeliverableLinks": 40,
+  "objectivesWithAcceptanceChecks": 57,
+  "dashboardPlatform": "https://syncwave.mooroon5.fr",
   "dependencyLinks": 109,
   "capacityRule": {
     "targetPlanned": 0.8,
@@ -66,6 +69,8 @@
     ]
   },
   "checks": [
+    "Conditions de validation et preuves attendues sur les 57 objectifs",
+    "Adresse de plateforme et jalon du tableau de bord valides",
     "Repères uniques",
     "Critères et affectations présents",
     "Maia pilote l’IA avec Thomas et Gabriel en soutien",

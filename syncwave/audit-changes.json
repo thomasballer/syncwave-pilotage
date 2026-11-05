@@ -1022,5 +1022,1130 @@
       "owner": "Maia avec Gabriel",
       "note": "Critère de transfert précisé pour le livrable IA. Répartition IA confirmée le 27/10 : Maia pilote la documentation et le transfert du modèle ; Gabriel l’aide à vérifier l’environnement, les commandes de relance et la reproduction par un tiers."
     }
+  },
+  {
+    "id": "P10",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Disposer d’un inventaire vérifié des composants",
+      "checks": null,
+      "expectedProof": null
+    },
+    "after": {
+      "title": "Recenser les composants disponibles et manquants",
+      "checks": [
+        "Chaque composant de la commande a un statut de disponibilité identifié."
+      ],
+      "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
+    }
+  },
+  {
+    "id": "P11",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "LED branchée au Raspberry Pi Pico et allumée",
+      "checks": null,
+      "expectedProof": null
+    },
+    "after": {
+      "title": "Allumer la LED reliée au Raspberry Pi Pico",
+      "checks": [
+        "La LED est reliée au Raspberry Pi Pico et s’allume. Ce constat ne valide ni l’autonomie, ni le fonctionnement sur batterie, ni le bouton SOS."
+      ],
+      "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
+    }
+  },
+  {
+    "id": "P12",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Vérifier le montage USB déjà allumé",
+      "criterion": "Montage existant contrôlé sous USB : rails d’alimentation mesurés, câblage LED et composants d’adaptation vérifiés, faible luminosité stable sans redémarrage. Preuve : relevé des tensions et essai reproductible.",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Valider l’alimentation USB du Pico et de la LED",
+      "criterion": "Alimentation USB du Pico et de la LED contrôlée sur trois cycles de connexion. Rails conformes aux plages des références réelles, démarrage et allumage reproductibles, sans faux contact ni redémarrage spontané. Preuve : mesures et compte rendu des cycles.",
+      "checks": [
+        "Le câble et la source USB utilisés sont identifiés ; les rails mesurés respectent les plages des cartes et de la LED réelles.",
+        "Trois branchements puis débranchements USB permettent trois démarrages du Pico et un allumage reproductible de la LED, sans redémarrage spontané ni faux contact.",
+        "Le contrôle porte sur l’alimentation USB ; le test de charge batterie est consigné séparément après qualification de la batterie."
+      ],
+      "expectedProof": "Références de la source et du câble, tableau des tensions et compte rendu ou vidéo des trois cycles.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P1",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Qualifier la batterie et son alimentation 5 V",
+      "criterion": "Références réelles, chimie, polarité, protection et compatibilité de charge vérifiées. Chemin d’alimentation du Pico et de la LED défini et mesuré, avec gestion des sources USB et batterie. Preuve : schéma validé et relevé de contrôle avant branchement.",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Qualifier la batterie, son alimentation et son circuit de charge",
+      "criterion": "Batterie, protection, chargeur et alimentation 5 V identifiés et compatibles. Tensions et courant de charge mesurés dans les limites documentées ; la charge démarre au branchement du port prévu, sans interruption observée. Preuve : schéma et relevés du test.",
+      "checks": [
+        "La référence de la batterie, le chargeur, la protection, la polarité et les limites de tension et de courant sont documentés et compatibles.",
+        "Les tensions alimentant le Pico et la LED sont mesurées sous USB puis sur batterie et comparées aux plages des références réelles.",
+        "Sur ce montage qualifié, le branchement du câble au port de charge déclenche la charge prévue ; le courant et la tension mesurés respectent les limites documentées, sans interruption ni échauffement anormal observé."
+      ],
+      "expectedProof": "Schéma d’alimentation, références, limites constructeur et relevé de tension/courant du test de charge.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P2",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "La batterie et le chemin d’alimentation ont été qualifiés dans P1.",
+        "USB débranché, le Pico et la LED restent actifs sans redémarrage pendant la durée d’essai consignée.",
+        "La tension, la consommation et la durée mesurées sont conservées ; ce test ne clôt pas l’essai d’autonomie du bracelet complet."
+      ],
+      "expectedProof": "Vidéo du fonctionnement sans USB et relevé des tensions, de la consommation et de la durée.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P9",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le même prototype satisfait P2 : Pico et LED fonctionnent sur batterie sans USB.",
+        "Le tag passif est lu par un appareil externe et l’application ouvre la bonne fiche bracelet.",
+        "Une preuve relie les deux résultats au même prototype ; chaque blocage restant est nommé avec une action datée."
+      ],
+      "expectedProof": "Compte rendu identifié au prototype, vidéo NFC et preuve du fonctionnement sur batterie.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P13",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "La révision réelle du modem, l’empilement Pico et les antennes LTE/GNSS sont identifiés et contrôlés.",
+        "Les rails d’alimentation et l’absence de décalage des connecteurs sont vérifiés sous USB.",
+        "Le programme échange des commandes et réponses identifiables avec le modem sans redémarrage observé."
+      ],
+      "expectedProof": "Photos de l’assemblage, relevés des rails et journal de communication Pico/modem.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P3",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les cartes empilées, batterie, antennes et connecteurs réellement utilisés sont mesurés.",
+        "Le gabarit coté réserve les accès USB, bouton, visibilité LED et une zone NFC séparée du métal.",
+        "Le gabarit est comparé au montage réel et les écarts sont corrigés ou documentés."
+      ],
+      "expectedProof": "Plan coté, photos du montage mesuré et version du gabarit.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P15",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les composants du montage mesuré sont fixés sur des supports isolants, sans traction sur les connexions.",
+        "La batterie est séparée des soudures et n’est pas comprimée lors de la fermeture.",
+        "Le boîtier d’essai ferme en conservant les accès USB, bouton, LED et zone NFC extérieure."
+      ],
+      "expectedProof": "Photos ouvertes/fermées et compte rendu du contrôle mécanique.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P14",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le prototype compact utilise GNSS, LED et transmissions selon un scénario décrit.",
+        "La durée réelle mesurée sur batterie atteint au moins deux heures sans redémarrage ni échauffement anormal observé.",
+        "Heures de début/fin, réglages, consommation et incidents éventuels sont consignés."
+      ],
+      "expectedProof": "Journal d’autonomie horodaté et mesures sur le prototype complet.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P16",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le tag passif est placé dans une zone extérieure rigide, séparée de la batterie, des blindages et des antennes.",
+        "Les lectures sont répétées avec le boîtier fermé puis le bracelet porté ; résultats et limites sont consignés.",
+        "Deux appareils compatibles sont utilisés si disponibles ; chaque appareil réellement testé est identifié."
+      ],
+      "expectedProof": "Tableau des essais de lecture, appareils utilisés et photos du placement final.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P4",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le même prototype satisfait les validations NFC, SOS, LED, GNSS, réseau et reprise après coupure.",
+        "L’autonomie complète atteint au moins deux heures et la lecture NFC fonctionne dans le boîtier fermé.",
+        "Les anomalies de faux contact ou de redémarrage ont un verdict ; aucune anomalie bloquante ne reste ouverte."
+      ],
+      "expectedProof": "Checklist de stabilisation renvoyant aux preuves P9, P14, P16 et E5.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P5",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Quatre électroniques assemblées et testées",
+      "criterion": "4 kits complets, numérotés. Continuité, charge et démarrage vérifiés sur chaque unité.",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Assembler et tester quatre montages électroniques",
+      "criterion": "Quatre montages identifiés passent les contrôles de continuité, d’alimentation, de démarrage et de LED. Pour chacun, le port de charge déclenche la charge de la batterie qualifiée avec tension et courant conformes aux limites documentées. Une fiche de mesure par unité.",
+      "checks": [
+        "Quatre montages sont assemblés et portent chacun un identifiant lisible.",
+        "Sur chacun, continuité et rails sont contrôlés ; le Pico démarre et la LED répond au programme de test.",
+        "Avec la batterie déjà qualifiée, un branchement au port de charge déclenche la charge ; tension et courant respectent les limites des références utilisées, sans coupure au connecteur."
+      ],
+      "expectedProof": "Une fiche par montage avec identifiant, tensions, courant de charge, résultat du démarrage et défauts éventuels.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P6",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Boîtiers définitifs adaptés aux montages réels",
+      "criterion": "Mesures prises sur les quatre assemblages réels puis CAO et impression. Les boîtiers acceptent les montages, la recharge reste accessible et le tag NFC passif dispose d’une zone extérieure adaptée.",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Adapter les boîtiers aux quatre montages électroniques",
+      "criterion": "Les quatre boîtiers correspondent aux montages mesurés et ferment sans contrainte sur la batterie ni les connexions. Le câble de charge s’insère sans ouvrir le boîtier ni forcer le port ; la charge reste observable. Preuve : CAO et essai sur les quatre unités.",
+      "checks": [
+        "La CAO de chaque boîtier est confrontée aux dimensions du montage correspondant.",
+        "Le boîtier ferme sans comprimer la batterie ni tirer sur les fils.",
+        "Le câble de charge s’insère et se retire sans ouvrir le boîtier ni forcer le connecteur ; le démarrage de charge reste observable."
+      ],
+      "expectedProof": "Versions CAO, photos des quatre montages fermés et essai du câble/port de charge sur chacun.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P7",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Quatre bracelets complets validés",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Valider les quatre bracelets complets",
+      "checks": [
+        "Chaque bracelet fermé possède une checklist identifiée : alimentation/charge, NFC externe, bouton, LED, localisation et transmissions.",
+        "La version embarquée commune et l’association à la bonne fiche plateforme sont vérifiées pour les quatre unités.",
+        "Chaque échec a un verdict et une correction suivie avant le Go du pilote."
+      ],
+      "expectedProof": "Quatre checklists et liens vers les journaux ou vidéos des essais.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "P8",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Configuration physique finale reproductible",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Documenter la configuration physique finale",
+      "checks": [
+        "La nomenclature, les fichiers de boîtier, le schéma et la procédure d’assemblage portent une version commune.",
+        "La configuration correspond aux quatre unités validées et aux modifications issues du pilote.",
+        "Un autre membre retrouve les références et reproduit le montage à partir du dossier."
+      ],
+      "expectedProof": "Archive versionnée du dossier physique et compte rendu de reproduction.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L1",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Première version plateforme utilisable sans bracelet",
+      "checks": null,
+      "expectedProof": null
+    },
+    "after": {
+      "title": "Livrer une première plateforme utilisable sans bracelet",
+      "checks": [
+        "20 événements simulés sans perte. La démonstration fonctionne sans IA."
+      ],
+      "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
+    }
+  },
+  {
+    "id": "L2",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "API et écrans principaux fonctionnels",
+      "checks": null,
+      "expectedProof": null
+    },
+    "after": {
+      "title": "Valider les API et les écrans sur des événements simulés",
+      "checks": [
+        "100 événements ingérés sans doublon. Liste, carte, SOS et batterie accessibles sur trois parcours simulés. Bracelet inconnu rejeté."
+      ],
+      "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
+    }
+  },
+  {
+    "id": "L12",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Disposer des règles de consentement et de rétention",
+      "checks": null,
+      "expectedProof": null
+    },
+    "after": {
+      "title": "Définir les règles de consentement et de conservation",
+      "checks": [
+        "Textes de consentement, rétention, pseudonymisation et traitement des incidents définis."
+      ],
+      "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
+    }
+  },
+  {
+    "id": "L4",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les rôles VIP, STAFF et FESTIVALIER existent dans l’application bêta et sont consultables.",
+        "Une fiche de test par rôle permet de vérifier que le rôle affiché correspond au rôle créé.",
+        "Ces fiches sont réutilisables pour les essais NFC ; la création des rôles ne vaut pas encore validation des permissions API."
+      ],
+      "expectedProof": "Captures ou démonstration des trois fiches de rôle et jeu de test associé.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L9",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Un téléphone ou lecteur externe lit l’identifiant ou le lien du tag NFC passif.",
+        "L’application reçoit cette valeur et affiche la fiche correspondant au bracelet testé.",
+        "Le tag et la fiche utilisés sont identifiés dans le compte rendu."
+      ],
+      "expectedProof": "Vidéo de lecture jusqu’à l’affichage de la bonne fiche bracelet.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L11",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le même tag et la même fiche servent à reprendre la démonstration initiale.",
+        "Les blocages identifiés lors de la première démonstration ont un résultat de correction.",
+        "La lecture externe ouvre à nouveau la bonne fiche dans l’application."
+      ],
+      "expectedProof": "Compte rendu de reprise avec liste des corrections et vidéo de la démonstration.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L5",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les écrans analytics s’ouvrent dans l’application et utilisent le jeu de référence identifié.",
+        "Les indicateurs affichés correspondent aux résultats de la baseline par règles I2.",
+        "Les cas sans données et les erreurs de chargement sont visibles et compréhensibles."
+      ],
+      "expectedProof": "Captures ou démonstration, jeu de référence et comparaison des indicateurs.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L10",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Pour chaque rôle, le jeu de test contient une action autorisée et une action interdite.",
+        "L’API accepte l’action autorisée et refuse l’action interdite, même si la requête est envoyée sans passer par l’écran.",
+        "Les refus sont retrouvables dans les journaux avec le rôle et l’action concernés."
+      ],
+      "expectedProof": "Matrice rôles/actions et résultats des requêtes autorisées/refusées.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L6",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Version candidate et recette applicative préparées",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Préparer la version candidate et la recette applicative",
+      "checks": [
+        "La version candidate du front et du back est identifiée.",
+        "Les scénarios de recette décrivent leurs données, étapes et résultats attendus.",
+        "Aucun défaut fonctionnel bloquant connu ne reste ouvert pour les parcours retenus."
+      ],
+      "expectedProof": "Référence de version, plan de recette et liste des défauts avec verdict.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L7",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le lot, le logiciel, l’IA et les moyens d’exploitation requis ont leurs validations préalables.",
+        "Au moins 90 % des tests du plan de recette passent et aucun défaut critique ne reste ouvert.",
+        "Trois parcours sont exécutés sans aide ; le Go est signé avant le début des sessions pilote."
+      ],
+      "expectedProof": "Rapport de recette avec nombre de tests passants/total et décision Go datée.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L13",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Deux sessions ont lieu après le Go, dans l’environnement et avec les bracelets identifiés.",
+        "Le déroulé, les données exploitables et les incidents de chaque session sont consignés.",
+        "Chaque incident a un verdict et les deux sessions disposent d’un bilan."
+      ],
+      "expectedProof": "Deux comptes rendus horodatés et jeux de données de session identifiés.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L8",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Plateforme finale et dossier applicatif transférés",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Transférer la plateforme et son dossier applicatif",
+      "checks": [
+        "La release applicative finale est publiée avec sa configuration.",
+        "Le dossier décrit les parcours, les accès nécessaires et la maintenance du front/back.",
+        "Un autre membre reproduit les parcours à partir du dossier livré."
+      ],
+      "expectedProof": "Lien ou archive de la release, dossier applicatif et compte rendu de reprise.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I1",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Données et indicateurs définis",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Définir les données, les unités et les indicateurs",
+      "checks": [
+        "Chaque donnée possède un nom, une unité, une origine et une règle de validité.",
+        "Le schéma et les définitions des indicateurs sont versionnés.",
+        "Des exemples valides et invalides démontrent les règles de qualité."
+      ],
+      "expectedProof": "Schéma versionné, dictionnaire des données et exemples de validation.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I2",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Première baseline par règles mesurée",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Mesurer les résultats de la baseline par règles",
+      "checks": [
+        "La baseline par règles est exécutable sur un jeu simulé identifié.",
+        "Les seuils et le calcul des indicateurs sont explicités.",
+        "Les métriques obtenues et au moins les cas d’échec observés sont conservés."
+      ],
+      "expectedProof": "Commande de relance, jeu utilisé et rapport des indicateurs/cas d’échec.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I3",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Jeu de données nettoyé et variables traçables",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Nettoyer les données et tracer les variables du modèle",
+      "checks": [
+        "Les données brutes et nettoyées sont distinguées et leur transformation est traçable.",
+        "Au moins 95 % des événements du jeu nettoyé passent les règles de qualité définies.",
+        "Chaque variable du modèle possède une unité et une origine documentées."
+      ],
+      "expectedProof": "Jeux identifiés, rapport de qualité et dictionnaire des variables.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I4",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Une commande ou procédure relance la baseline dans l’environnement identifié.",
+        "Le jeu d’évaluation est conservé et distinctement référencé.",
+        "La relance produit les métriques enregistrées et ses paramètres sont retrouvables."
+      ],
+      "expectedProof": "Version du pipeline, commande de relance et rapport de métriques.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I9",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Un entraînement produit un modèle identifié et versionné.",
+        "L’évaluation utilise un jeu de test séparé du jeu d’entraînement.",
+        "Les paramètres, données utilisées, limites et commande de relance sont documentés."
+      ],
+      "expectedProof": "Modèle versionné, séparation des jeux et rapport d’entraînement/évaluation.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I5",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Modèle évalué face à la baseline",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Évaluer le modèle face à la baseline",
+      "checks": [
+        "Le modèle et la baseline sont évalués sur le même jeu de test identifié.",
+        "Les métriques, biais, seuils et limites sont explicités dans la fiche modèle.",
+        "Le rapport permet de comparer les deux approches sans ajouter un seuil de performance non convenu."
+      ],
+      "expectedProof": "Rapport comparatif et fiche modèle versionnés.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I6",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "IA désactivable sans bloquer les alertes",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Désactiver l’IA en conservant les alertes et la localisation",
+      "checks": [
+        "Un scénario provoque l’arrêt ou l’indisponibilité du modèle.",
+        "Le SOS et la localisation de base restent utilisables pendant ce scénario.",
+        "Le retour au mode par règles et les événements observés sont consignés."
+      ],
+      "expectedProof": "Journal ou vidéo du scénario d’arrêt IA et résultat des parcours de base.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I7",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Résultats du pilote analysés",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Analyser les résultats des deux sessions pilote",
+      "checks": [
+        "Le rapport utilise les données identifiées des deux sessions pilote.",
+        "Les indicateurs agrégés, limites et recommandations sont présentés.",
+        "Le rapport livré ne contient pas de tracé individuel."
+      ],
+      "expectedProof": "Rapport agrégé et référence des données analysées.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "I8",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Modèle et documentation finale transférés",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Transférer le modèle et sa documentation",
+      "checks": [
+        "Le modèle, la configuration, les données autorisées et les commandes de relance sont livrés.",
+        "Un tiers reproduit une prédiction et les métriques avec le dossier fourni.",
+        "Les limites d’usage et la version finale sont explicites."
+      ],
+      "expectedProof": "Archive IA versionnée et compte rendu de reproduction par un tiers.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E1",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les sources et la version du programme de test Pico sont sauvegardées.",
+        "Un autre membre suit la procédure, charge le programme et le relance.",
+        "Le comportement lumineux déjà acquis est reproduit et les erreurs d’installation éventuelles sont documentées."
+      ],
+      "expectedProof": "Sources versionnées, procédure et compte rendu d’installation par un autre membre.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E2",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Un appareil externe compatible lit le tag passif à plusieurs reprises.",
+        "Le même identifiant ou lien est obtenu à chaque lecture réussie et les échecs sont comptés.",
+        "Le compte rendu identifie le tag et l’appareil ; la lecture reste indépendante du Pico et de sa batterie."
+      ],
+      "expectedProof": "Tableau des lectures et vidéo ou journal montrant la valeur récupérée.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E9",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Vingt appuis produisent vingt événements locaux uniques, sans doublon lié au rebond.",
+        "La LED change d’état à l’appui et au relâchement.",
+        "Dix redémarrages du programme se terminent sans blocage."
+      ],
+      "expectedProof": "Journal des vingt appuis et dix redémarrages, avec vidéo des états LED.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E10",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "L’antenne LTE, la SIM et la configuration réseau de l’essai sont identifiées.",
+        "Trois sessions réseau successives sont établies sous USB.",
+        "Aucun redémarrage n’est observé en émission et les conditions d’alimentation sont consignées."
+      ],
+      "expectedProof": "Journaux des trois sessions et contrôle de l’alimentation en émission.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E11",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "La méthode et le raccordement de mesure sont définis pour les références réellement utilisées.",
+        "Le Pico émet une valeur avec son unité ; cette valeur est comparée à une mesure de référence.",
+        "L’écart et les limites sont consignés ; aucun pourcentage de charge n’est affiché sans étalonnage."
+      ],
+      "expectedProof": "Tableau Pico/mesure de référence et description de la méthode.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E3",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le programme de test et l’antenne GNSS sont identifiés.",
+        "À ciel ouvert, le journal contient une position valide et horodatée.",
+        "Le résultat de localisation est distingué du résultat de connexion au réseau cellulaire."
+      ],
+      "expectedProof": "Journal GNSS horodaté avec conditions de l’essai.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E4",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Position, SOS et batterie reçus dans le cloud",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Recevoir la position, le SOS et la batterie dans le cloud",
+      "checks": [
+        "Cinquante messages réels couvrant position, SOS et batterie sont émis et identifiés.",
+        "Au moins 95 % sont retrouvés côté cloud, sans confondre les bracelets ni les horodatages.",
+        "La mesure batterie provient de la méthode validée dans E11."
+      ],
+      "expectedProof": "Journaux émetteur/récepteur et tableau de rapprochement des cinquante messages.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E5",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Reprise après coupure réseau démontrée",
+      "criterion": "10 minutes hors réseau puis reconnexion sans perte critique. File locale, renvois et redémarrage automatique démontrés par les journaux.",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Rétablir les transmissions après une coupure réseau",
+      "criterion": "Après dix minutes hors réseau, la reconnexion et les renvois de la file locale sont vérifiés en rapprochant événements émis et reçus. Toute perte ou tout doublon est identifié et reçoit un verdict dans le compte rendu.",
+      "checks": [
+        "Le scénario impose dix minutes hors réseau, puis rétablit la connexion.",
+        "Les événements conservés en file locale sont renvoyés et rapprochés des événements reçus.",
+        "Le journal identifie tout événement manquant ou doublon et donne un verdict sur les pertes critiques définies par le scénario."
+      ],
+      "expectedProof": "Journal de coupure/reconnexion et comparaison des événements avant/après.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E6",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Mise à jour distante et retour arrière opérationnels",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Installer une mise à jour distante et revenir à la version précédente",
+      "checks": [
+        "Trois mises à jour distantes se terminent avec la version attendue.",
+        "Trois retours à la version précédente sont effectués avec succès.",
+        "Version, résultat et éventuelle erreur sont visibles dans les journaux."
+      ],
+      "expectedProof": "Journaux des six opérations et versions avant/après.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E7",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Même version installée sur quatre bracelets identifiables",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Installer et vérifier la même version sur quatre bracelets",
+      "checks": [
+        "Les quatre bracelets démarrent avec la même version embarquée identifiée.",
+        "Chaque bracelet porte sa propre identité et sa fiche est retrouvée dans la plateforme.",
+        "SOS, LED, localisation et association du tag passif sont testés pour chaque unité."
+      ],
+      "expectedProof": "Quatre fiches de test et relevé des identités/versions.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "E8",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "title": "Version embarquée finale livrée",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "title": "Livrer la version embarquée et sa procédure d’installation",
+      "checks": [
+        "Binaire, sources, configuration et procédure d’installation sont archivés sous une version finale.",
+        "La version est réinstallée sur un bracelet identifié.",
+        "Le test fonctionnel défini dans le dossier passe après réinstallation."
+      ],
+      "expectedProof": "Archive embarquée et compte rendu de réinstallation/test.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N1",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Deux environnements distincts, développement et test, sont identifiés.",
+        "Le front et le back y sont déployables avec leur configuration propre.",
+        "Les accès et les contrôles de santé sont vérifiés sur les deux environnements."
+      ],
+      "expectedProof": "Adresses des environnements et résultats des contrôles d’accès/santé.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N2",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les stockages et leur configuration de chiffrement sont identifiés.",
+        "Les secrets nécessaires sont fournis hors du dépôt de code.",
+        "Une sauvegarde est effectivement restaurée et le jeu restauré est contrôlé."
+      ],
+      "expectedProof": "Configuration documentée, contrôle du dépôt et compte rendu de restauration.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N3",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Un commit validé déclenche le déploiement reproductible du front et du back en test.",
+        "Un échec de contrôle arrête le pipeline et son motif est visible.",
+        "La version déployée est reliée au commit d’origine."
+      ],
+      "expectedProof": "Liens vers un pipeline réussi, un cas d’arrêt et la version déployée.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "L3",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "criterion": "Le logiciel est accessible sur l’infrastructure cible. Preuve : URL testée.",
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "criterion": "Le logiciel est accessible sur l’URL cible ; le front, le contrôle du back et un parcours représentatif réussissent. URL, version déployée et résultats sont conservés.",
+      "checks": [
+        "L’URL de l’environnement cible ouvre la version déployée du front.",
+        "Un contrôle du back et un parcours applicatif représentatif réussissent depuis cet environnement.",
+        "La version, l’URL et les résultats de test sont consignés."
+      ],
+      "expectedProof": "URL testée, référence de version et compte rendu du parcours/contrôle back.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N6",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Les journaux, métriques et le tableau de supervision sont consultables.",
+        "Une panne simulée produit une alerte identifiant le service et l’incident.",
+        "La procédure associée permet de qualifier l’alerte et de vérifier le retour à l’état normal."
+      ],
+      "expectedProof": "Capture de l’alerte, chronologie et journal du rétablissement.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N4",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Un environnement propre est préparé avec la configuration documentée.",
+        "Le déploiement y est reproduit à partir de la version retenue.",
+        "Les contrôles de santé et d’accès prévus passent sur cet environnement."
+      ],
+      "expectedProof": "Procédure, version et résultats du déploiement sur environnement propre.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N5",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Une sauvegarde est restaurée et son contenu de référence est vérifié.",
+        "Le retour à une version applicative précédente est exécuté.",
+        "Les durées et résultats des deux opérations sont mesurés et consignés."
+      ],
+      "expectedProof": "Compte rendu chronométré de restauration et retour de version.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N7",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "Le runbook décrit la détection, la qualification et la reprise des incidents du pilote.",
+        "Les événements d’exploitation des sessions sont horodatés et reliés aux actions effectuées.",
+        "Chaque incident rencontré dispose d’un verdict et d’une procédure utilisée ou mise à jour."
+      ],
+      "expectedProof": "Runbook versionné et journal des actions pendant le pilote.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
+  },
+  {
+    "id": "N8",
+    "revision": "20261105.1",
+    "reason": "Titres à l’infinitif et conditions de validation observables ; ajout de la preuve attendue.",
+    "before": {
+      "checks": null,
+      "expectedProof": null,
+      "criteriaReviewedAt": null
+    },
+    "after": {
+      "checks": [
+        "L’inventaire d’infrastructure, la configuration et le runbook sont livrés.",
+        "Un autre membre suit le dossier pour déployer et superviser le POC.",
+        "Il reproduit une restauration et consigne le résultat."
+      ],
+      "expectedProof": "Dossier cloud versionné et compte rendu de reprise par un autre membre.",
+      "criteriaReviewedAt": "2026-11-05"
+    }
   }
 ]

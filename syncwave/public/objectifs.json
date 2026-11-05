@@ -2,7 +2,7 @@
   {
     "g": 0,
     "id": "P10",
-    "title": "Disposer d’un inventaire vérifié des composants",
+    "title": "Recenser les composants disponibles et manquants",
     "date": "2026-10-02",
     "owner": "Maia",
     "criterion": "Chaque composant de la commande a un statut de disponibilité identifié.",
@@ -25,12 +25,16 @@
     },
     "assignees": [
       "Maia"
-    ]
+    ],
+    "checks": [
+      "Chaque composant de la commande a un statut de disponibilité identifié."
+    ],
+    "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
   },
   {
     "id": "P11",
     "g": 0,
-    "title": "LED branchée au Raspberry Pi Pico et allumée",
+    "title": "Allumer la LED reliée au Raspberry Pi Pico",
     "date": "2026-10-27",
     "assignees": [
       "Maia",
@@ -44,33 +48,44 @@
     "note": "Acquis conservé. Le 27/10 est la date de confirmation, pas une date d’essai inventée. Maia et Nazim suivent cet acquis ; l’auteur initial du montage n’est pas précisé.",
     "completedDate": "2026-10-27",
     "completionDateKind": "confirmation",
-    "focus": true
+    "focus": true,
+    "checks": [
+      "La LED est reliée au Raspberry Pi Pico et s’allume. Ce constat ne valide ni l’autonomie, ni le fonctionnement sur batterie, ni le bouton SOS."
+    ],
+    "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
   },
   {
     "id": "P12",
     "g": 0,
-    "title": "Vérifier le montage USB déjà allumé",
+    "title": "Valider l’alimentation USB du Pico et de la LED",
     "date": "2026-10-28",
     "assignees": [
       "Maia",
       "Basile"
     ],
     "owner": "Maia avec Basile",
-    "criterion": "Montage existant contrôlé sous USB : rails d’alimentation mesurés, câblage LED et composants d’adaptation vérifiés, faible luminosité stable sans redémarrage. Preuve : relevé des tensions et essai reproductible.",
+    "criterion": "Alimentation USB du Pico et de la LED contrôlée sur trois cycles de connexion. Rails conformes aux plages des références réelles, démarrage et allumage reproductibles, sans faux contact ni redémarrage spontané. Preuve : mesures et compte rendu des cycles.",
     "deps": "P11",
     "status": "À faire",
     "proof": "",
     "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026. Répartition ajustée le 27/10 : essais matériels confiés à Maia et Basile pour alléger Nazim, qui conserve le programme du Pico et la connectivité.",
     "start": "2026-10-27",
-    "focus": true
+    "focus": true,
+    "checks": [
+      "Le câble et la source USB utilisés sont identifiés ; les rails mesurés respectent les plages des cartes et de la LED réelles.",
+      "Trois branchements puis débranchements USB permettent trois démarrages du Pico et un allumage reproductible de la LED, sans redémarrage spontané ni faux contact.",
+      "Le contrôle porte sur l’alimentation USB ; le test de charge batterie est consigné séparément après qualification de la batterie."
+    ],
+    "expectedProof": "Références de la source et du câble, tableau des tensions et compte rendu ou vidéo des trois cycles.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
     "id": "P1",
-    "title": "Qualifier la batterie et son alimentation 5 V",
+    "title": "Qualifier la batterie, son alimentation et son circuit de charge",
     "date": "2026-10-30",
     "owner": "Maia",
-    "criterion": "Références réelles, chimie, polarité, protection et compatibilité de charge vérifiées. Chemin d’alimentation du Pico et de la LED défini et mesuré, avec gestion des sources USB et batterie. Preuve : schéma validé et relevé de contrôle avant branchement.",
+    "criterion": "Batterie, protection, chargeur et alimentation 5 V identifiés et compatibles. Tensions et courant de charge mesurés dans les limites documentées ; la charge démarre au branchement du port prévu, sans interruption observée. Preuve : schéma et relevés du test.",
     "deps": "P12",
     "note": "Priorité maintenue au 30/10. Les guides ne fournissent pas de montage batterie prêt à brancher : qualifier la batterie, le convertisseur 5 V pour la LED et la gestion des deux sources. La LED déjà allumée ne valide pas ces points.",
     "start": "2026-10-26",
@@ -97,7 +112,14 @@
           "completedDate": null
         }
       ]
-    }
+    },
+    "checks": [
+      "La référence de la batterie, le chargeur, la protection, la polarité et les limites de tension et de courant sont documentés et compatibles.",
+      "Les tensions alimentant le Pico et la LED sont mesurées sous USB puis sur batterie et comparées aux plages des références réelles.",
+      "Sur ce montage qualifié, le branchement du câble au port de charge déclenche la charge prévue ; le courant et la tension mesurés respectent les limites documentées, sans interruption ni échauffement anormal observé."
+    ],
+    "expectedProof": "Schéma d’alimentation, références, limites constructeur et relevé de tension/courant du test de charge.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
@@ -137,7 +159,14 @@
       ]
     },
     "start": "2026-11-02",
-    "focus": true
+    "focus": true,
+    "checks": [
+      "La batterie et le chemin d’alimentation ont été qualifiés dans P1.",
+      "USB débranché, le Pico et la LED restent actifs sans redémarrage pendant la durée d’essai consignée.",
+      "La tension, la consommation et la durée mesurées sont conservées ; ce test ne clôt pas l’essai d’autonomie du bracelet complet."
+    ],
+    "expectedProof": "Vidéo du fonctionnement sans USB et relevé des tensions, de la consommation et de la durée.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
@@ -157,7 +186,14 @@
     "note": "Jalon du 06/11 conservé et recentré sur les deux priorités confirmées : NFC et alimentation batterie. GNSS, modem et SOS sont testés ensuite ; aucune duplication avant la stabilisation complète.",
     "focus": true,
     "status": "À confirmer",
-    "proof": ""
+    "proof": "",
+    "checks": [
+      "Le même prototype satisfait P2 : Pico et LED fonctionnent sur batterie sans USB.",
+      "Le tag passif est lu par un appareil externe et l’application ouvre la bonne fiche bracelet.",
+      "Une preuve relie les deux résultats au même prototype ; chaque blocage restant est nommé avec une action datée."
+    ],
+    "expectedProof": "Compte rendu identifié au prototype, vidéo NFC et preuve du fonctionnement sur batterie.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "id": "P13",
@@ -175,7 +211,14 @@
     "status": "À faire",
     "proof": "",
     "note": "Le tutoriel PDF corrigé retient directement l’empilement Pico/Waveshare ; les huit fils temporaires du guide Word ne deviennent pas un passage obligatoire.",
-    "start": "2026-11-09"
+    "start": "2026-11-09",
+    "checks": [
+      "La révision réelle du modem, l’empilement Pico et les antennes LTE/GNSS sont identifiés et contrôlés.",
+      "Les rails d’alimentation et l’absence de décalage des connecteurs sont vérifiés sous USB.",
+      "Le programme échange des commandes et réponses identifiables avec le modem sans redémarrage observé."
+    ],
+    "expectedProof": "Photos de l’assemblage, relevés des rails et journal de communication Pico/modem.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
@@ -210,7 +253,14 @@
       "Maia",
       "Basile"
     ],
-    "start": "2026-11-13"
+    "start": "2026-11-13",
+    "checks": [
+      "Les cartes empilées, batterie, antennes et connecteurs réellement utilisés sont mesurés.",
+      "Le gabarit coté réserve les accès USB, bouton, visibilité LED et une zone NFC séparée du métal.",
+      "Le gabarit est comparé au montage réel et les écarts sont corrigés ou documentés."
+    ],
+    "expectedProof": "Plan coté, photos du montage mesuré et version du gabarit.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "id": "P15",
@@ -227,7 +277,14 @@
     "status": "À faire",
     "proof": "",
     "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
-    "start": "2026-11-16"
+    "start": "2026-11-16",
+    "checks": [
+      "Les composants du montage mesuré sont fixés sur des supports isolants, sans traction sur les connexions.",
+      "La batterie est séparée des soudures et n’est pas comprimée lors de la fermeture.",
+      "Le boîtier d’essai ferme en conservant les accès USB, bouton, LED et zone NFC extérieure."
+    ],
+    "expectedProof": "Photos ouvertes/fermées et compte rendu du contrôle mécanique.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "id": "P14",
@@ -244,7 +301,14 @@
     "status": "À faire",
     "proof": "",
     "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
-    "start": "2026-11-18"
+    "start": "2026-11-18",
+    "checks": [
+      "Le prototype compact utilise GNSS, LED et transmissions selon un scénario décrit.",
+      "La durée réelle mesurée sur batterie atteint au moins deux heures sans redémarrage ni échauffement anormal observé.",
+      "Heures de début/fin, réglages, consommation et incidents éventuels sont consignés."
+    ],
+    "expectedProof": "Journal d’autonomie horodaté et mesures sur le prototype complet.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "id": "P16",
@@ -261,7 +325,14 @@
     "status": "À faire",
     "proof": "",
     "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
-    "start": "2026-11-18"
+    "start": "2026-11-18",
+    "checks": [
+      "Le tag passif est placé dans une zone extérieure rigide, séparée de la batterie, des blindages et des antennes.",
+      "Les lectures sont répétées avec le boîtier fermé puis le bracelet porté ; résultats et limites sont consignés.",
+      "Deux appareils compatibles sont utilisés si disponibles ; chaque appareil réellement testé est identifié."
+    ],
+    "expectedProof": "Tableau des essais de lecture, appareils utilisés et photos du placement final.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
@@ -304,15 +375,22 @@
     "assignees": [
       "Maia",
       "Basile"
-    ]
+    ],
+    "checks": [
+      "Le même prototype satisfait les validations NFC, SOS, LED, GNSS, réseau et reprise après coupure.",
+      "L’autonomie complète atteint au moins deux heures et la lecture NFC fonctionne dans le boîtier fermé.",
+      "Les anomalies de faux contact ou de redémarrage ont un verdict ; aucune anomalie bloquante ne reste ouverte."
+    ],
+    "expectedProof": "Checklist de stabilisation renvoyant aux preuves P9, P14, P16 et E5.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
     "id": "P5",
-    "title": "Quatre électroniques assemblées et testées",
+    "title": "Assembler et tester quatre montages électroniques",
     "date": "2026-11-25",
     "owner": "Maia",
-    "criterion": "4 kits complets, numérotés. Continuité, charge et démarrage vérifiés sur chaque unité.",
+    "criterion": "Quatre montages identifiés passent les contrôles de continuité, d’alimentation, de démarrage et de LED. Pour chacun, le port de charge déclenche la charge de la batterie qualifiée avec tension et courant conformes aux limites documentées. Une fiche de mesure par unité.",
     "deps": "P9,P4",
     "note": "Duplication seulement après stabilisation du même prototype le 22/11. Cible proposée au 25/11 ; reconfirmer les composants et le schéma réellement validés.",
     "status": "À faire",
@@ -336,15 +414,22 @@
     },
     "assignees": [
       "Maia"
-    ]
+    ],
+    "checks": [
+      "Quatre montages sont assemblés et portent chacun un identifiant lisible.",
+      "Sur chacun, continuité et rails sont contrôlés ; le Pico démarre et la LED répond au programme de test.",
+      "Avec la batterie déjà qualifiée, un branchement au port de charge déclenche la charge ; tension et courant respectent les limites des références utilisées, sans coupure au connecteur."
+    ],
+    "expectedProof": "Une fiche par montage avec identifiant, tensions, courant de charge, résultat du démarrage et défauts éventuels.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
     "id": "P6",
-    "title": "Boîtiers définitifs adaptés aux montages réels",
+    "title": "Adapter les boîtiers aux quatre montages électroniques",
     "date": "2026-11-27",
     "owner": "Basile",
-    "criterion": "Mesures prises sur les quatre assemblages réels puis CAO et impression. Les boîtiers acceptent les montages, la recharge reste accessible et le tag NFC passif dispose d’une zone extérieure adaptée.",
+    "criterion": "Les quatre boîtiers correspondent aux montages mesurés et ferment sans contrainte sur la batterie ni les connexions. Le câble de charge s’insère sans ouvrir le boîtier ni forcer le port ; la charge reste observable. Preuve : CAO et essai sur les quatre unités.",
     "deps": "P4,P5",
     "note": "Cible du 27/11 maintenue. Les dimensions viennent du montage réel ; aucune version définitive avant le boîtier d’essai et la stabilisation.",
     "status": "À faire",
@@ -368,12 +453,19 @@
     },
     "assignees": [
       "Basile"
-    ]
+    ],
+    "checks": [
+      "La CAO de chaque boîtier est confrontée aux dimensions du montage correspondant.",
+      "Le boîtier ferme sans comprimer la batterie ni tirer sur les fils.",
+      "Le câble de charge s’insère et se retire sans ouvrir le boîtier ni forcer le connecteur ; le démarrage de charge reste observable."
+    ],
+    "expectedProof": "Versions CAO, photos des quatre montages fermés et essai du câble/port de charge sur chacun.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
     "id": "P7",
-    "title": "Quatre bracelets complets validés",
+    "title": "Valider les quatre bracelets complets",
     "date": "2026-12-06",
     "owner": "Maia avec Nazim avec Basile",
     "criterion": "Quatre checklists après mise en boîtier : alimentation et charge, tag NFC lu extérieurement, bouton SOS, LED, localisation, transmissions et stabilité. Le tag passif n’est pas relié électriquement au Pico.",
@@ -402,12 +494,19 @@
       "Maia",
       "Nazim",
       "Basile"
-    ]
+    ],
+    "checks": [
+      "Chaque bracelet fermé possède une checklist identifiée : alimentation/charge, NFC externe, bouton, LED, localisation et transmissions.",
+      "La version embarquée commune et l’association à la bonne fiche plateforme sont vérifiées pour les quatre unités.",
+      "Chaque échec a un verdict et une correction suivie avant le Go du pilote."
+    ],
+    "expectedProof": "Quatre checklists et liens vers les journaux ou vidéos des essais.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 0,
     "id": "P8",
-    "title": "Configuration physique finale reproductible",
+    "title": "Documenter la configuration physique finale",
     "date": "2026-12-11",
     "owner": "Maia avec Basile",
     "criterion": "BOM, CAO, schéma de câblage et procédure d’assemblage versionnés. Un tiers peut reproduire le montage.",
@@ -435,12 +534,19 @@
     "assignees": [
       "Maia",
       "Basile"
-    ]
+    ],
+    "checks": [
+      "La nomenclature, les fichiers de boîtier, le schéma et la procédure d’assemblage portent une version commune.",
+      "La configuration correspond aux quatre unités validées et aux modifications issues du pilote.",
+      "Un autre membre retrouve les références et reproduit le montage à partir du dossier."
+    ],
+    "expectedProof": "Archive versionnée du dossier physique et compte rendu de reproduction.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
     "id": "L1",
-    "title": "Première version plateforme utilisable sans bracelet",
+    "title": "Livrer une première plateforme utilisable sans bracelet",
     "date": "2026-09-18",
     "owner": "Tiéoulé",
     "criterion": "20 événements simulés sans perte. La démonstration fonctionne sans IA.",
@@ -464,12 +570,16 @@
     },
     "assignees": [
       "Tiéoulé"
-    ]
+    ],
+    "checks": [
+      "20 événements simulés sans perte. La démonstration fonctionne sans IA."
+    ],
+    "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
   },
   {
     "g": 1,
     "id": "L2",
-    "title": "API et écrans principaux fonctionnels",
+    "title": "Valider les API et les écrans sur des événements simulés",
     "date": "2026-10-16",
     "owner": "Tiéoulé",
     "criterion": "100 événements ingérés sans doublon. Liste, carte, SOS et batterie accessibles sur trois parcours simulés. Bracelet inconnu rejeté.",
@@ -518,12 +628,16 @@
     },
     "assignees": [
       "Tiéoulé"
-    ]
+    ],
+    "checks": [
+      "100 événements ingérés sans doublon. Liste, carte, SOS et batterie accessibles sur trois parcours simulés. Bracelet inconnu rejeté."
+    ],
+    "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
   },
   {
     "g": 1,
     "id": "L12",
-    "title": "Disposer des règles de consentement et de rétention",
+    "title": "Définir les règles de consentement et de conservation",
     "date": "2026-10-16",
     "owner": "Thomas",
     "criterion": "Textes de consentement, rétention, pseudonymisation et traitement des incidents définis.",
@@ -546,7 +660,11 @@
     },
     "assignees": [
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "Textes de consentement, rétention, pseudonymisation et traitement des incidents définis."
+    ],
+    "expectedProof": "Preuve historique ou confirmation déjà enregistrée dans cette fiche."
   },
   {
     "g": 1,
@@ -564,7 +682,14 @@
     ],
     "focus": true,
     "status": "À confirmer",
-    "proof": ""
+    "proof": "",
+    "checks": [
+      "Les rôles VIP, STAFF et FESTIVALIER existent dans l’application bêta et sont consultables.",
+      "Une fiche de test par rôle permet de vérifier que le rôle affiché correspond au rôle créé.",
+      "Ces fiches sont réutilisables pour les essais NFC ; la création des rôles ne vaut pas encore validation des permissions API."
+    ],
+    "expectedProof": "Captures ou démonstration des trois fiches de rôle et jeu de test associé.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
@@ -582,7 +707,14 @@
     "note": "Démonstration du 30/10 conservée avec Thomas et Tiéoulé. La lecture NFC ne passe pas par un lecteur câblé au Pico.",
     "focus": true,
     "status": "À confirmer",
-    "proof": ""
+    "proof": "",
+    "checks": [
+      "Un téléphone ou lecteur externe lit l’identifiant ou le lien du tag NFC passif.",
+      "L’application reçoit cette valeur et affiche la fiche correspondant au bracelet testé.",
+      "Le tag et la fiche utilisés sont identifiés dans le compte rendu."
+    ],
+    "expectedProof": "Vidéo de lecture jusqu’à l’affichage de la bonne fiche bracelet.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
@@ -600,7 +732,14 @@
     "note": "Intégration NFC maintenue du 2 au 6 novembre. L’état d’alimentation du Pico ne doit pas être présenté comme un prérequis de lecture du tag passif.",
     "focus": true,
     "status": "À confirmer",
-    "proof": ""
+    "proof": "",
+    "checks": [
+      "Le même tag et la même fiche servent à reprendre la démonstration initiale.",
+      "Les blocages identifiés lors de la première démonstration ont un résultat de correction.",
+      "La lecture externe ouvre à nouveau la bonne fiche dans l’application."
+    ],
+    "expectedProof": "Compte rendu de reprise avec liste des corrections et vidéo de la démonstration.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
@@ -629,7 +768,14 @@
           "completedDate": null
         }
       ]
-    }
+    },
+    "checks": [
+      "Les écrans analytics s’ouvrent dans l’application et utilisent le jeu de référence identifié.",
+      "Les indicateurs affichés correspondent aux résultats de la baseline par règles I2.",
+      "Les cas sans données et les erreurs de chargement sont visibles et compréhensibles."
+    ],
+    "expectedProof": "Captures ou démonstration, jeu de référence et comparaison des indicateurs.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
@@ -645,12 +791,19 @@
     "assignees": [
       "Thomas",
       "Tiéoulé"
-    ]
+    ],
+    "checks": [
+      "Pour chaque rôle, le jeu de test contient une action autorisée et une action interdite.",
+      "L’API accepte l’action autorisée et refuse l’action interdite, même si la requête est envoyée sans passer par l’écran.",
+      "Les refus sont retrouvables dans les journaux avec le rôle et l’action concernés."
+    ],
+    "expectedProof": "Matrice rôles/actions et résultats des requêtes autorisées/refusées.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
     "id": "L6",
-    "title": "Version candidate et recette applicative préparées",
+    "title": "Préparer la version candidate et la recette applicative",
     "date": "2026-11-20",
     "owner": "Tiéoulé avec Gabriel avec Thomas",
     "criterion": "Aucun défaut fonctionnel bloquant dans le front et le back. Scénarios de recette définis et version candidate identifiée.",
@@ -679,7 +832,14 @@
       "Tiéoulé",
       "Gabriel",
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "La version candidate du front et du back est identifiée.",
+      "Les scénarios de recette décrivent leurs données, étapes et résultats attendus.",
+      "Aucun défaut fonctionnel bloquant connu ne reste ouvert pour les parcours retenus."
+    ],
+    "expectedProof": "Référence de version, plan de recette et liste des défauts avec verdict.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
@@ -743,7 +903,14 @@
       "Thomas",
       "Tiéoulé",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Le lot, le logiciel, l’IA et les moyens d’exploitation requis ont leurs validations préalables.",
+      "Au moins 90 % des tests du plan de recette passent et aucun défaut critique ne reste ouvert.",
+      "Trois parcours sont exécutés sans aide ; le Go est signé avant le début des sessions pilote."
+    ],
+    "expectedProof": "Rapport de recette avec nombre de tests passants/total et décision Go datée.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
@@ -761,12 +928,19 @@
     "deps": "L7,N7",
     "status": "À faire",
     "proof": "",
-    "note": "Étape séparée de la recette pour éviter de confondre autorisation du pilote et validation de son résultat."
+    "note": "Étape séparée de la recette pour éviter de confondre autorisation du pilote et validation de son résultat.",
+    "checks": [
+      "Deux sessions ont lieu après le Go, dans l’environnement et avec les bracelets identifiés.",
+      "Le déroulé, les données exploitables et les incidents de chaque session sont consignés.",
+      "Chaque incident a un verdict et les deux sessions disposent d’un bilan."
+    ],
+    "expectedProof": "Deux comptes rendus horodatés et jeux de données de session identifiés.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 1,
     "id": "L8",
-    "title": "Plateforme finale et dossier applicatif transférés",
+    "title": "Transférer la plateforme et son dossier applicatif",
     "date": "2026-12-11",
     "owner": "Thomas avec Tiéoulé avec Gabriel",
     "criterion": "Release applicative finale publiée. Le dossier permet à un tiers de reproduire les parcours et de maintenir le front et le back.",
@@ -800,12 +974,19 @@
       "Thomas",
       "Tiéoulé",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "La release applicative finale est publiée avec sa configuration.",
+      "Le dossier décrit les parcours, les accès nécessaires et la maintenance du front/back.",
+      "Un autre membre reproduit les parcours à partir du dossier livré."
+    ],
+    "expectedProof": "Lien ou archive de la release, dossier applicatif et compte rendu de reprise.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I1",
-    "title": "Données et indicateurs définis",
+    "title": "Définir les données, les unités et les indicateurs",
     "date": "2026-10-28",
     "owner": "Maia avec Thomas",
     "criterion": "Schéma, unités et règles de qualité versionnés. Jeux d’exemples valides et invalides disponibles.",
@@ -829,12 +1010,19 @@
     "assignees": [
       "Maia",
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "Chaque donnée possède un nom, une unité, une origine et une règle de validité.",
+      "Le schéma et les définitions des indicateurs sont versionnés.",
+      "Des exemples valides et invalides démontrent les règles de qualité."
+    ],
+    "expectedProof": "Schéma versionné, dictionnaire des données et exemples de validation.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I2",
-    "title": "Première baseline par règles mesurée",
+    "title": "Mesurer les résultats de la baseline par règles",
     "date": "2026-10-30",
     "owner": "Maia avec Thomas",
     "criterion": "KPI calculés sur le jeu simulé. Seuils exécutables, métriques et cas d’échec sauvegardés.",
@@ -862,12 +1050,19 @@
     "assignees": [
       "Maia",
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "La baseline par règles est exécutable sur un jeu simulé identifié.",
+      "Les seuils et le calcul des indicateurs sont explicités.",
+      "Les métriques obtenues et au moins les cas d’échec observés sont conservés."
+    ],
+    "expectedProof": "Commande de relance, jeu utilisé et rapport des indicateurs/cas d’échec.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I3",
-    "title": "Jeu de données nettoyé et variables traçables",
+    "title": "Nettoyer les données et tracer les variables du modèle",
     "date": "2026-10-30",
     "owner": "Maia avec Thomas",
     "criterion": "Au moins 95 % d’événements valides. Données brutes et nettoyées distinguées. Chaque variable a une unité et une origine documentées.",
@@ -896,7 +1091,14 @@
     "assignees": [
       "Maia",
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "Les données brutes et nettoyées sont distinguées et leur transformation est traçable.",
+      "Au moins 95 % des événements du jeu nettoyé passent les règles de qualité définies.",
+      "Chaque variable du modèle possède une unité et une origine documentées."
+    ],
+    "expectedProof": "Jeux identifiés, rapport de qualité et dictionnaire des variables.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
@@ -926,7 +1128,14 @@
           "completedDate": null
         }
       ]
-    }
+    },
+    "checks": [
+      "Une commande ou procédure relance la baseline dans l’environnement identifié.",
+      "Le jeu d’évaluation est conservé et distinctement référencé.",
+      "La relance produit les métriques enregistrées et ses paramètres sont retrouvables."
+    ],
+    "expectedProof": "Version du pipeline, commande de relance et rapport de métriques.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
@@ -942,12 +1151,19 @@
     "deps": "I3,I4",
     "status": "À faire",
     "proof": "",
-    "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11. Répartition IA confirmée le 27/10 : Maia pilote le premier entraînement et le choix du modèle ; Gabriel l’aide sur l’environnement d’entraînement, le versionnement et la reproductibilité."
+    "note": "Objectif distinct de la baseline par règles du 06/11. Cible proposée au 16/11 avant l’évaluation du 18/11. Répartition IA confirmée le 27/10 : Maia pilote le premier entraînement et le choix du modèle ; Gabriel l’aide sur l’environnement d’entraînement, le versionnement et la reproductibilité.",
+    "checks": [
+      "Un entraînement produit un modèle identifié et versionné.",
+      "L’évaluation utilise un jeu de test séparé du jeu d’entraînement.",
+      "Les paramètres, données utilisées, limites et commande de relance sont documentés."
+    ],
+    "expectedProof": "Modèle versionné, séparation des jeux et rapport d’entraînement/évaluation.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I5",
-    "title": "Modèle évalué face à la baseline",
+    "title": "Évaluer le modèle face à la baseline",
     "date": "2026-11-18",
     "owner": "Maia avec Thomas",
     "criterion": "Modèle et règles évalués sur le même jeu de test. Métriques, biais, seuils et limites publiés dans la fiche modèle. Aucune performance minimale inventée.",
@@ -970,12 +1186,19 @@
     "assignees": [
       "Maia",
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "Le modèle et la baseline sont évalués sur le même jeu de test identifié.",
+      "Les métriques, biais, seuils et limites sont explicités dans la fiche modèle.",
+      "Le rapport permet de comparer les deux approches sans ajouter un seuil de performance non convenu."
+    ],
+    "expectedProof": "Rapport comparatif et fiche modèle versionnés.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I6",
-    "title": "IA désactivable sans bloquer les alertes",
+    "title": "Désactiver l’IA en conservant les alertes et la localisation",
     "date": "2026-12-04",
     "owner": "Maia avec Gabriel",
     "criterion": "Un arrêt du modèle laisse le SOS et la localisation de base disponibles. Retour au mode par règles démontré.",
@@ -998,12 +1221,19 @@
     "assignees": [
       "Maia",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Un scénario provoque l’arrêt ou l’indisponibilité du modèle.",
+      "Le SOS et la localisation de base restent utilisables pendant ce scénario.",
+      "Le retour au mode par règles et les événements observés sont consignés."
+    ],
+    "expectedProof": "Journal ou vidéo du scénario d’arrêt IA et résultat des parcours de base.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I7",
-    "title": "Résultats du pilote analysés",
+    "title": "Analyser les résultats des deux sessions pilote",
     "date": "2026-12-10",
     "owner": "Maia avec Thomas",
     "criterion": "Rapport agrégé avec KPI, limites et recommandations. Aucun tracé individuel dans le rapport livré.",
@@ -1026,12 +1256,19 @@
     "assignees": [
       "Maia",
       "Thomas"
-    ]
+    ],
+    "checks": [
+      "Le rapport utilise les données identifiées des deux sessions pilote.",
+      "Les indicateurs agrégés, limites et recommandations sont présentés.",
+      "Le rapport livré ne contient pas de tracé individuel."
+    ],
+    "expectedProof": "Rapport agrégé et référence des données analysées.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 2,
     "id": "I8",
-    "title": "Modèle et documentation finale transférés",
+    "title": "Transférer le modèle et sa documentation",
     "date": "2026-12-11",
     "owner": "Maia avec Gabriel",
     "criterion": "Modèle, données de référence autorisées, configuration et commande de relance livrés. Un tiers reproduit une prédiction et les métriques.",
@@ -1054,7 +1291,14 @@
     "assignees": [
       "Maia",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Le modèle, la configuration, les données autorisées et les commandes de relance sont livrés.",
+      "Un tiers reproduit une prédiction et les métriques avec le dossier fourni.",
+      "Les limites d’usage et la version finale sont explicites."
+    ],
+    "expectedProof": "Archive IA versionnée et compte rendu de reproduction par un tiers.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
@@ -1087,7 +1331,14 @@
     "assignees": [
       "Nazim"
     ],
-    "focus": true
+    "focus": true,
+    "checks": [
+      "Les sources et la version du programme de test Pico sont sauvegardées.",
+      "Un autre membre suit la procédure, charge le programme et le relance.",
+      "Le comportement lumineux déjà acquis est reproduit et les erreurs d’installation éventuelles sont documentées."
+    ],
+    "expectedProof": "Sources versionnées, procédure et compte rendu d’installation par un autre membre.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
@@ -1117,7 +1368,14 @@
           "completedDate": null
         }
       ]
-    }
+    },
+    "checks": [
+      "Un appareil externe compatible lit le tag passif à plusieurs reprises.",
+      "Le même identifiant ou lien est obtenu à chaque lecture réussie et les échecs sont comptés.",
+      "Le compte rendu identifie le tag et l’appareil ; la lecture reste indépendante du Pico et de sa batterie."
+    ],
+    "expectedProof": "Tableau des lectures et vidéo ou journal montrant la valeur récupérée.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
@@ -1151,7 +1409,14 @@
       "Nazim",
       "Basile"
     ],
-    "start": "2026-11-09"
+    "start": "2026-11-09",
+    "checks": [
+      "Vingt appuis produisent vingt événements locaux uniques, sans doublon lié au rebond.",
+      "La LED change d’état à l’appui et au relâchement.",
+      "Dix redémarrages du programme se terminent sans blocage."
+    ],
+    "expectedProof": "Journal des vingt appuis et dix redémarrages, avec vidéo des états LED.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
@@ -1180,7 +1445,14 @@
       "Maia",
       "Nazim"
     ],
-    "start": "2026-11-11"
+    "start": "2026-11-11",
+    "checks": [
+      "L’antenne LTE, la SIM et la configuration réseau de l’essai sont identifiées.",
+      "Trois sessions réseau successives sont établies sous USB.",
+      "Aucun redémarrage n’est observé en émission et les conditions d’alimentation sont consignées."
+    ],
+    "expectedProof": "Journaux des trois sessions et contrôle de l’alimentation en émission.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "id": "E11",
@@ -1197,7 +1469,14 @@
     "status": "À faire",
     "proof": "",
     "note": "Objectif réordonné à partir des guides matériels et des priorités confirmées le 27/10/2026.",
-    "start": "2026-11-09"
+    "start": "2026-11-09",
+    "checks": [
+      "La méthode et le raccordement de mesure sont définis pour les références réellement utilisées.",
+      "Le Pico émet une valeur avec son unité ; cette valeur est comparée à une mesure de référence.",
+      "L’écart et les limites sont consignés ; aucun pourcentage de charge n’est affiché sans étalonnage."
+    ],
+    "expectedProof": "Tableau Pico/mesure de référence et description de la méthode.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
@@ -1227,12 +1506,19 @@
           "completedDate": null
         }
       ]
-    }
+    },
+    "checks": [
+      "Le programme de test et l’antenne GNSS sont identifiés.",
+      "À ciel ouvert, le journal contient une position valide et horodatée.",
+      "Le résultat de localisation est distingué du résultat de connexion au réseau cellulaire."
+    ],
+    "expectedProof": "Journal GNSS horodaté avec conditions de l’essai.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
     "id": "E4",
-    "title": "Position, SOS et batterie reçus dans le cloud",
+    "title": "Recevoir la position, le SOS et la batterie dans le cloud",
     "date": "2026-11-16",
     "owner": "Nazim avec Gabriel",
     "criterion": "50 messages réels de position, événements SOS et mesure batterie sont envoyés avec au moins 95 % de réception. Identifiant et horodatage vérifiés côté cloud. La mesure batterie vient d’une méthode validée ; aucun pourcentage de charge non étalonné n’est inventé.",
@@ -1260,15 +1546,22 @@
     "assignees": [
       "Nazim",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Cinquante messages réels couvrant position, SOS et batterie sont émis et identifiés.",
+      "Au moins 95 % sont retrouvés côté cloud, sans confondre les bracelets ni les horodatages.",
+      "La mesure batterie provient de la méthode validée dans E11."
+    ],
+    "expectedProof": "Journaux émetteur/récepteur et tableau de rapprochement des cinquante messages.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
     "id": "E5",
-    "title": "Reprise après coupure réseau démontrée",
+    "title": "Rétablir les transmissions après une coupure réseau",
     "date": "2026-11-19",
     "owner": "Nazim",
-    "criterion": "10 minutes hors réseau puis reconnexion sans perte critique. File locale, renvois et redémarrage automatique démontrés par les journaux.",
+    "criterion": "Après dix minutes hors réseau, la reconnexion et les renvois de la file locale sont vérifiés en rapprochant événements émis et reçus. Toute perte ou tout doublon est identifié et reçoit un verdict dans le compte rendu.",
     "deps": "E4",
     "note": "La réception cloud précède le test de coupure et de reprise. Les journaux permettent de vérifier les renvois avant la stabilisation du prototype.",
     "status": "À faire",
@@ -1288,12 +1581,19 @@
     "assignees": [
       "Nazim"
     ],
-    "start": "2026-11-17"
+    "start": "2026-11-17",
+    "checks": [
+      "Le scénario impose dix minutes hors réseau, puis rétablit la connexion.",
+      "Les événements conservés en file locale sont renvoyés et rapprochés des événements reçus.",
+      "Le journal identifie tout événement manquant ou doublon et donne un verdict sur les pertes critiques définies par le scénario."
+    ],
+    "expectedProof": "Journal de coupure/reconnexion et comparaison des événements avant/après.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
     "id": "E6",
-    "title": "Mise à jour distante et retour arrière opérationnels",
+    "title": "Installer une mise à jour distante et revenir à la version précédente",
     "date": "2026-11-23",
     "owner": "Nazim",
     "criterion": "3 mises à jour à distance et 3 retours à la version précédente réussis. Version et résultat visibles dans les journaux.",
@@ -1316,12 +1616,19 @@
     "assignees": [
       "Nazim"
     ],
-    "start": "2026-11-20"
+    "start": "2026-11-20",
+    "checks": [
+      "Trois mises à jour distantes se terminent avec la version attendue.",
+      "Trois retours à la version précédente sont effectués avec succès.",
+      "Version, résultat et éventuelle erreur sont visibles dans les journaux."
+    ],
+    "expectedProof": "Journaux des six opérations et versions avant/après.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
     "id": "E7",
-    "title": "Même version installée sur quatre bracelets identifiables",
+    "title": "Installer et vérifier la même version sur quatre bracelets",
     "date": "2026-12-06",
     "owner": "Maia avec Nazim",
     "criterion": "Quatre bracelets démarrent avec la même version embarquée, portent une identité propre et sont reconnus par la plateforme. SOS, LED et localisation testés ; chaque tag NFC passif est lu par un appareil externe et associé au bon bracelet.",
@@ -1344,12 +1651,19 @@
     "assignees": [
       "Maia",
       "Nazim"
-    ]
+    ],
+    "checks": [
+      "Les quatre bracelets démarrent avec la même version embarquée identifiée.",
+      "Chaque bracelet porte sa propre identité et sa fiche est retrouvée dans la plateforme.",
+      "SOS, LED, localisation et association du tag passif sont testés pour chaque unité."
+    ],
+    "expectedProof": "Quatre fiches de test et relevé des identités/versions.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 3,
     "id": "E8",
-    "title": "Version embarquée finale livrée",
+    "title": "Livrer la version embarquée et sa procédure d’installation",
     "date": "2026-12-11",
     "owner": "Nazim",
     "criterion": "Binaire, sources, version, configuration et procédure d’installation archivés. Réinstallation puis test fonctionnel réussis sur un bracelet.",
@@ -1376,7 +1690,14 @@
     },
     "assignees": [
       "Nazim"
-    ]
+    ],
+    "checks": [
+      "Binaire, sources, configuration et procédure d’installation sont archivés sous une version finale.",
+      "La version est réinstallée sur un bracelet identifié.",
+      "Le test fonctionnel défini dans le dossier passe après réinstallation."
+    ],
+    "expectedProof": "Archive embarquée et compte rendu de réinstallation/test.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1405,7 +1726,14 @@
     "assignees": [
       "Gabriel"
     ],
-    "focus": true
+    "focus": true,
+    "checks": [
+      "Deux environnements distincts, développement et test, sont identifiés.",
+      "Le front et le back y sont déployables avec leur configuration propre.",
+      "Les accès et les contrôles de santé sont vérifiés sur les deux environnements."
+    ],
+    "expectedProof": "Adresses des environnements et résultats des contrôles d’accès/santé.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1434,7 +1762,14 @@
     "assignees": [
       "Gabriel"
     ],
-    "focus": true
+    "focus": true,
+    "checks": [
+      "Les stockages et leur configuration de chiffrement sont identifiés.",
+      "Les secrets nécessaires sont fournis hors du dépôt de code.",
+      "Une sauvegarde est effectivement restaurée et le jeu restauré est contrôlé."
+    ],
+    "expectedProof": "Configuration documentée, contrôle du dépôt et compte rendu de restauration.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1464,7 +1799,14 @@
       "Tiéoulé",
       "Gabriel"
     ],
-    "focus": true
+    "focus": true,
+    "checks": [
+      "Un commit validé déclenche le déploiement reproductible du front et du back en test.",
+      "Un échec de contrôle arrête le pipeline et son motif est visible.",
+      "La version déployée est reliée au commit d’origine."
+    ],
+    "expectedProof": "Liens vers un pipeline réussi, un cas d’arrêt et la version déployée.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1472,7 +1814,7 @@
     "title": "Déployer le logiciel sur notre infrastructure",
     "date": "2026-11-06",
     "owner": "Gabriel avec Thomas",
-    "criterion": "Le logiciel est accessible sur l’infrastructure cible. Preuve : URL testée.",
+    "criterion": "Le logiciel est accessible sur l’URL cible ; le front, le contrôle du back et un parcours représentatif réussissent. URL, version déployée et résultats sont conservés.",
     "deps": "L2,N1,N2,N3",
     "note": "Le déploiement validé le 06/11 requiert les environnements, les secrets et le pipeline. La préparation peut commencer en parallèle. Répartition ajustée le 27/10 : Gabriel porte le déploiement technique ; Thomas vérifie l’URL, l’accès et les parcours applicatifs après déploiement.",
     "start": "2026-10-26",
@@ -1494,7 +1836,14 @@
           "completedDate": null
         }
       ]
-    }
+    },
+    "checks": [
+      "L’URL de l’environnement cible ouvre la version déployée du front.",
+      "Un contrôle du back et un parcours applicatif représentatif réussissent depuis cet environnement.",
+      "La version, l’URL et les résultats de test sont consignés."
+    ],
+    "expectedProof": "URL testée, référence de version et compte rendu du parcours/contrôle back.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1521,7 +1870,14 @@
     },
     "assignees": [
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Les journaux, métriques et le tableau de supervision sont consultables.",
+      "Une panne simulée produit une alerte identifiant le service et l’incident.",
+      "La procédure associée permet de qualifier l’alerte et de vérifier le retour à l’état normal."
+    ],
+    "expectedProof": "Capture de l’alerte, chronologie et journal du rétablissement.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1548,7 +1904,14 @@
     },
     "assignees": [
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Un environnement propre est préparé avec la configuration documentée.",
+      "Le déploiement y est reproduit à partir de la version retenue.",
+      "Les contrôles de santé et d’accès prévus passent sur cet environnement."
+    ],
+    "expectedProof": "Procédure, version et résultats du déploiement sur environnement propre.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1576,7 +1939,14 @@
     "assignees": [
       "Tiéoulé",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Une sauvegarde est restaurée et son contenu de référence est vérifié.",
+      "Le retour à une version applicative précédente est exécuté.",
+      "Les durées et résultats des deux opérations sont mesurés et consignés."
+    ],
+    "expectedProof": "Compte rendu chronométré de restauration et retour de version.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1604,7 +1974,14 @@
     },
     "assignees": [
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "Le runbook décrit la détection, la qualification et la reprise des incidents du pilote.",
+      "Les événements d’exploitation des sessions sont horodatés et reliés aux actions effectuées.",
+      "Chaque incident rencontré dispose d’un verdict et d’une procédure utilisée ou mise à jour."
+    ],
+    "expectedProof": "Runbook versionné et journal des actions pendant le pilote.",
+    "criteriaReviewedAt": "2026-11-05"
   },
   {
     "g": 4,
@@ -1632,6 +2009,13 @@
     "assignees": [
       "Tiéoulé",
       "Gabriel"
-    ]
+    ],
+    "checks": [
+      "L’inventaire d’infrastructure, la configuration et le runbook sont livrés.",
+      "Un autre membre suit le dossier pour déployer et superviser le POC.",
+      "Il reproduit une restauration et consigne le résultat."
+    ],
+    "expectedProof": "Dossier cloud versionné et compte rendu de reprise par un autre membre.",
+    "criteriaReviewedAt": "2026-11-05"
   }
 ]

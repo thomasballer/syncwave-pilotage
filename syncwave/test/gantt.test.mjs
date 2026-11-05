@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {ganttChain,ganttConnections,validationPath} from '../public/gantt-model.js';
+import {ganttChain,ganttConnections,ganttContext,validationPath} from '../public/gantt-model.js';
 import {depsOf} from '../public/workflow-model.js';
 const items=JSON.parse(await fs.readFile(new URL('../public/objectifs.json',import.meta.url),'utf8'));
 const ids=items.map(d=>d.id);
@@ -32,4 +32,20 @@ test('Les flèches entrent sur la validation même lorsque la préparation déma
  assert.equal(path,'M 102 30 H 254 V 200 H 243');
  assert.equal(validationPath({x:320,y:200},{x:320,y:30},1,370),'M 322 200 H 340 V 30 H 323');
  assert.throws(()=>validationPath({x:NaN,y:1},{x:1,y:1},0,100));
+});
+
+
+test('Les 40 dépendances entre livrables restent des liens réels, visibles dans leur mode dédié',()=>{
+ const graph=ganttConnections(items,ids,'P9','cross');
+ assert.equal(graph.links.length,40);assert.deepEqual(graph.hidden,[]);
+ for(const link of graph.links){assert.ok(link.cross);assert.notEqual(items.find(d=>d.id===link.from).g,items.find(d=>d.id===link.to).g);}
+ for(const [from,to] of [['E2','P9'],['L11','P9'],['L3','I4'],['L2','L3']])assert.ok(graph.links.some(d=>d.from===from&&d.to===to));
+});
+test('Un filtre conserve les vrais prérequis externes, sans inventer de lien',()=>{
+ const physical=items.filter(d=>d.g===0).map(d=>d.id),context=ganttContext(items,physical);
+ assert.ok(context.context.has('E2'));assert.ok(context.context.has('L11'));
+ const graph=ganttConnections(items,context.ids,'P9','cross');
+ assert.ok(graph.links.some(d=>d.from==='E2'&&d.to==='P9'));
+ for(const id of context.context)assert.ok(items.some(d=>physical.includes(d.id)&&depsOf(d).includes(id)));
+ const pair=ganttConnections(items,['E2','P9'],'P9','all');assert.deepEqual(pair.links.map(d=>[d.from,d.to]),[['E2','P9']]);
 });

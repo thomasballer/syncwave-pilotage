@@ -4,20 +4,21 @@ import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import * as workflowModel from '../public/workflow-model.js';
 import * as organizationModel from '../public/organization-model.js';
+import * as dashboardModel from '../public/dashboard-model.js';
 
 const read=name=>fs.readFile(new URL('../public/'+name,import.meta.url),'utf8');
-const [app,workflow,html,seed,organizationConfig,components,catalog]=await Promise.all([read('app.js'),read('workflow.js'),read('index.html'),read('objectifs.json'),read('organization-plan.json'),read('components.js'),read('components.json')]);
+const [app,workflow,html,seed,organizationConfig,components,catalog,dashboard,dashboardConfig]=await Promise.all([read('app.js'),read('workflow.js'),read('index.html'),read('objectifs.json'),read('organization-plan.json'),read('components.js'),read('components.json'),read('dashboard.js'),read('dashboard.json')]);
 function page(){
- const elements=new Map(),events=new Map(),location={hash:'#overview'};
- function element(selector){if(!elements.has(selector))elements.set(selector,{hidden:false,value:'',textContent:'',innerHTML:'',style:{},classList:{toggle(){},remove(){}},addEventListener(){},setAttribute(name,value){this[name]=value;},insertAdjacentHTML(_,text){this.innerHTML+=text;}});return elements.get(selector);}
+ const elements=new Map(),events=new Map(),storage=new Map(),location={hash:'#overview'};
+ function element(selector){if(!elements.has(selector))elements.set(selector,{hidden:false,checked:false,value:'',textContent:'',innerHTML:'',style:{},classList:{toggle(){},remove(){}},addEventListener(){},setAttribute(name,value){this[name]=value;},insertAdjacentHTML(_,text){this.innerHTML+=text;}});return elements.get(selector);}
  for(const id of [...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]))element('#'+id).hidden=html.includes('id="'+id+'" hidden');
  element('#componentCategory').value='all';element('#componentState').value='all';element('#depGroup').value='0';element('#depTarget').value='P9';element('#depMode').value='direct';
  const document={querySelector:element,querySelectorAll:()=>[],addEventListener(){},body:element('body'),currentScript:{src:'http://localhost/app.js?v=test'}};
  const window={history:{replaceState(_,__,hash){location.hash=hash;}},scrollTo(){},addEventListener(name,callback){events.set(name,callback);}};
- const context=vm.createContext({document,window,location,URL,setTimeout,__workflowModel:workflowModel,__organizationModel:organizationModel,__organizationConfig:JSON.parse(organizationConfig),__data:JSON.parse(seed),__catalog:JSON.parse(catalog),shortDate:d=>d});
- vm.runInContext(app,context);vm.runInContext(workflow,context);vm.runInContext(components,context);
- vm.runInContext('workflowModel=__workflowModel;organizationModel=__organizationModel;organizationConfig=__organizationConfig;organizationPlan=organizationModel.buildOrganizationPlan(organizationConfig);data=__data;componentCatalog=__catalog;configureComponents();',context);
- return {context,element,events,location};
+ const context=vm.createContext({document,window,location,URL,setTimeout,__workflowModel:workflowModel,__organizationModel:organizationModel,__organizationConfig:JSON.parse(organizationConfig),__data:JSON.parse(seed),__catalog:JSON.parse(catalog),__dashboardModel:dashboardModel,__dashboardConfig:JSON.parse(dashboardConfig),localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value)},shortDate:d=>d});
+ vm.runInContext(app,context);vm.runInContext(workflow,context);vm.runInContext(components,context);vm.runInContext(dashboard,context);
+ vm.runInContext('workflowModel=__workflowModel;organizationModel=__organizationModel;organizationConfig=__organizationConfig;organizationPlan=organizationModel.buildOrganizationPlan(organizationConfig);data=__data;componentCatalog=__catalog;configureComponents();dashboardModel=__dashboardModel;dashboardConfig=__dashboardConfig;configureDashboard();',context);
+ return {context,element,events,location,storage};
 }
 test('Un lien direct affiche les vraies cartes Organisation et Dépendances après le chargement',()=>{
  const p=page();vm.runInContext('planReady=true;',p.context);
@@ -50,4 +51,26 @@ test('Le lien direct Composants affiche le catalogue et les trois confirmations 
  assert.equal(vm.runInContext('JSON.stringify(data)',p.context),JSON.stringify(JSON.parse(seed)));
  p.element('#componentState').value='pending';vm.runInContext('renderComponents();',p.context);
  assert.match(p.element('#componentCount').textContent,/2 fiches/);assert.doesNotMatch(p.element('#componentGrid').innerHTML,/id="component-pico"/);
+});
+
+
+test('Le tableau de bord ouvre la plateforme confirmée et distingue les validations des annonces urgentes',()=>{
+ const p=page();vm.runInContext('planReady=true;view("overview");',p.context);
+ assert.equal(p.element('#dashboardPlatform').href,'https://syncwave.mooroon5.fr');
+ assert.match(p.element('#dashboardStats').innerHTML,/5<small>\/ 57/);
+ assert.match(p.element('#dashboardRecent').innerHTML,/Confirmé le/);
+ vm.runInContext('dashboardAnnouncements=[{id:"n1",title:"<b>Urgence</b>",message:"<script>essai</script>",date:"2026-11-05",priority:"urgent",archived:false}];renderDashboard();',p.context);
+ const news=p.element('#dashboardAnnouncements').innerHTML;assert.match(news,/class="db-announcement urgent"/);assert.match(news,/&lt;b&gt;Urgence/);assert.doesNotMatch(news,/<script>/);
+ p.element('#dashboardArchived').checked=true;vm.runInContext('renderDashboard();',p.context);assert.match(p.element('#dashboardAnnouncements').innerHTML,/Aucune annonce archivée/);
+});
+
+
+test('L’enregistrement et l’archivage conservent les annonces dans le navigateur et protègent une copie',()=>{
+ const p=page(),note={id:'n1',title:'Point de validation',message:'Consigner les résultats du test.',date:'2026-11-05',priority:'important',archived:false};
+ p.context.__note=note;
+ assert.equal(vm.runInContext('storeAnnouncements([__note]);',p.context),true);
+ assert.deepEqual(JSON.parse(p.storage.get('syncwave-announcements-v1')),[note]);
+ vm.runInContext('storeAnnouncements([{...__note,archived:true}]);configureDashboard();',p.context);
+ assert.equal(vm.runInContext('dashboardAnnouncements[0].archived',p.context),true);
+ assert.deepEqual(JSON.parse(p.storage.get('syncwave-announcements-v1-copie')),[note]);
 });

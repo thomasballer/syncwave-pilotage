@@ -1,6 +1,6 @@
 function renderFocus(){const rows=data.filter(d=>d.focus).sort((a,b)=>a.date.localeCompare(b.date));$('#focusObjectives').innerHTML='<div class="focus-grid">'+rows.map(d=>`<button class="focus-item" data-id="${d.id}"><span><strong>${esc(d.title)}</strong><small>${esc(assignments(d).join(' + ')||'Non assigné')} · ${esc(d.status)}</small></span><time>${validated(d)?completionPrefix(d):''}${fmt(d.completedDate||d.date)}</time></button>`).join('')+'</div>';}
 const dayMs=86400000,stamp=d=>Date.parse(d+'T00:00:00Z'),referenceDate=stamp('2026-10-26'),collapsedGroups=new Set();
-let ganttMode='details',selectedGanttId='P9',ganttChainOnly=false,ganttModel,ganttFrame=0,ganttObserver,ganttCenterPending=false;
+let ganttMode='details',selectedGanttId='P9',ganttChainOnly=false,ganttModel,ganttFrame=0,ganttObserver,ganttCenterPending=true,ganttPair=null;
 const shortDate=d=>new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'short'}).format(new Date(d+'T12:00:00Z'));
 function scheduleGanttLinks(){
  cancelAnimationFrame(ganttFrame);ganttFrame=requestAnimationFrame(drawGanttLinks);
@@ -16,9 +16,9 @@ function drawGanttLinks(){
  });
  const graph=ganttModel.ganttConnections(data,anchors.keys(),selectedGanttId,$('#ganttFlow').value);
  svg.setAttribute('viewBox',`0 0 ${bounds.width} ${bounds.height}`);
- svg.innerHTML='<defs><marker id="gg-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 7 3.5 L 0 7 Z" fill="#b69bcb"/></marker><marker id="gg-arrow-focus" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#f79ed7"/></marker></defs>'+graph.links.sort((a,b)=>Number(a.focused)-Number(b.focused)).map((link,index)=>`<path data-gantt-from="${link.from}" data-gantt-to="${link.to}" class="gg-link ${link.focused?'is-focused':''}" d="${ganttModel.validationPath(anchors.get(link.from),anchors.get(link.to),index,bounds.width)}" marker-end="url(#gg-arrow${link.focused?'-focus':''})"/>`).join('');
+ svg.innerHTML='<defs><marker id="gg-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 7 3.5 L 0 7 Z" fill="#b69bcb"/></marker><marker id="gg-arrow-cross" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#68e5df"/></marker><marker id="gg-arrow-focus" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M 0 0 L 8 4 L 0 8 Z" fill="#f79ed7"/></marker></defs>'+graph.links.sort((a,b)=>(Number(a.focused)*2+Number(a.cross))-(Number(b.focused)*2+Number(b.cross))).map((link,index)=>`<path data-gantt-from="${link.from}" data-gantt-to="${link.to}" data-gantt-cross="${link.cross}" class="gg-link ${link.cross?'is-cross':''} ${link.focused?'is-focused':''}" d="${ganttModel.validationPath(anchors.get(link.from),anchors.get(link.to),index,bounds.width)}" marker-end="url(#gg-arrow${link.focused?'-focus':link.cross?'-cross':''})"/>`).join('');
  const hidden=graph.hidden.length,mode=$('#ganttFlow').value;
- $('#ganttLinkStatus').textContent=mode==='none'?'Flèches masquées.':`${graph.links.length} lien${graph.links.length>1?'s':''} visible${graph.links.length>1?'s':''}${hidden?` · ${hidden} lien${hidden>1?'s':''} vers des prérequis hors de la période, filtrés ou repliés`:''}.`;
+ $('#ganttLinkStatus').textContent=mode==='none'?'Flèches masquées.':`${graph.links.length} lien${graph.links.length>1?'s':''} visible${graph.links.length>1?'s':''} · ${graph.links.filter(d=>d.cross).length} entre livrables${hidden?` · ${hidden} lien${hidden>1?'s':''} vers des prérequis hors de la période, filtrés ou repliés`:''}.`;
  $('#ganttReveal').hidden=!hidden;$('#ganttCenter').disabled=!anchors.has(selectedGanttId);
  if(ganttCenterPending){ganttCenterPending=false;centerGanttSelection();}
 }
@@ -31,10 +31,10 @@ function centerGanttSelection(){
 }
 function selectGantt(id,center=false){
  if(!data.some(d=>d.id===id))return;
- selectedGanttId=id;ganttCenterPending=center;collapsedGroups.clear();renderGantt();
+ if(ganttPair&&!ganttPair.includes(id))ganttPair=null;selectedGanttId=id;ganttCenterPending=center;collapsedGroups.clear();renderGantt();
 }
 function revealGanttChain(){
- ganttMode='details';ganttChainOnly=true;ganttCenterPending=true;collapsedGroups.clear();
+ ganttPair=null;ganttMode='details';ganttChainOnly=true;ganttCenterPending=true;collapsedGroups.clear();
  $('#ganttGroup').value='all';$('#ganttPerson').value='all';$('#ganttStatus').value='all';$('#ganttRange').value='full';
  if($('#ganttFlow').value==='none')$('#ganttFlow').value='focus';
  renderGantt();
@@ -48,9 +48,10 @@ function renderGanttFocus(){
  $('#ganttFocusMeta').textContent=`${groups[selected.g].name} · ${validated(selected)?completionPrefix(selected):'Échéance : '}${fmt(selected.completedDate||selected.date)} · ${chain.size-1} prérequis dans la chaîne`;
  $('#ganttBefore').innerHTML=before.length?before.map(d=>chip(d,'before')).join(''):'<span class="gg-no-dependency">Aucun prérequis</span>';
  $('#ganttAfter').innerHTML=after.length?after.map(d=>chip(d,'after')).join(''):'<span class="gg-no-dependency">Dernière étape de sa chaîne</span>';
- $('#ganttIsolate').textContent=ganttChainOnly?'Revenir à tout le planning':'Isoler cette chaîne';
+ $('#ganttIsolate').textContent=ganttPair?'Afficher la chaîne complète':ganttChainOnly?'Revenir à tout le planning':'Isoler cette chaîne';$('#ganttPairReset').hidden=!ganttPair;
  $('#ganttIsolate').setAttribute('aria-pressed',String(ganttChainOnly));
  $('#ganttFocusOpen').dataset.id=selected.id;
+ const cross=ganttModel.ganttConnections(data,data.map(d=>d.id),selected.id,'cross').links;const previous=$('#ganttCrossTarget').value;$('#ganttCrossSummary').textContent=cross.length+' dépendances entre les livrables · consulter un lien';$('#ganttCrossTarget').innerHTML=cross.map(link=>{const source=data.find(d=>d.id===link.from),target=data.find(d=>d.id===link.to);return `<option value="${source.id}>${target.id}">${esc(groups[source.g].name)} → ${esc(groups[target.g].name)} : ${source.id} → ${target.id} · ${esc(target.title)}</option>`;}).join('');if(cross.some(d=>d.from+'>'+d.to===previous))$('#ganttCrossTarget').value=previous;
 }
 function renderGantt(){
  if(!data.length||!ganttModel)return;
@@ -60,7 +61,8 @@ function renderGantt(){
  const days=Math.round((end-start)/dayMs)+1,daily=zoom==='days'||mode==='fortnight';
  const chain=ganttModel.ganttChain(data,selectedGanttId);
  const stateMatch=d=>status==='all'||(status==='completed'?validated(d):status==='started'?d.status==='En cours':!validated(d)&&d.status!=='En cours');
- const sourceItems=data.filter(d=>(!ganttChainOnly||chain.has(d.id))&&(group==='all'||d.g===Number(group))&&(person==='all'||assignments(d).includes(person))&&stateMatch(d));
+ const matches=data.filter(d=>ganttPair?ganttPair.includes(d.id):(!ganttChainOnly||chain.has(d.id))&&(group==='all'||d.g===Number(group))&&(person==='all'||assignments(d).includes(person))&&stateMatch(d));
+ const context=!ganttPair&&!ganttChainOnly&&$('#ganttContext').checked?ganttModel.ganttContext(data,matches.map(d=>d.id)):{ids:new Set(matches.map(d=>d.id)),context:new Set()};const sourceItems=data.filter(d=>context.ids.has(d.id));
  const visible=d=>{
   const planned=(d.start?stamp(d.start):stamp(d.date))<=end&&stamp(d.date)>=start;
   const actual=d.completedDate&&stamp(d.completedDate)>=start&&stamp(d.completedDate)<=end;
@@ -70,8 +72,8 @@ function renderGantt(){
  $('#ganttSummary').classList.toggle('selected',summary);$('#ganttDetails').classList.toggle('selected',!summary);
  $('#ganttSummary').setAttribute('aria-pressed',summary);$('#ganttDetails').setAttribute('aria-pressed',!summary);
  $('#ganttExpand').hidden=summary;$('#ganttCompareLabel').hidden=summary;$('#ganttDependencyPanel').hidden=summary;$('#ganttFlowLabel').hidden=summary;
- $('#ganttInfo').textContent=`${entries.length} objectifs affichés · ${ganttChainOnly?'chaîne sélectionnée · ':''}${shortDate(new Date(start).toISOString().slice(0,10))} – ${shortDate(new Date(end).toISOString().slice(0,10))} 2026`;
- $('#ganttLegend').innerHTML=summary?'<span><i class="gg-key window"></i>Fenêtre des échéances</span><span><i class="gg-key completed"></i>Réalisation connue</span>':'<span><i class="gg-key planned"></i>Période prévue</span><span><i class="gg-key completed"></i>Terminé</span><span><i class="gg-key deadline"></i>Échéance sans début défini</span><span><i class="gg-key arrow"></i>Ordre de validation</span><span><i class="gg-key today"></i>Aujourd’hui</span>';
+ $('#ganttInfo').textContent=`${entries.length} objectifs affichés · ${ganttPair?'lien entre livrables · ':ganttChainOnly?'chaîne sélectionnée · ':''}${shortDate(new Date(start).toISOString().slice(0,10))} – ${shortDate(new Date(end).toISOString().slice(0,10))} 2026`;
+ $('#ganttLegend').innerHTML=summary?'<span><i class="gg-key window"></i>Fenêtre des échéances</span><span><i class="gg-key completed"></i>Réalisation connue</span>':'<span><i class="gg-key planned"></i>Période prévue</span><span><i class="gg-key completed"></i>Terminé</span><span><i class="gg-key deadline"></i>Échéance sans début défini</span><span><i class="gg-key arrow cross"></i>Entre livrables</span><span><i class="gg-key arrow"></i>Chaîne suivie</span><span><i class="gg-key today"></i>Aujourd’hui</span>';
  $('#ganttNote').textContent=summary?'Chaque bande relie la première et la dernière échéance du livrable ; elle ne représente pas une durée de travail. Les flèches se consultent dans la vue « Objectifs et dépendances ».':'Les flèches relient les validations : le prérequis doit être terminé pour valider le résultat suivant. La préparation peut avancer en parallèle. Une barre n’est tracée que si le début est renseigné ; sinon, le losange marque uniquement l’échéance. Cliquez sur une barre ou un losange pour suivre sa chaîne, sur le titre à gauche pour ouvrir la fiche.';
  if(!summary)renderGanttFocus();
  const position=t=>(t-start)/dayMs/days*100,iso=t=>new Date(t).toISOString().slice(0,10);
@@ -100,7 +102,7 @@ function renderGantt(){
    const range=dates.length?`${shortDate(iso(Math.min(...dates)))} – ${shortDate(iso(Math.max(...dates)))}`:'Réalisations historiques';
    html+=`<div class="gg-row gg-summary-row" style="--color:${groups[i].color}"><button class="gg-row-label" data-gantt-drill="${i}"><span class="gg-group-name"><i></i>${groups[i].name}</span><strong>${done}/${groupSource.length} terminés <span>· ${esc(range)}</span></strong><small>${prior?prior+' réalisations avant cette période':'Voir les objectifs et leurs dates'} ↗</small></button><div class="gg-row-track"><div class="gg-track-scale">${track}</div></div></div>`;
   }else{
-   if(!items.length)continue;html+=`<button class="gg-section-row" data-collapse="${i}" aria-expanded="${!collapsedGroups.has(i)}" style="--color:${groups[i].color}"><span>${collapsedGroups.has(i)?'▸':'▾'} ${groups[i].name}</span><small>${items.length} objectifs · ${items.filter(validated).length} terminés</small></button>`;
+   if(!items.length)continue;html+=`<button class="gg-section-row" data-collapse="${i}" aria-expanded="${!collapsedGroups.has(i)}" style="--color:${groups[i].color}"><span>${collapsedGroups.has(i)?'▸':'▾'} ${groups[i].name}</span><small>${items.length} objectif${items.length>1?'s':''} · ${items.filter(validated).length} terminé${items.filter(validated).length>1?'s':''}</small></button>`;
    if(collapsedGroups.has(i))continue;
    for(const d of items){
     drawnRows++;let marks='',complete=validated(d);const dependencies=workflowModel.depsOf(d);
@@ -112,7 +114,7 @@ function renderGantt(){
      if(compare&&d.actualStart)marks+=period(stamp(d.actualStart),stamp('2026-10-26'),'is-underway','En cours',d,`${d.title} · début connu ${fmt(d.actualStart)} · état au 26 octobre`);
     }
     const dateLabel=complete?completionPrefix(d)+fmt(d.completedDate):(d.start?shortDate(d.start)+' → ':'Échéance : ')+fmt(d.date);
-    html+=`<div class="gg-row gg-objective-row ${d.id===selectedGanttId?'is-selected':chain.has(d.id)?'in-chain':''}" data-gantt-row="${d.id}" style="--color:${groups[i].color}"><div class="gg-row-label"><button class="gg-task-title" data-id="${d.id}"><b>${d.id}</b><span>${esc(d.title)}</span></button><span class="gg-person-line">${esc(assignments(d).join(' + ')||'Non assigné')}</span><div class="gg-row-meta"><span class="gg-status ${complete?'done':d.status==='En cours'?'started':''}">${esc(d.status)}</span><time>${esc(dateLabel)}</time></div><button class="gg-dependency-hint" data-gantt-select="${d.id}" aria-label="Suivre les dépendances de ${d.id}">${dependencies.length?'Prérequis : '+dependencies.join(' · '):'Aucun prérequis'} <span>↗</span></button></div><div class="gg-row-track"><div class="gg-track-scale">${background()+marks||'<span class="gg-no-event">Hors période</span>'}</div></div></div>`;
+    html+=`<div class="gg-row gg-objective-row ${d.id===selectedGanttId?'is-selected':chain.has(d.id)?'in-chain':''}" data-gantt-row="${d.id}" style="--color:${groups[i].color}"><div class="gg-row-label"><button class="gg-task-title" data-id="${d.id}"><b>${d.id}</b><span>${esc(d.title)}</span></button><span class="gg-person-line">${esc(assignments(d).join(' + ')||'Non assigné')}</span><div class="gg-row-meta"><span class="gg-status ${complete?'done':d.status==='En cours'?'started':''}">${esc(d.status)}</span><time>${esc(dateLabel)}</time>${context.context.has(d.id)?'<span class="gg-context-tag">Prérequis externe</span>':''}</div><button class="gg-dependency-hint" data-gantt-select="${d.id}" aria-label="Suivre les dépendances de ${d.id}">${dependencies.length?'Prérequis : '+dependencies.join(' · '):'Aucun prérequis'} <span>↗</span></button></div><div class="gg-row-track"><div class="gg-track-scale">${background()+marks||'<span class="gg-no-event">Hors période</span>'}</div></div></div>`;
    }
   }
  }
@@ -125,15 +127,22 @@ function renderGantt(){
  else if(!summary){$('#ganttLinkStatus').textContent='Aucun lien visible avec ces filtres.';$('#ganttReveal').hidden=false;}
 }
 $('#ganttGroup').insertAdjacentHTML('beforeend',groups.map((g,i)=>`<option value="${i}">${g.name}</option>`).join(''));$('#ganttPerson').insertAdjacentHTML('beforeend',people.map(p=>`<option>${p}</option>`).join(''));
-['#ganttRange','#ganttGroup','#ganttPerson','#ganttStatus','#ganttCompare','#ganttFlow'].forEach(s=>$(s).addEventListener('change',renderGantt));
+['#ganttRange','#ganttGroup','#ganttPerson','#ganttStatus','#ganttCompare','#ganttFlow','#ganttContext'].forEach(s=>$(s).addEventListener('change',renderGantt));
 $('#ganttRange').addEventListener('change',()=>{$('#ganttScroll').scrollLeft=0;$('#ganttScroll').scrollTop=0;});
 $('#ganttZoom').addEventListener('change',()=>{ganttCenterPending=true;renderGantt();});
 $('#ganttTarget').onchange=()=>selectGantt($('#ganttTarget').value,true);$('#ganttCenter').onclick=centerGanttSelection;
-$('#ganttIsolate').onclick=()=>{if(ganttChainOnly){ganttChainOnly=false;renderGantt();}else revealGanttChain();};$('#ganttReveal').onclick=revealGanttChain;
-$('#ganttSummary').onclick=()=>{ganttMode='summary';ganttChainOnly=false;renderGantt();};$('#ganttDetails').onclick=()=>{ganttMode='details';renderGantt();};
-$('#ganttCompleted').onclick=()=>{$('#ganttGroup').value='all';$('#ganttPerson').value='all';$('#ganttRange').value='full';$('#ganttStatus').value='completed';ganttMode='details';ganttChainOnly=false;collapsedGroups.clear();renderGantt();};
+$('#ganttIsolate').onclick=()=>{if(ganttChainOnly){ganttChainOnly=false;renderGantt();}else revealGanttChain();};$('#ganttReveal').onclick=()=>{if($('#ganttFlow').value==='focus'||ganttPair)revealGanttChain();else resetGanttScope();};
+$('#ganttSummary').onclick=()=>{ganttMode='summary';ganttPair=null;ganttChainOnly=false;renderGantt();};$('#ganttDetails').onclick=()=>{ganttMode='details';renderGantt();};
+$('#ganttCompleted').onclick=()=>{$('#ganttGroup').value='all';$('#ganttPerson').value='all';$('#ganttRange').value='full';$('#ganttStatus').value='completed';ganttMode='details';ganttPair=null;ganttChainOnly=false;collapsedGroups.clear();renderGantt();};
 $('#ganttExpand').onclick=()=>{collapsedGroups.clear();renderGantt();};
 $('#ganttWide').onclick=()=>{const wide=document.body.classList.toggle('gg-wide');$('#ganttWide').textContent=wide?'Réduire ↙':'Agrandir ↗';scheduleGanttLinks();};
 window.addEventListener('resize',scheduleGanttLinks);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('gg-wide')&&!document.querySelector('dialog[open]')){document.body.classList.remove('gg-wide');$('#ganttWide').textContent='Agrandir ↗';scheduleGanttLinks();}});
-document.addEventListener('click',e=>{const select=e.target.closest('[data-gantt-select]');if(select){selectGantt(select.dataset.ganttSelect);return;}const drill=e.target.closest('[data-gantt-drill]');if(drill){$('#ganttGroup').value=drill.dataset.ganttDrill;ganttMode='details';ganttChainOnly=false;collapsedGroups.clear();renderGantt();$('#gantt').scrollIntoView({block:'start',behavior:'smooth'});}const collapse=e.target.closest('[data-collapse]');if(collapse){const i=Number(collapse.dataset.collapse);collapsedGroups.has(i)?collapsedGroups.delete(i):collapsedGroups.add(i);renderGantt();}});
+document.addEventListener('click',e=>{const select=e.target.closest('[data-gantt-select]');if(select){selectGantt(select.dataset.ganttSelect);return;}const drill=e.target.closest('[data-gantt-drill]');if(drill){$('#ganttGroup').value=drill.dataset.ganttDrill;ganttMode='details';ganttPair=null;ganttChainOnly=false;collapsedGroups.clear();renderGantt();$('#gantt').scrollIntoView({block:'start',behavior:'smooth'});}const collapse=e.target.closest('[data-collapse]');if(collapse){const i=Number(collapse.dataset.collapse);collapsedGroups.has(i)?collapsedGroups.delete(i):collapsedGroups.add(i);renderGantt();}});
+
+function resetGanttScope(){ganttPair=null;ganttChainOnly=false;collapsedGroups.clear();$('#ganttGroup').value='all';$('#ganttPerson').value='all';$('#ganttStatus').value='all';$('#ganttRange').value='full';renderGantt();}
+$('#ganttPairReset').onclick=resetGanttScope;
+$('#ganttShowCross').onclick=()=>{
+ const [from,to]=$('#ganttCrossTarget').value.split('>');if(!data.some(d=>d.id===from)||!workflowModel.depsOf(data.find(d=>d.id===to)||{}).includes(from))return;
+ ganttPair=[from,to];selectedGanttId=to;ganttMode='details';ganttChainOnly=false;ganttCenterPending=true;collapsedGroups.clear();$('#ganttRange').value='full';$('#ganttFlow').value='all';renderGantt();
+};
